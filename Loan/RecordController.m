@@ -105,11 +105,6 @@
     return 30;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return CGFLOAT_MIN;
-//}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray * rows = self.recordList[indexPath.section][@"value"];

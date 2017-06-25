@@ -57,7 +57,7 @@
                              @"sel" : @"goApplyRercord"},
                            @{@"title" : @"浏览记录",
                              @"image" : @"icon_account",
-                             @"sel" : @"govisitRercord"},
+                             @"sel" : @"goVisitRercord"},
                            @{@"title" : @"我的消息",
                              @"image" : @"icon_account",
                              @"sel" : @""},
