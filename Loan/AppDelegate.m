@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "StartPageManager.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    // 全局设置
+    [GlobalManager globleSetting];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = kWhiteColor;
+    
+    [[ControllersManager sharedControllersManager] setupProjectRootViewController];
+    
+    [self.window makeKeyAndVisible];
+    
+    [[StartPageManager sharedStartPageManager] showStartPage];
+    
     return YES;
 }
 

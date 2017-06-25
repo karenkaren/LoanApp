@@ -1,0 +1,42 @@
+//
+//  Loan-Prefix.pch
+//  Loan
+//
+//  Created by 王安帮 on 2017/6/24.
+//  Copyright © 2017年 FangRongTech. All rights reserved.
+//
+
+#ifndef Loan_Prefix_pch
+#define Loan_Prefix_pch
+
+#import <UIKit/UIKit.h>
+#import <BaiduMapAPI_Location/BMKLocationService.h>
+
+#import "GlobalAppearance.h"
+#import "GlobalSize.h"
+#import "Defines.h"
+
+#import "ServerEnvironmentConstants.h"
+#import "Singleton.h"
+#import "Category.h"
+
+#import "IQKeyboardManager.h"
+#import "Masonry.h"
+#import "MBProgressHUD.h"
+
+#import "GlobalManager.h"
+#import "ControllersManager.h"
+#import "NetAPIManager.h"
+
+#import "StringConstants.h"
+#import "APIUrlConstants.h"
+
+#import "TKValue.h"
+#import "CustomFont.h"
+#import "CustomButton.h"
+
+#import "BaseModel.h"
+#import "BaseDto.h"
+#import "CurrentUser.h"
+
+#endif /* Loan_Prefix_pch */
