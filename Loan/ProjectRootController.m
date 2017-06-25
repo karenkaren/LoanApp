@@ -68,19 +68,19 @@
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
     
-//    if ([[CurrentUser mine] hasLogged])
-//        return YES;
-//    else{
-//        BaseNavigationController * navController = (BaseNavigationController *)viewController;
-//        if([navController.topViewController isKindOfClass:[MeRootController class]]){
-//            [[ControllersManager sharedControllersManager] loginController:^{
-//                [self setSelectedIndex:2];
-//            }];
-//            return NO;
-//        }
-//        return YES;
-//    }
-    return YES;
+    if ([[CurrentUser mine] hasLogged])
+        return YES;
+    else{
+        BaseNavigationController * navController = (BaseNavigationController *)viewController;
+        if([navController.topViewController isKindOfClass:[MeRootController class]]){
+            [[ControllersManager sharedControllersManager] loginController:^{
+                [self setSelectedIndex:2];
+            }];
+            return NO;
+        }
+        return YES;
+    }
+//    return YES;
 }
 
 @end

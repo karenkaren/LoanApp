@@ -8,11 +8,10 @@
 
 #import "MeRootController.h"
 #import "MeRootHeaderView.h"
-#import "MyOrderCell.h"
-//#import "MyCarInfoController.h"
 #import "SettingController.h"
+#import "RecordController.h"
 
-@interface MeRootController ()<MyOrderCellDelegate>
+@interface MeRootController ()
 
 @property (nonatomic, strong) MeRootHeaderView * tableHeaderView;
 @property (nonatomic, strong) NSArray * originalDatas;
@@ -55,10 +54,10 @@
     
     self.originalDatas = @[@{@"title" : @"我的申请",
                              @"image" : @"icon_account",
-                             @"sel" : @""},
+                             @"sel" : @"goApplyRercord"},
                            @{@"title" : @"浏览记录",
                              @"image" : @"icon_account",
-                             @"sel" : @""},
+                             @"sel" : @"govisitRercord"},
                            @{@"title" : @"我的消息",
                              @"image" : @"icon_account",
                              @"sel" : @""},
@@ -101,7 +100,22 @@
 - (void)goSetting
 {
     SettingController * settingController = [[SettingController alloc] init];
+    settingController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:settingController animated:YES];
+}
+
+- (void)goApplyRercord
+{
+    RecordController * recordController = [[RecordController alloc] initWithRecordType:RecordTypeOfApply];
+    recordController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:recordController animated:YES];
+}
+
+- (void)goVisitRercord
+{
+    RecordController * recordController = [[RecordController alloc] initWithRecordType:RecordTypeOfVisit];
+    recordController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:recordController animated:YES];
 }
 
 @end

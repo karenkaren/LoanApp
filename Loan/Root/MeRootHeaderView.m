@@ -40,7 +40,7 @@
     self.userNameLabel = [[UILabel alloc] init];
     self.userNameLabel.textColor = kTextColor;
     self.userNameLabel.font = kFont(18);
-    self.userNameLabel.text = @"17800000000";
+    self.userNameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kMobileNo];
     [self addSubview:self.userNameLabel];
     
     kWeakSelf

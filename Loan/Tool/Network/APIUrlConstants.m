@@ -27,10 +27,18 @@ NSString * const kUserLoginUrl = @"/user/login/login";
 NSString * const kGetPictureCaptchaUrl = @"/user/register/pictureCode";
 // 退出登录
 NSString * const kUserLogoutUrl = @"/user/login/logout";
-// 上传用户位置
+//// 上传用户位置
 NSString * const kUserLocationUrl = @"/user/location";
 
 #pragma mark -- 业务服务
+NSString * const kBannerList = @"/banner/list"; // 首页banners
+NSString * const kLoanList = @"/cloan/list";    // 贷款列表
+NSString * const kVisitList = @"/cloan/record/list";    // 浏览列表
+NSString * const kApplyList = @"/cloan/record/list";    // 申请列表
+NSString * const kAddApplyRecord = @"/cloan/record/add";    // 新增申请记录
+NSString * const kAddVisitRecord = @"/cloan/record/add";    // 新增浏览记录
+
+/////////////////////////////////
 NSString * const kHomepageRecommend = @"/homepage/recommend";   // 首页
 NSString * const kShopListsDefault = @"/shop/lists"; // 默认洗车店列表
 NSString * const kShopListsWithDistance = @"/shop/lists/distance"; // 根据距离获取店铺列表
@@ -39,7 +47,7 @@ NSString * const kShopReserveAdd = @"/reserve/add"; // 提交订单
 NSString * const kUserAddCar = @"/car/add";     // 添加用户车辆
 NSString * const kUserCarList = @"/car/list";   // 用户车辆列表
 
-NSString * const kBannerList = @"/banner/list";
+
 //// 绑卡
 //NSString * const pay_bankList = @"/v1/bank-cards";
 //NSString * const usr_checkIdCard = @"/v1/accounts/id-cards";

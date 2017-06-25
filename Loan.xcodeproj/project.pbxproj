@@ -21,7 +21,6 @@
 		23B7DF921EFE39C2000F89F8 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF8B1EFE39C2000F89F8 /* AccountView.m */; };
 		23B7DF931EFE39C2000F89F8 /* MeRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF8D1EFE39C2000F89F8 /* MeRootController.m */; };
 		23B7DF941EFE39C2000F89F8 /* MeRootHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF8F1EFE39C2000F89F8 /* MeRootHeaderView.m */; };
-		23B7DF951EFE39C2000F89F8 /* MyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF911EFE39C2000F89F8 /* MyOrderCell.m */; };
 		23B7DFBD1EFE3AC1000F89F8 /* NSObject+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DFA11EFE3AC1000F89F8 /* NSObject+Common.m */; };
 		23B7DFBE1EFE3AC1000F89F8 /* NSString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DFA31EFE3AC1000F89F8 /* NSString+Attributes.m */; };
 		23B7DFBF1EFE3AC1000F89F8 /* NSString+Check.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DFA51EFE3AC1000F89F8 /* NSString+Check.m */; };
@@ -97,6 +96,8 @@
 		23B7E0E51EFE9878000F89F8 /* HomeRootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7E0E41EFE9878000F89F8 /* HomeRootCell.m */; };
 		23B7E0E81EFE9A6D000F89F8 /* PlatformModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7E0E71EFE9A6D000F89F8 /* PlatformModel.m */; };
 		23B7E0EC1EFE9B94000F89F8 /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7E0EB1EFE9B94000F89F8 /* ProductModel.m */; };
+		23D43B051EFFD87F006371CE /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D43B041EFFD87F006371CE /* RecordCell.m */; };
+		23D43B091EFFE54C006371CE /* RecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D43B081EFFE54C006371CE /* RecordController.m */; };
 		23E512DA1EFEB2E500272005 /* LoanRootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E512D91EFEB2E500272005 /* LoanRootCell.m */; };
 		9492CB6F319D778A0AE2C83A /* libPods-Loan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2821C562E8FAE8C7086A0552 /* libPods-Loan.a */; };
 /* End PBXBuildFile section */
@@ -150,8 +151,6 @@
 		23B7DF8D1EFE39C2000F89F8 /* MeRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeRootController.m; sourceTree = "<group>"; };
 		23B7DF8E1EFE39C2000F89F8 /* MeRootHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeRootHeaderView.h; sourceTree = "<group>"; };
 		23B7DF8F1EFE39C2000F89F8 /* MeRootHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeRootHeaderView.m; sourceTree = "<group>"; };
-		23B7DF901EFE39C2000F89F8 /* MyOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderCell.h; sourceTree = "<group>"; };
-		23B7DF911EFE39C2000F89F8 /* MyOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderCell.m; sourceTree = "<group>"; };
 		23B7DF9F1EFE3AC1000F89F8 /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
 		23B7DFA01EFE3AC1000F89F8 /* NSObject+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Common.h"; sourceTree = "<group>"; };
 		23B7DFA11EFE3AC1000F89F8 /* NSObject+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Common.m"; sourceTree = "<group>"; };
@@ -307,6 +306,10 @@
 		23B7E0E71EFE9A6D000F89F8 /* PlatformModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformModel.m; sourceTree = "<group>"; };
 		23B7E0EA1EFE9B94000F89F8 /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
 		23B7E0EB1EFE9B94000F89F8 /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
+		23D43B031EFFD87F006371CE /* RecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
+		23D43B041EFFD87F006371CE /* RecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
+		23D43B071EFFE54C006371CE /* RecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordController.h; sourceTree = "<group>"; };
+		23D43B081EFFE54C006371CE /* RecordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordController.m; sourceTree = "<group>"; };
 		23E512D81EFEB2E500272005 /* LoanRootCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanRootCell.h; sourceTree = "<group>"; };
 		23E512D91EFEB2E500272005 /* LoanRootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanRootCell.m; sourceTree = "<group>"; };
 		2821C562E8FAE8C7086A0552 /* libPods-Loan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Loan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -482,6 +485,7 @@
 		23B7DF861EFE3996000F89F8 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				23D43B011EFFD23E006371CE /* Record */,
 				23B7DF891EFE39C2000F89F8 /* Root */,
 			);
 			name = Me;
@@ -512,8 +516,6 @@
 				23B7DF8B1EFE39C2000F89F8 /* AccountView.m */,
 				23B7DF8E1EFE39C2000F89F8 /* MeRootHeaderView.h */,
 				23B7DF8F1EFE39C2000F89F8 /* MeRootHeaderView.m */,
-				23B7DF901EFE39C2000F89F8 /* MyOrderCell.h */,
-				23B7DF911EFE39C2000F89F8 /* MyOrderCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1033,6 +1035,33 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		23D43B011EFFD23E006371CE /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				23D43B061EFFE4F6006371CE /* Controller */,
+				23D43B021EFFD861006371CE /* View */,
+			);
+			name = Record;
+			sourceTree = "<group>";
+		};
+		23D43B021EFFD861006371CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				23D43B031EFFD87F006371CE /* RecordCell.h */,
+				23D43B041EFFD87F006371CE /* RecordCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		23D43B061EFFE4F6006371CE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				23D43B071EFFE54C006371CE /* RecordController.h */,
+				23D43B081EFFE54C006371CE /* RecordController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		23E512D71EFEB2C600272005 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1256,6 +1285,7 @@
 				23B7DFE01EFE3AE9000F89F8 /* ControllersManager.m in Sources */,
 				23B7DFBF1EFE3AC1000F89F8 /* NSString+Check.m in Sources */,
 				23B7E0861EFE3CEB000F89F8 /* UserModifyView.m in Sources */,
+				23D43B051EFFD87F006371CE /* RecordCell.m in Sources */,
 				23B7E0281EFE3B7E000F89F8 /* IntroductionView.m in Sources */,
 				23B7E0451EFE3BCB000F89F8 /* BaseViewController.m in Sources */,
 				23B7E0851EFE3CEB000F89F8 /* RetrieveModel.m in Sources */,
@@ -1270,6 +1300,7 @@
 				23B7E0221EFE3B72000F89F8 /* NetFailView.m in Sources */,
 				23B7DFC91EFE3AC1000F89F8 /* UINavigationItem+NegativeSeperator.m in Sources */,
 				23B7E09D1EFE44F9000F89F8 /* LoginHeaderView.m in Sources */,
+				23D43B091EFFE54C006371CE /* RecordController.m in Sources */,
 				23B7E0A01EFE5220000F89F8 /* SettingController.m in Sources */,
 				23B7E09A1EFE40C4000F89F8 /* HomeModel.m in Sources */,
 				23B7E07A1EFE3CEB000F89F8 /* CaptchaView.m in Sources */,
@@ -1321,7 +1352,6 @@
 				23B7E0811EFE3CEB000F89F8 /* AgreeView.m in Sources */,
 				2347F4961EFF645C0044CFFE /* ProductDetailController.m in Sources */,
 				23B7DFEA1EFE3B08000F89F8 /* JSActions.m in Sources */,
-				23B7DF951EFE39C2000F89F8 /* MyOrderCell.m in Sources */,
 				23B7E0EC1EFE9B94000F89F8 /* ProductModel.m in Sources */,
 				23B7DFC71EFE3AC1000F89F8 /* UILabel+Common.m in Sources */,
 				2347F4A01EFF68BE0044CFFE /* ProductDetailFooterView.m in Sources */,
