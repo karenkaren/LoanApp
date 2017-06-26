@@ -7,6 +7,7 @@
 //
 
 #import "LoanRootCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface LoanRootCell ()
 {
@@ -15,6 +16,7 @@
     UILabel * _descLabel;
     UILabel * _applyNumLabel;
     UILabel * _interestRateLabel;
+    UILabel * _interestRateTitleLabel;
 }
 
 @end
@@ -55,11 +57,10 @@
     _applyNumLabel.textColor = [UIColor redColor];
     [self.contentView addSubview:_applyNumLabel];
     
-    UILabel * interestRateTitleLabel = [[UILabel alloc] init];
-    interestRateTitleLabel.font = kFont(12);
-    interestRateTitleLabel.textColor = kColor999999;
-    interestRateTitleLabel.text = @"日利率";
-    [self.contentView addSubview:interestRateTitleLabel];
+    _interestRateTitleLabel = [[UILabel alloc] init];
+    _interestRateTitleLabel.font = kFont(12);
+    _interestRateTitleLabel.textColor = kColor999999;
+    [self.contentView addSubview:_interestRateTitleLabel];
     
     _interestRateLabel = [[UILabel alloc] init];
     _interestRateLabel.font = kFont(12);
@@ -68,6 +69,10 @@
     
     UIImageView * arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_arrow"]];
     [self.contentView addSubview:arrowImageView];
+    
+    UIView * bottomLineView = [[UIView alloc] init];
+    bottomLineView.backgroundColor = kLineColor;
+    [self.contentView addSubview:bottomLineView];
     
     [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(kGeneralSize * 0.5);
@@ -104,7 +109,7 @@
         make.height.equalTo(@12);
     }];
     
-    [interestRateTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_interestRateTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_right).offset(-100);
         make.top.equalTo(_applyNumLabel);
         make.width.equalTo(@40);
@@ -112,8 +117,8 @@
     }];
     
     [_interestRateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(interestRateTitleLabel.mas_right).offset(5);
-        make.top.equalTo(interestRateTitleLabel);
+        make.left.equalTo(_interestRateTitleLabel.mas_right).offset(5);
+        make.top.equalTo(_interestRateTitleLabel);
         make.width.equalTo(@50);
         make.height.equalTo(@12);
     }];
@@ -122,6 +127,12 @@
         make.right.equalTo(self.mas_right).offset(-kCommonMargin);
         make.centerY.equalTo(self);
         make.size.mas_equalTo(CGSizeMake(8, 15));
+    }];
+    
+    [bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.width.equalTo(self);
+        make.top.equalTo(self.mas_bottom).offset(-kLineThick);
+        make.height.equalTo(@(kLineThick));
     }];
 }
 
@@ -139,11 +150,21 @@
     }
     _product = product;
     
-    _iconImageView.image = [UIImage imageNamed:product.cloanLogo];
+    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:product.cloanLogo] placeholderImage:[UIImage imageNamed:@"logo"] options:SDWebImageRetryFailed];
     _productNameLabel.text = product.cloanName;
     _descLabel.text = product.desc;
     _applyNumLabel.text = [NSString stringWithFormat:@"%ld人", product.applyCustomer];
-    _interestRateLabel.text = [NSString stringWithFormat:@"%.2f%%", product.dayRate];
+    
+    if (product.dayRate) {
+        _interestRateTitleLabel.text = @"日利率";
+        _interestRateLabel.text = [NSString stringWithFormat:@"%.2f%%", product.dayRate * 100];
+    } else if (product.monthRate) {
+        _interestRateTitleLabel.text = @"月利率";
+        _interestRateLabel.text = [NSString stringWithFormat:@"%.2f%%", product.monthRate * 100];
+    } else {
+        _interestRateTitleLabel.text = @"年利率";
+        _interestRateLabel.text = [NSString stringWithFormat:@"%.2f%%", product.yearRate * 100];
+    }
     
     [self layoutIfNeeded];
     [self setNeedsLayout];

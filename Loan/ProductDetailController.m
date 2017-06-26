@@ -28,6 +28,14 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([[CurrentUser mine] hasLogged]) {
+        [ProductModel addVisitRecordWithProduct:self.product block:nil];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -48,6 +56,12 @@
         make.left.bottom.width.equalTo(self.view);
         make.height.equalTo(@60);
     }];
+    
+    footerView.applyClickBlock = ^(UIButton *button) {
+        [ControllersManager actionWhenLogin:^{
+            [ProductModel addApplyRecordWithProduct:self.product block:nil];
+        }];
+    };
     
     self.cellData = @[@[@{@"title" : @"申请流程",
                         @"content" : @"1111",

@@ -165,7 +165,7 @@
     _product = product;
     self.iconImageView.image = [UIImage imageNamed:product.cloanLogo];
     self.productNameLabel.text = product.cloanName;
-    self.descLabel.text = product.desc;
+    self.descLabel.text = product.description;
     self.limitRangeLabel.text = @"500-5000元";
     self.interestRateLabel.text = [NSString stringWithFormat:@"%.2f%%", product.dayRate];
     

@@ -19,8 +19,10 @@
 //@property (assign) BOOL hideLoadingView;
 //@property (nonatomic,assign) LoadingViewState loadingViewState;
 
-@property (nonatomic) UITableView * tableView;
+@property (nonatomic, strong) UITableView * tableView;
 - (void)createTableViewWithFrame:(CGRect)frame style:(UITableViewStyle)style;
 - (void)createTableViewWithStyle:(UITableViewStyle)style;
+- (void)refreshAction;
+//- (void)startHeaderRefresh;
 
 @end

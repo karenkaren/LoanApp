@@ -12,7 +12,7 @@
 
 @interface LoanRootController ()
 
-@property (nonatomic, strong) NSArray * productList;
+@property (nonatomic, strong) NSMutableArray * productList;
 
 @end
 
@@ -23,13 +23,36 @@
     
     self.title = @"贷款";
     [self.tableView registerClass:[LoanRootCell class] forCellReuseIdentifier:@"Cell"];
-    
-    NSMutableArray * productList = [NSMutableArray arrayWithCapacity:20];
-    for (int i = 0 ; i < 20; i++) {
-        ProductModel * product = [[ProductModel alloc] init];
-        [productList addObject:product];
+    self.tableView.backgroundColor = kColorD8D8D8;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.productList = [NSMutableArray array];
+
+    [self refreshAction];
+}
+
+- (void)refreshAction
+{
+    if (self.currentPage == 0) {
+        [self.productList removeAllObjects];
+    } else {
+        if (self.currentPage * self.pageSize >= self.totalCount) {
+            [self.tableView.mj_footer endRefreshing];
+            return;
+        }
     }
-    self.productList = productList;
+    
+    NSDictionary * params = @{@"currentPage" : @(self.currentPage), @"pageSize" : @(self.pageSize)};
+    kWeakSelf
+    [ProductModel getLoanListWithParams:params block:^(id response, NSArray *productList, NSInteger totalCount, NSError *error) {
+        kStrongSelf
+        [strongSelf.tableView.mj_header endRefreshing];
+        [strongSelf.tableView.mj_footer endRefreshing];
+        if (productList && totalCount) {
+            strongSelf.totalCount = totalCount;
+            [strongSelf.productList addObjectsFromArray:productList];
+            [strongSelf.tableView reloadData];
+        }
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

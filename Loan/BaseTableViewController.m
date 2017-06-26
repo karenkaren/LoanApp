@@ -21,7 +21,8 @@
     self.tableView = [[UITableView alloc] initWithFrame:frame style:style];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self cancelSeparator];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    [self addRefreshHeaderAndFooter];
     [self.view addSubview:self.tableView];
 }
 
@@ -33,19 +34,9 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight - kTabBarHeight - kStatusBarHeight) style:style];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self cancelSeparator];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    [self addRefreshHeaderAndFooter];
     [self.view addSubview:self.tableView];
-}
-
-- (void)cancelSeparator
-{
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
-    }
-    
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
-    }
 }
 
 - (void)viewDidLoad {
@@ -53,6 +44,28 @@
     // Do any additional setup after loading the view.
     [self createTableViewWithStyle:UITableViewStylePlain];
     self.pageSize = 10;
+}
+
+- (void)addRefreshHeaderAndFooter
+{
+    kWeakSelf
+    // 下拉刷新
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        kStrongSelf
+        strongSelf.currentPage = 0;
+        [strongSelf refreshAction];
+    }];
+    
+    // 上拉刷新
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        kStrongSelf
+        strongSelf.currentPage++;
+        [strongSelf refreshAction];
+    }];
+}
+
+- (void)refreshAction
+{
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -63,17 +76,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
-}
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
 }
 
 @end

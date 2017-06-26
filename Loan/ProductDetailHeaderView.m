@@ -7,6 +7,7 @@
 //
 
 #import "ProductDetailHeaderView.h"
+#import "UIImageView+WebCache.h"
 
 @implementation ProductDetailHeaderView
 
@@ -23,7 +24,8 @@
 
 - (void)addAllSubviews
 {
-    UIImageView * iconImageVIew = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.product.cloanLogo]];
+    UIImageView * iconImageVIew = [[UIImageView alloc] init];
+    [iconImageVIew sd_setImageWithURL:[NSURL URLWithString:self.product.cloanLogo] placeholderImage:[UIImage imageNamed:@"logo"] options:SDWebImageRetryFailed];
     [self addSubview:iconImageVIew];
     
     UILabel * productNameLabel = [[UILabel alloc] init];
@@ -45,7 +47,7 @@
     UILabel * loanRangeLabel = [[UILabel alloc] init];
     loanRangeLabel.font = kFont(14);
     loanRangeLabel.textAlignment = NSTextAlignmentCenter;
-    loanRangeLabel.text = @"1000~3000元";
+    loanRangeLabel.text = self.product.loanRange;
     [self addSubview:loanRangeLabel];
     
     UILabel * deadlineRangeTitleLabel = [[UILabel alloc] init];
@@ -57,7 +59,7 @@
     UILabel * deadlineRangeLabel = [[UILabel alloc] init];
     deadlineRangeLabel.font = kFont(14);
     deadlineRangeLabel.textAlignment = NSTextAlignmentCenter;
-    deadlineRangeLabel.text = @"7天";
+    deadlineRangeLabel.text = self.product.dateRange;
     [self addSubview:deadlineRangeLabel];
     
     UILabel * interestRateTitleLabel = [[UILabel alloc] init];
@@ -69,7 +71,7 @@
     UILabel * interestRateLabel = [[UILabel alloc] init];
     interestRateLabel.font = kFont(14);
     interestRateLabel.textAlignment = NSTextAlignmentCenter;
-    interestRateLabel.text = [NSString stringWithFormat:@"%.2f%%", self.product.dayRate];
+    interestRateLabel.text = self.product.rateRange;
     [self addSubview:interestRateLabel];
     
     UIView * topLineView = [[UIView alloc] init];

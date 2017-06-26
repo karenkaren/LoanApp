@@ -31,4 +31,68 @@
     return self;
 }
 
+//+ (void)getLoanListWithSortType:(LoanSortType)loanSortType params:(NSDictionary *)params block:(void (^)(id, NSArray *, NSInteger, NSError *))block
+//{
+//    
+//}
+
+
+/**
+ 获取贷款列表
+
+ @param params 请求参数
+ @param block 回调block
+ */
++ (void)getLoanListWithParams:(NSDictionary *)params block:(void (^)(id, NSArray *, NSInteger, NSError *))block
+{
+    [[NetAPIManager sharedNetAPIManager] requestWithPath:kLoanList params:params methodType:Get block:^(id response, NSError *error) {
+        NSArray * loanList = nil;
+        NSInteger totalCount = 0;
+        if (!error) {
+            BaseDto * dto = [BaseDto mj_objectWithKeyValues:response];
+            loanList = [ProductModel mj_objectArrayWithKeyValuesArray:dto.data[@"cloanList"]];
+            totalCount = [dto.data[@"totalCount"] integerValue];
+        }
+        if (block) {
+            block(response, loanList, totalCount, nil);
+        }
+    }];
+}
+
+
+/**
+ 增加浏览记录
+
+ @param product 浏览的产品
+ @param block 回调block
+ */
++ (void)addVisitRecordWithProduct:(ProductModel *)product block:(void (^)(id respons, NSError *))block
+{
+    NSDictionary * params = @{@"operationType" : @"visit",
+                              @"cloanNo" : esString(product.cloanNo)};
+    [[NetAPIManager sharedNetAPIManager] requestWithPath:kAddVisitRecord params:params methodType:Post autoShowError:NO block:^(id response, NSError *error) {
+        if (block) {
+            block(response, error);
+        }
+    }];
+}
+
+
+/**
+ 增加申请记录
+
+ @param product 申请的产品
+ @param block 回调block
+ */
++ (void)addApplyRecordWithProduct:(ProductModel *)product block:(void (^)(id respons, NSError *))block
+{
+    NSDictionary * params = @{@"operationType" : @"apply",
+                              @"cloanNo" : esString(product.cloanNo)};
+    [[NetAPIManager sharedNetAPIManager] requestWithPath:kAddApplyRecord params:params methodType:Post autoShowError:NO block:^(id response, NSError *error) {
+        if (block) {
+            block(response, error);
+        }
+    }];
+}
+
 @end
