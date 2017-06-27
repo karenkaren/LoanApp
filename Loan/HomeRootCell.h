@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PlatformModel.h"
+#import "ProductModel.h"
 
 @interface HomeRootCell : UICollectionViewCell
 
-@property (nonatomic, strong) PlatformModel * platformInfo;
+//@property (nonatomic, strong) PlatformModel * platformInfo;
+@property (nonatomic, strong) ProductModel * product;
 
 @end

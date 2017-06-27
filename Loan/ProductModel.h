@@ -8,14 +8,20 @@
 
 #import "BaseModel.h"
 
-// todo:
-typedef NS_ENUM(NSUInteger, LoanSortType) {
-    LoanSortTypeOfDefault, // 默认
-    LoanSortTypeOfPrice,    // 根据价格排序
-    LoanSortTypeOfWaitingTime,  // 根据等待时间排序
-    LoanSortTypeOfDistance, // 根据距离排序
-    LoanSortTypeOfEstimate  // 根据评价排序
+//// todo:
+//typedef NS_ENUM(NSUInteger, LoanSortType) {
+//    LoanSortTypeOfDefault, // 默认
+//    LoanSortTypeOfPrice,    // 根据价格排序
+//    LoanSortTypeOfWaitingTime,  // 根据等待时间排序
+//    LoanSortTypeOfDistance, // 根据距离排序
+//    LoanSortTypeOfEstimate  // 根据评价排序
+//};
+
+typedef NS_ENUM(NSUInteger, RecordListType) {
+    RecordListTypeOfVisit, // 默认
+    RecordListTypeOfApply    // 根据价格排序
 };
+
 
 @interface ProductModel : BaseModel
 
@@ -69,13 +75,19 @@ typedef NS_ENUM(NSUInteger, LoanSortType) {
  @param product 浏览的产品
  @param block 回调block
  */
-+ (void)addVisitRecordWithProduct:(ProductModel *)product block:(void (^)(id respons, NSError *))block;
++ (void)addVisitRecordWithProduct:(ProductModel *)product block:(void (^)(id respons, NSError * error))block;
 /**
  增加申请记录
  
  @param product 申请的产品
  @param block 回调block
  */
-+ (void)addApplyRecordWithProduct:(ProductModel *)product block:(void (^)(id respons, NSError *))block;
++ (void)addApplyRecordWithProduct:(ProductModel *)product block:(void (^)(id respons, NSError * error))block;
+/**
+ 获取浏览/申请记录列表
+ 
+ @param block 回调block
+ */
++ (void)getRecordListWithType:(RecordListType)type params:(NSDictionary *)params block:(void (^)(id response, NSArray * recordList, NSInteger totalCount, NSError * error))block;
 
 @end

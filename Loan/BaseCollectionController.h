@@ -7,8 +7,13 @@
 //
 
 #import "BaseViewController.h"
+#import "MJRefresh.h"
 
 @interface BaseCollectionController : BaseViewController<UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) NSInteger pageSize;
+@property (nonatomic, assign) NSInteger totalCount;
 
 @property (nonatomic, strong) UICollectionView * collectionView;
 - (void)createCollectionViewWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout;

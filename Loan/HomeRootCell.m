@@ -7,6 +7,7 @@
 //
 
 #import "HomeRootCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface HomeRootCell ()
 {
@@ -61,31 +62,56 @@
     }];
 }
 
-- (void)setPlatformInfo:(PlatformModel *)platformInfo
+- (void)setProduct:(ProductModel *)product
 {
-    if (_platformInfo == platformInfo) {
+    if (_product == product) {
         return;
     }
-    _platformInfo = platformInfo;
+    _product = product;
     
-    _iconImageView.image = [UIImage imageNamed:platformInfo.plarformIconUrl];
-    _nameLabel.text = platformInfo.platformName;
+    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:product.cloanLogo] placeholderImage:[UIImage imageNamed:@"logo"] options:SDWebImageRetryFailed];
+    _nameLabel.text = product.cloanName;
     
     NSString * markImageName = nil;
-    switch (platformInfo.plarformType) {
-        case 1:
-            markImageName = @"icon_note";
-            break;
-        case 2:
-            markImageName = @"icon_show";
-            break;
-        default:
-            break;
+    
+    if ([product.cloanTags isEqualToString:@"new"]) {
+        markImageName = @"icon_note";
+    } else if ([product.cloanTags isEqualToString:@"hot"]) {
+        markImageName = @"icon_show";
     }
+
     _markImageView.hidden = [NSString isEmpty:markImageName] ? YES : NO;
     if (!_markImageView.hidden) {
         _markImageView.image = [UIImage imageNamed:markImageName];
     }
+    
 }
+
+//- (void)setPlatformInfo:(PlatformModel *)platformInfo
+//{
+//    if (_platformInfo == platformInfo) {
+//        return;
+//    }
+//    _platformInfo = platformInfo;
+//    
+//    _iconImageView.image = [UIImage imageNamed:platformInfo.plarformIconUrl];
+//    _nameLabel.text = platformInfo.platformName;
+//    
+//    NSString * markImageName = nil;
+//    switch (platformInfo.plarformType) {
+//        case 1:
+//            markImageName = @"icon_note";
+//            break;
+//        case 2:
+//            markImageName = @"icon_show";
+//            break;
+//        default:
+//            break;
+//    }
+//    _markImageView.hidden = [NSString isEmpty:markImageName] ? YES : NO;
+//    if (!_markImageView.hidden) {
+//        _markImageView.image = [UIImage imageNamed:markImageName];
+//    }
+//}
 
 @end

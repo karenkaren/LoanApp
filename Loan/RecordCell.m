@@ -7,6 +7,7 @@
 //
 
 #import "RecordCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface RecordCell ()
 
@@ -50,6 +51,7 @@
     self.descLabel = [[UILabel alloc] init];
     self.descLabel.font = kFont(12);
     self.descLabel.textColor = kColor999999;
+//    self.descLabel.numberOfLines = 0;
     [backgroundView addSubview:self.descLabel];
     
     UIImageView * arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_arrow"]];
@@ -105,12 +107,14 @@
     [self.productNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.iconImageView.mas_centerY).offset(-5);
         make.left.equalTo(self.iconImageView.mas_right).offset(30);
+        make.right.lessThanOrEqualTo(arrowImageView.mas_left).offset(-5);
         make.height.equalTo(@14);
     }];
     
     [self.descLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.iconImageView.mas_centerY).offset(5);
         make.left.equalTo(self.productNameLabel);
+        make.right.lessThanOrEqualTo(arrowImageView.mas_left).offset(-5);
         make.height.equalTo(@12);
     }];
     
@@ -163,9 +167,10 @@
 - (void)setProduct:(ProductModel *)product
 {
     _product = product;
-    self.iconImageView.image = [UIImage imageNamed:product.cloanLogo];
+    
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:product.cloanLogo] placeholderImage:[UIImage imageNamed:@"logo"] options:SDWebImageRetryFailed];
     self.productNameLabel.text = product.cloanName;
-    self.descLabel.text = product.description;
+    self.descLabel.text = @"测试测试测试放得开见风使舵雷锋精神的雷锋精神的老骥伏枥是大家发圣诞快乐飞机数量达到了房间里大煞风景的是离开";
     self.limitRangeLabel.text = @"500-5000元";
     self.interestRateLabel.text = [NSString stringWithFormat:@"%.2f%%", product.dayRate];
     

@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    self.pageSize = 10;
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.itemSize = CGSizeMake(100, 100);
@@ -33,6 +34,7 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.backgroundColor = kWhiteColor;
+    [self addRefreshHeaderAndFooter];
     [self.view addSubview:self.collectionView];
 }
 
@@ -44,7 +46,31 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.backgroundColor = kWhiteColor;
+    [self addRefreshHeaderAndFooter];
     [self.view addSubview:self.collectionView];
+}
+
+- (void)addRefreshHeaderAndFooter
+{
+    kWeakSelf
+    // 下拉刷新
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        kStrongSelf
+        strongSelf.currentPage = 0;
+        [strongSelf refreshAction];
+    }];
+    
+    // 上拉刷新
+    self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        kStrongSelf
+        strongSelf.currentPage++;
+        [strongSelf refreshAction];
+    }];
+}
+
+- (void)refreshAction
+{
+    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

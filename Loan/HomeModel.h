@@ -10,7 +10,7 @@
 
 @interface HomeModel : BaseModel
 
-@property (nonatomic, strong) NSArray * platformList;
+//@property (nonatomic, strong) NSArray * platformList;
 
 + (void)getHomeInfo:(NSDictionary *)params block:(APIResultDataBlock)block;
 

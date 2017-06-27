@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ProductModel.h"
 
+
+
 @interface RecordCell : UITableViewCell
 
 @property (nonatomic, strong) ProductModel * product;

@@ -22,11 +22,11 @@
     if (self) {
         [self buildUI];
         self.bannerView.bannersList = [NSArray array];
-        [BannerModel getBannerListWithBlock:^(id response, id data, NSError *error) {
-            if (data) {
-                self.bannerView.bannersList = data;
-            }
-        }];
+//        [BannerModel getBannerListWithBlock:^(id response, id data, NSError *error) {
+//            if (data) {
+//                self.bannerView.bannersList = data;
+//            }
+//        }];
     }
     return self;
 }
@@ -69,11 +69,11 @@
     
 }
 
-//- (void)refreshHeaderViewWithBanners:(NSArray<BannerModel *> *)banners
-//{
-//    if (banners) {
-//        self.bannerView.bannersList = banners;
-//    }
-//}
+- (void)refreshHeaderViewWithBanners:(NSArray<BannerModel *> *)banners
+{
+    if (banners) {
+        self.bannerView.bannersList = banners;
+    }
+}
 
 @end

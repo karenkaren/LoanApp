@@ -8,13 +8,14 @@
 
 #import "HomeRootController.h"
 #import "HomeRootHeaderView.h"
-#import "HomeModel.h"
+//#import "HomeModel.h"
 #import "HomeRootCell.h"
+#import "ProductDetailController.h"
 
 @interface HomeRootController ()<BMKLocationServiceDelegate>
 
 @property (nonatomic, strong) HomeRootHeaderView * homeRootHeaderView;
-@property (nonatomic, strong) NSArray<PlatformModel *> * platformList;
+@property (nonatomic, strong) NSMutableArray<ProductModel *> * productList;
 //@property (nonatomic, strong) BMKLocationService * locService;
 //@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 
@@ -45,17 +46,40 @@
 //    //启动LocationService
 //    [_locService startUserLocationService];
     
-    // todo:test
-    NSMutableArray * plarformList = [NSMutableArray arrayWithCapacity:30];
-    for (int i = 0; i < 30; i++) {
-        PlatformModel * platform = [[PlatformModel alloc] init];
-        platform.platformName = [NSString stringWithFormat:@"领投鸟%d", arc4random_uniform(100)];
-        platform.plarformIconUrl = @"logo";
-        platform.plarformType = arc4random_uniform(3);
-        [plarformList addObject:platform];
-    }
-    self.platformList = plarformList;
+    self.productList = [NSMutableArray array];
+    [self refreshAction];
 
+}
+
+- (void)refreshAction
+{
+    if (self.currentPage == 0) {
+        [self.productList removeAllObjects];
+    } else {
+        if (self.currentPage * self.pageSize >= self.totalCount) {
+            [self.collectionView.mj_footer endRefreshing];
+            return;
+        }
+    }
+    
+    NSDictionary * params = @{@"currentPage" : @(self.currentPage), @"pageSize" : @(self.pageSize)};
+    kWeakSelf
+    [ProductModel getLoanListWithParams:params block:^(id response, NSArray *productList, NSInteger totalCount, NSError *error) {
+        kStrongSelf
+        [strongSelf.collectionView.mj_header endRefreshing];
+        [strongSelf.collectionView.mj_footer endRefreshing];
+        if (productList && totalCount) {
+            strongSelf.totalCount = totalCount;
+            [strongSelf.productList addObjectsFromArray:productList];
+            [strongSelf.collectionView reloadData];
+        }
+    }];
+    
+    [BannerModel getBannerListWithBlock:^(id response, id data, NSError *error) {
+        if (data) {
+            [self.homeRootHeaderView refreshHeaderViewWithBanners:data];
+        }
+    }];
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -76,18 +100,18 @@
     }
 }
 
-- (void)getHomeDataWithCoordinate:(CLLocationCoordinate2D)coordinate
-{
-//    NSDictionary * dic = @{@"latitude" : @(coordinate.latitude), @"longitude" : @(coordinate.longitude)};
-    
-    [HomeModel getHomeInfo:nil block:^(id response, id data, NSError *error) {
-        if (data) {
-            HomeModel * homeModel = (HomeModel *)data;
-            self.platformList = homeModel.platformList;
-            [self.collectionView reloadData];
-        }
-    }];
-}
+//- (void)getHomeDataWithCoordinate:(CLLocationCoordinate2D)coordinate
+//{
+////    NSDictionary * dic = @{@"latitude" : @(coordinate.latitude), @"longitude" : @(coordinate.longitude)};
+//    
+//    [HomeModel getHomeInfo:nil block:^(id response, id data, NSError *error) {
+//        if (data) {
+//            HomeModel * homeModel = (HomeModel *)data;
+//            self.platformList = homeModel.platformList;
+//            [self.collectionView reloadData];
+//        }
+//    }];
+//}
 
 ////处理位置坐标更新
 //- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation
@@ -106,14 +130,21 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.platformList.count;
+    return self.productList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeRootCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.platformInfo = self.platformList[indexPath.row];
+    cell.product = self.productList[indexPath.row];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    ProductDetailController * productDetailController = [[ProductDetailController alloc] initWithProduct:self.productList[indexPath.row]];
+    productDetailController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:productDetailController animated:YES];
 }
 
 @end
