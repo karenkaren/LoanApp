@@ -46,8 +46,8 @@
     self.contentLabel.numberOfLines = 0;
     [self.contentView addSubview:self.contentLabel];
     
-    self.contentImageView = [[UIImageView alloc] init];
-    [self.contentView addSubview:self.contentImageView];
+//    self.contentImageView = [[UIImageView alloc] init];
+//    [self.contentView addSubview:self.contentImageView];
     
     UIView * bottomLineView = [[UIView alloc] init];
     bottomLineView.backgroundColor = kLineColor;
@@ -77,11 +77,11 @@
         make.top.equalTo(seperatorLineView.mas_bottom).offset(10);
     }];
     
-    [self.contentImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.equalTo(self.contentLabel);
-        make.top.equalTo(seperatorLineView.mas_bottom);
-        make.height.equalTo(@(kGeneralSize));
-    }];
+//    [self.contentImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.width.equalTo(self.contentLabel);
+//        make.top.equalTo(seperatorLineView.mas_bottom);
+//        make.height.equalTo(@(kGeneralSize));
+//    }];
     
     [bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.with.height.equalTo(topLineView);

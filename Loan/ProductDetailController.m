@@ -64,16 +64,16 @@
     };
     
     self.cellData = @[@[@{@"title" : @"申请流程",
-                        @"content" : @"1111",
+                        @"content" : @"",
                         @"style" : @(ProductDetailCellStyleImage)}],
                       @[@{@"title" : @"申请条件",
-                        @"content" : @"申请条件1\n申请条件2\n申请条件3",
+                        @"content" : esString(self.product.applyCondition),
                         @"style" : @(ProductDetailCellStyleText)}],
                       @[@{@"title" : @"审核说明",
-                        @"content" : @"审核说明1\n审核说明2\n审核说明3",
+                        @"content" : esString(self.product.applyDescription),
                         @"style" : @(ProductDetailCellStyleText)}],
                       @[@{@"title" : @"产品介绍",
-                        @"content" : @"年满18周岁，苹果手机6以上，实名认证且绑定银行",
+                        @"content" : esString(self.product.desc),
                         @"style" : @(ProductDetailCellStyleText)}]];
 }
 

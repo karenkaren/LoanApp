@@ -25,6 +25,8 @@ typedef NS_ENUM(NSUInteger, RecordListType) {
 
 @interface ProductModel : BaseModel
 
+@property (nonatomic, copy) NSString * applyCondition;  // 申请条件
+@property (nonatomic, copy) NSString * applyDescription;    // 申请说明
 @property (nonatomic, copy) NSString * cloanName;//'贷款名字'
 @property (nonatomic, copy) NSString * cloanLogo;//'图标URL'
 @property (nonatomic, assign) NSInteger company;//公司ID， 待确认
