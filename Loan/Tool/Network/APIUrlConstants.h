@@ -32,6 +32,9 @@ extern NSString * const kLoanList;    // 贷款列表
 extern NSString * const kRecordList;    // 浏览/申请列表
 extern NSString * const kAddApplyRecord;    // 新增申请记录
 extern NSString * const kAddVisitRecord;    // 新增浏览记录
+extern NSString * const kLoanApplyStep;     // 申请流程
+extern NSString * const kGetUserProfile; // 获取个人信息
+extern NSString * const kUpdateUserProfile;  // 修改个人信息
 
 //////////////////////////////
 extern NSString * const kHomepageRecommend; // 首页

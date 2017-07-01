@@ -19,4 +19,10 @@
 - (void)createCollectionViewWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout;
 - (void)createCollectionViewWithCollectionViewLayout:(UICollectionViewLayout *)layout;
 
+@property (nonatomic, assign) BOOL enableHeaderRefresh;
+@property (nonatomic, assign) BOOL enableFooterRefresh;
+- (void)refreshAction;
+- (void)startRefresh;
+- (void)stopRefresh;
+
 @end

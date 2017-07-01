@@ -10,10 +10,11 @@
 #import "ProductDetailHeaderView.h"
 #import "ProductDetailFooterView.h"
 #import "ProductDetailCell.h"
+#import "BaseWebViewController.h"
 
 @interface ProductDetailController ()
 
-@property (nonatomic, strong) NSArray * cellData;
+@property (nonatomic, strong) NSMutableArray * cellData;
 
 @end
 
@@ -42,6 +43,7 @@
     self.title = self.product.cloanName;
     
     [self createTableViewWithStyle:UITableViewStyleGrouped];
+    self.enableFooterRefresh = NO;
     self.tableView.sectionHeaderHeight = 10;
     self.tableView.sectionFooterHeight = CGFLOAT_MIN;
     [self.tableView registerClass:[ProductDetailCell class] forCellReuseIdentifier:@"Cell"];
@@ -61,12 +63,11 @@
         [ControllersManager actionWhenLogin:^{
             [ProductModel addApplyRecordWithProduct:self.product block:nil];
         }];
+        BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:self.product.h5link];
+        [self.navigationController pushViewController:webController animated:YES];
     };
     
-    self.cellData = @[@[@{@"title" : @"申请流程",
-                        @"content" : @"",
-                        @"style" : @(ProductDetailCellStyleImage)}],
-                      @[@{@"title" : @"申请条件",
+    self.cellData = @[@[@{@"title" : @"申请条件",
                         @"content" : esString(self.product.applyCondition),
                         @"style" : @(ProductDetailCellStyleText)}],
                       @[@{@"title" : @"审核说明",
@@ -74,7 +75,27 @@
                         @"style" : @(ProductDetailCellStyleText)}],
                       @[@{@"title" : @"产品介绍",
                         @"content" : esString(self.product.desc),
-                        @"style" : @(ProductDetailCellStyleText)}]];
+                        @"style" : @(ProductDetailCellStyleText)}]].mutableCopy;
+    [self refreshAction];
+
+}
+
+- (void)refreshAction
+{
+    [ProductModel getLoanApplyStepWithProduct:self.product block:^(id response, NSArray *loanStepList, NSError *error) {
+        [self stopRefresh];
+        if (!error && loanStepList.count) {
+            NSArray * stepList = @[@{@"title" : @"申请流程",
+                                     @"content" : loanStepList,
+                                     @"style" : @(ProductDetailCellStyleImage)}];
+            if (self.cellData.count < 4) {
+                [self.cellData insertObject:stepList atIndex:0];
+            } else {
+                
+            }
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

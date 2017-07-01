@@ -109,4 +109,26 @@
     }];
 }
 
+
+/**
+ 获取贷款步骤
+
+ @param product 需获取步骤的产品
+ @param block 回调block
+ */
++ (void)getLoanApplyStepWithProduct:(ProductModel *)product block:(void (^)(id response, NSArray * loanStepList, NSError * error))block
+{
+    NSDictionary * params = @{@"cloanNo" : product.cloanNo};
+    [[NetAPIManager sharedNetAPIManager] requestWithPath:kLoanApplyStep params:params methodType:Get block:^(id response, NSError *error) {
+        NSArray * loanStepList = nil;
+        if (!error) {
+            BaseDto * dto = [BaseDto mj_objectWithKeyValues:response];
+            loanStepList = dto.data[@"cloanStepList"];
+        }
+        if (block) {
+            block(response, loanStepList, nil);
+        }
+    }];
+}
+
 @end

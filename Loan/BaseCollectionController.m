@@ -18,12 +18,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.pageSize = 10;
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.itemSize = CGSizeMake(100, 100);
     [self createCollectionViewWithCollectionViewLayout:layout];
-    
+    self.pageSize = 10;
+    self.enableFooterRefresh = YES;
+    self.enableHeaderRefresh = YES;
 }
 
 - (void)createCollectionViewWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
@@ -34,7 +35,8 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.backgroundColor = kWhiteColor;
-    [self addRefreshHeaderAndFooter];
+    [self setEnableFooterRefresh:self.enableFooterRefresh];
+    [self setEnableHeaderRefresh:self.enableHeaderRefresh];
     [self.view addSubview:self.collectionView];
 }
 
@@ -46,32 +48,60 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.backgroundColor = kWhiteColor;
-    [self addRefreshHeaderAndFooter];
+    [self setEnableFooterRefresh:self.enableFooterRefresh];
+    [self setEnableHeaderRefresh:self.enableHeaderRefresh];
     [self.view addSubview:self.collectionView];
 }
 
-- (void)addRefreshHeaderAndFooter
+- (void)setEnableHeaderRefresh:(BOOL)enableHeaderRefresh
 {
-    kWeakSelf
-    // 下拉刷新
-    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        kStrongSelf
-        strongSelf.currentPage = 0;
-        [strongSelf refreshAction];
-    }];
+    _enableHeaderRefresh = enableHeaderRefresh;
     
-    // 上拉刷新
-    self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        kStrongSelf
-        strongSelf.currentPage++;
-        [strongSelf refreshAction];
-    }];
+    if (enableHeaderRefresh) {
+        kWeakSelf
+        // 下拉刷新
+        self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            kStrongSelf
+            strongSelf.currentPage = 0;
+            [strongSelf refreshAction];
+        }];
+    } else {
+        self.collectionView.mj_header = nil;
+    }
+}
+
+- (void)setEnableFooterRefresh:(BOOL)enableFooterRefresh
+{
+    _enableFooterRefresh = enableFooterRefresh;
+    
+    if (enableFooterRefresh) {
+        // 上拉刷新
+        kWeakSelf
+        self.collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            kStrongSelf
+            strongSelf.currentPage++;
+            [strongSelf refreshAction];
+        }];
+    } else {
+        self.collectionView.mj_footer = nil;
+    }
 }
 
 - (void)refreshAction
 {
-    
 }
+
+- (void)startRefresh
+{
+    [self.collectionView.mj_header beginRefreshing];
+}
+
+- (void)stopRefresh
+{
+    [self.collectionView.mj_header endRefreshing];
+    [self.collectionView.mj_footer endRefreshing];
+}
+
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

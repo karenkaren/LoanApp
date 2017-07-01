@@ -7,14 +7,8 @@
 //
 
 #import "HomeModel.h"
-#import "PlatformModel.h"
 
 @implementation HomeModel
-
-+ (NSDictionary *)mj_objectClassInArray
-{
-    return @{@"platformList" : [PlatformModel class]};
-}
 
 + (void)getHomeInfo:(NSDictionary *)params block:(APIResultDataBlock)block
 {

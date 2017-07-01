@@ -91,5 +91,12 @@ typedef NS_ENUM(NSUInteger, RecordListType) {
  @param block 回调block
  */
 + (void)getRecordListWithType:(RecordListType)type params:(NSDictionary *)params block:(void (^)(id response, NSArray * recordList, NSInteger totalCount, NSError * error))block;
+/**
+ 获取贷款步骤
+ 
+ @param product 需获取步骤的产品
+ @param block 回调block
+ */
++ (void)getLoanApplyStepWithProduct:(ProductModel *)product block:(void (^)(id response, NSArray * loanStepList, NSError * error))block;
 
 @end

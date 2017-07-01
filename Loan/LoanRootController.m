@@ -45,8 +45,7 @@
     kWeakSelf
     [ProductModel getLoanListWithParams:params block:^(id response, NSArray *productList, NSInteger totalCount, NSError *error) {
         kStrongSelf
-        [strongSelf.tableView.mj_header endRefreshing];
-        [strongSelf.tableView.mj_footer endRefreshing];
+        [strongSelf stopRefresh];
         if (productList && totalCount) {
             strongSelf.totalCount = totalCount;
             [strongSelf.productList addObjectsFromArray:productList];

@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIWebView * webView;
 @property (nonatomic, strong) NSURLRequest * request;
-@property (nonatomic, assign) BOOL showNavigation;
+@property (nonatomic, assign) BOOL hideNavigation;
 
 - (id)initWithURL:(NSString *)urlString;
 - (id)initWithRequest:(NSURLRequest *)request;

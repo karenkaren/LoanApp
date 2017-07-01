@@ -22,7 +22,11 @@
 @property (nonatomic, strong) UITableView * tableView;
 - (void)createTableViewWithFrame:(CGRect)frame style:(UITableViewStyle)style;
 - (void)createTableViewWithStyle:(UITableViewStyle)style;
+
+@property (nonatomic, assign) BOOL enableHeaderRefresh;
+@property (nonatomic, assign) BOOL enableFooterRefresh;
 - (void)refreshAction;
-//- (void)startHeaderRefresh;
+- (void)startRefresh;
+- (void)stopRefresh;
 
 @end

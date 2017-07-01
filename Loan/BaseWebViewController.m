@@ -22,7 +22,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:!self.showNavigation animated:YES];
+    [self.navigationController setNavigationBarHidden:self.hideNavigation animated:YES];
 }
 
 - (void)viewDidLoad
@@ -81,6 +81,7 @@
 #pragma mark - Private methods
 - (void)registerHandlers
 {
+    self.context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     NSArray * actions = [NSObject getAllMethodsFromClass:[JSActions class]];
     for (NSString * actionString in actions) {
         NSString * registerActionString = [actionString componentsSeparatedByString:@":"].firstObject;
@@ -163,10 +164,10 @@
         _webView.delegate = self;
         _webView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         self.context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-        if (self.showNavigation) {
-            _webView.y = 0;
-            _webView.height = self.view.bounds.size.height;
-        }
+//        if (!self.hideNavigation) {
+//            _webView.y = 0;
+//            _webView.height = self.view.bounds.size.height;
+//        }
     }
     return _webView;
 }

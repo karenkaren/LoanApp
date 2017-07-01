@@ -22,7 +22,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    [self addRefreshHeaderAndFooter];
+    [self setEnableFooterRefresh:self.enableFooterRefresh];
+    [self setEnableHeaderRefresh:self.enableHeaderRefresh];
     [self.view addSubview:self.tableView];
 }
 
@@ -35,37 +36,68 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    [self addRefreshHeaderAndFooter];
+    [self setEnableFooterRefresh:self.enableFooterRefresh];
+    [self setEnableHeaderRefresh:self.enableHeaderRefresh];
     [self.view addSubview:self.tableView];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     [self createTableViewWithStyle:UITableViewStylePlain];
+    self.enableFooterRefresh = YES;
+    self.enableHeaderRefresh = YES;
     self.pageSize = 10;
 }
 
-- (void)addRefreshHeaderAndFooter
+- (void)setEnableHeaderRefresh:(BOOL)enableHeaderRefresh
 {
-    kWeakSelf
-    // 下拉刷新
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        kStrongSelf
-        strongSelf.currentPage = 0;
-        [strongSelf refreshAction];
-    }];
+    _enableHeaderRefresh = enableHeaderRefresh;
     
-    // 上拉刷新
-    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        kStrongSelf
-        strongSelf.currentPage++;
-        [strongSelf refreshAction];
-    }];
+    if (enableHeaderRefresh) {
+        kWeakSelf
+        // 下拉刷新
+        self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            kStrongSelf
+            strongSelf.currentPage = 0;
+            [strongSelf refreshAction];
+        }];
+    } else {
+        self.tableView.mj_header = nil;
+    }
+}
+
+- (void)setEnableFooterRefresh:(BOOL)enableFooterRefresh
+{
+    _enableFooterRefresh = enableFooterRefresh;
+    
+    if (enableFooterRefresh) {
+        // 上拉刷新
+        kWeakSelf
+        self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+            kStrongSelf
+            strongSelf.currentPage++;
+            [strongSelf refreshAction];
+        }];
+    } else {
+        self.tableView.mj_footer = nil;
+    }
 }
 
 - (void)refreshAction
 {
+}
+
+- (void)startRefresh
+{
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)stopRefresh
+{
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

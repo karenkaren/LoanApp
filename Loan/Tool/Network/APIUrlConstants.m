@@ -37,6 +37,8 @@ NSString * const kRecordList = @"/cloan/record/list";    // 浏览/申请列表
 NSString * const kAddApplyRecord = @"/cloan/record/add";    // 新增申请记录
 NSString * const kAddVisitRecord = @"/cloan/record/add";    // 新增浏览记录
 NSString * const kLoanApplyStep = @"/cloan/step/list";     // 申请流程
+NSString * const kGetUserProfile = @"/user/profile/get"; // 获取个人信息
+NSString * const kUpdateUserProfile = @"/user/profile/update";  // 修改个人信息
 
 /////////////////////////////////
 NSString * const kHomepageRecommend = @"/homepage/recommend";   // 首页

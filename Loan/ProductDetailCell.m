@@ -9,10 +9,13 @@
 #import "ProductDetailCell.h"
 
 @interface ProductDetailCell ()
+{
+    UIView * _seperatorLineView;
+}
 
 @property (nonatomic, strong) UILabel * titleLabel;
 @property (nonatomic, strong) UILabel * contentLabel;
-@property (nonatomic, strong) UIImageView * contentImageView;
+@property (nonatomic, strong) UIView * applyProcessView;
 
 @end
 
@@ -37,17 +40,17 @@
     self.titleLabel.font = kFont(16);
     [self.contentView addSubview:self.titleLabel];
     
-    UIView * seperatorLineView = [[UIView alloc] init];
-    seperatorLineView.backgroundColor = kLineColor;
-    [self.contentView addSubview:seperatorLineView];
+    _seperatorLineView = [[UIView alloc] init];
+    _seperatorLineView.backgroundColor = kLineColor;
+    [self.contentView addSubview:_seperatorLineView];
     
     self.contentLabel = [[UILabel alloc] init];
     self.contentLabel.font = kFont(14);
     self.contentLabel.numberOfLines = 0;
     [self.contentView addSubview:self.contentLabel];
     
-//    self.contentImageView = [[UIImageView alloc] init];
-//    [self.contentView addSubview:self.contentImageView];
+    self.applyProcessView = [[UIView alloc] init];
+    [self.contentView addSubview:self.applyProcessView];
     
     UIView * bottomLineView = [[UIView alloc] init];
     bottomLineView.backgroundColor = kLineColor;
@@ -65,7 +68,7 @@
         make.height.equalTo(@(kGeneralSize));
     }];
     
-    [seperatorLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_seperatorLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self);
         make.height.equalTo(@(kLineThick));
         make.top.equalTo(self.titleLabel.mas_bottom);
@@ -74,21 +77,21 @@
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self.titleLabel);
         make.height.greaterThanOrEqualTo(@14);
-        make.top.equalTo(seperatorLineView.mas_bottom).offset(10);
+        make.top.equalTo(_seperatorLineView.mas_bottom).offset(10);
     }];
     
-//    [self.contentImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.width.equalTo(self.contentLabel);
-//        make.top.equalTo(seperatorLineView.mas_bottom);
-//        make.height.equalTo(@(kGeneralSize));
-//    }];
+    [self.applyProcessView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.width.equalTo(self);
+        make.top.equalTo(_seperatorLineView.mas_bottom);
+        make.height.equalTo(@(kGeneralSize * 2));
+    }];
     
     [bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.with.height.equalTo(topLineView);
         if (!self.contentLabel.hidden) {
             make.top.equalTo(self.contentLabel.mas_bottom).offset(10);
-        } else if (!self.contentImageView.hidden) {
-            make.top.equalTo(self.contentImageView.mas_bottom);
+        } else if (!self.applyProcessView.hidden) {
+            make.top.equalTo(self.applyProcessView.mas_bottom);
         }
     }];
 }
@@ -104,12 +107,12 @@
         case ProductDetailCellStyleText:
             self.contentLabel.text = detailData[@"content"];
             self.contentLabel.hidden = NO;
-            self.contentImageView.hidden = YES;
+            self.applyProcessView.hidden = YES;
             break;
         case ProductDetailCellStyleImage:
-            self.contentImageView.image = [UIImage imageNamed:detailData[@"content"]];
+            [self modifyContentViewWithData:detailData[@"content"]];
             self.contentLabel.hidden = YES;
-            self.contentImageView.hidden = NO;
+            self.applyProcessView.hidden = NO;
             break;
         default:
             break;
@@ -130,12 +133,51 @@
             height = self.contentLabel.bottom + 10;
             break;
         case ProductDetailCellStyleImage:
-            height = self.contentImageView.bottom;
+            height = self.applyProcessView.bottom;
             break;
         default:
             break;
     }
     return height;
+}
+
+- (void)modifyContentViewWithData:(NSArray *)data
+{
+    for (UIView * subview in self.applyProcessView.subviews) {
+        [subview removeFromSuperview];
+    }
+    
+    if (!isArray(data)) {
+        return;
+    }
+    
+    NSArray * applyStepArray = (NSArray *)data;
+    
+    CGFloat margin = kScreenWidth / (applyStepArray.count * 2 * 2 - 1);
+    for (int i = 0; i < applyStepArray.count * 2 - 1; i++) {
+        UIImageView * imageView = [[UIImageView alloc] init];
+        NSString * imageName = i % 2 ? @"icon_yellow_arraw.png" : @"icon_smiling.png";
+        imageView.image = [UIImage imageNamed:imageName];
+        [self.applyProcessView addSubview:imageView];
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.applyProcessView).offset(margin + margin * i * 2);
+            make.top.equalTo(self.applyProcessView).offset(15);
+            make.size.mas_equalTo(CGSizeMake(margin, margin));
+        }];
+        
+        if (i % 2 == 0) {
+            NSDictionary * dic = applyStepArray[i / 2];
+            UILabel * titleLabel = [[UILabel alloc] init];
+            titleLabel.text = esString(dic[@"stepName"]);
+            [titleLabel sizeToFit];
+            [self.applyProcessView addSubview:titleLabel];
+            
+            [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(imageView.mas_bottom).offset(5);
+                make.centerX.equalTo(imageView);
+            }];
+        }
+    }
 }
 
 @end

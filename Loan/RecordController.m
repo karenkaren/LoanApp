@@ -84,8 +84,7 @@
     kWeakSelf
     [ProductModel getRecordListWithType:type params:params block:^(id response, NSArray *recordList, NSInteger totalCount, NSError *error) {
         kStrongSelf
-        [strongSelf.tableView.mj_header endRefreshing];
-        [strongSelf.tableView.mj_footer endRefreshing];
+        [strongSelf stopRefresh];
         if (recordList && totalCount) {
             strongSelf.totalCount = totalCount;
             [strongSelf.recordList addObjectsFromArray:recordList];
