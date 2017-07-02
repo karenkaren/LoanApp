@@ -32,9 +32,11 @@
 {
     UIView * backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = kWhiteColor;
-    backgroundView.layer.borderColor = kLineColor.CGColor;
-    backgroundView.layer.borderWidth = kLineThick;
     [self addSubview:backgroundView];
+    
+    UIView * lineView = [[UIView alloc] init];
+    lineView.backgroundColor = kLineColor;
+    [self addSubview:lineView];
     
     kWeakSelf
     UIButton * button = [UIButton createButtonWithTitle:_title color:kWhiteColor font:kFont(18) block:^(UIButton *button) {
@@ -43,7 +45,7 @@
             strongSelf.buttonClickBlock(button);
         }
     }];
-    [button setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:[UIColor yellowColor]];
+    [button setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:[UIColor blueColor]];
     button.layer.cornerRadius = 5;
     button.layer.masksToBounds = YES;
     button.backgroundColor = kLinkColor;
@@ -53,9 +55,16 @@
         make.edges.equalTo(self);
     }];
     
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.width.equalTo(backgroundView);
+        make.height.equalTo(@(kLineThick));
+    }];
+    
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(backgroundView).offset(10);
-        make.width.height.equalTo(backgroundView).offset(-20);
+        make.left.equalTo(backgroundView).offset(20);
+        make.bottom.equalTo(backgroundView);
+        make.width.equalTo(backgroundView).offset(-40);
+        make.height.equalTo(backgroundView).offset(-20);
     }];
 }
 

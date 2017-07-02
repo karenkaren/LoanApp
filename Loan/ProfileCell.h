@@ -11,4 +11,10 @@
 
 @interface ProfileCell : UITableViewCell
 
+@property (nonatomic, strong) NSDictionary * cellData;
+- (instancetype)initWithProfileType:(ProfileType)type reuseIdentifier:(NSString *)reuseIdentifier;
+
+@property (nonatomic, copy) void(^selectBlock)();
+@property (nonatomic, copy) void(^switchStatusChangedBlock)(BOOL on);
+
 @end

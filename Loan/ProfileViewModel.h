@@ -8,14 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+
 #define kProfileTitle       @"title"
 #define kProfilePlaceholder @"placeholder"
 #define kProfileValue       @"value"
-#define kProfileDetail      @"detail"
-#define kProfileShowSwitch  @"showSwitch"
-#define kProfileCanEdit     @"canEdit"
+#define kProfileType        @"type"
 #define kProfileKey         @"key"
 #define kProfileLimitCount  @"limitCount"
+
+// type
+typedef enum : NSUInteger {
+    ProfileTypeInput,
+    ProfileTypeSelect,
+    ProfileTypeSwitch
+} ProfileType;
 
 // key
 #define kProfileKeyOfName @"userName"

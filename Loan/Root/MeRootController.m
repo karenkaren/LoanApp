@@ -10,6 +10,7 @@
 #import "MeRootHeaderView.h"
 #import "SettingController.h"
 #import "RecordController.h"
+#import "ProfileController.h"
 
 @interface MeRootController ()
 
@@ -19,12 +20,6 @@
 @end
 
 @implementation MeRootController
-
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    [self.tableHeaderView layoutIfNeeded];
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,10 +41,10 @@
 //        [strongSelf showMyCar];
 //    };
     
-    self.tableHeaderView.myCarClickBlock = ^(UIButton * button) {
+    self.tableHeaderView.userInfoClickBlock = ^(UIButton * button) {
         DLog(@"查看个人信息");
         kStrongSelf
-//        [strongSelf showMyCar];
+        [strongSelf showUserInfo];
     };
     
     self.originalDatas = @[@{@"title" : @"我的申请",
@@ -116,6 +111,13 @@
     RecordController * recordController = [[RecordController alloc] initWithRecordType:RecordTypeOfVisit];
     recordController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:recordController animated:YES];
+}
+
+- (void)showUserInfo
+{
+    ProfileController * profileController = [[ProfileController alloc] init];
+    profileController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:profileController animated:YES];
 }
 
 @end

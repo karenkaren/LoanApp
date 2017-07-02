@@ -56,12 +56,13 @@
 //    self.accountView = [[AccountView alloc] init];
 //    [self addSubview:self.accountView];
     
-    self.userInfoButton = [UIButton createButtonWithIconName:@"nav_reture" block:^(UIButton *button) {
+    self.userInfoButton = [UIButton createButtonWithIconName:@"icon_arrow" block:^(UIButton *button) {
         kStrongSelf
         if (strongSelf.userInfoClickBlock) {
             strongSelf.userInfoClickBlock(button);
         }
     }];
+    [self addSubview:self.userInfoButton];
     
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(self).offset(kCommonMargin);
@@ -76,6 +77,12 @@
     [self.carInfoButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.userNameLabel);
         make.top.equalTo(self.avatarImageView.mas_centerY);
+    }];
+    
+    [self.userInfoButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(8, 15));
+        make.centerY.equalTo(self);
+        make.right.equalTo(self).offset(-kCommonMargin);
     }];
     
 //    [self.accountView mas_makeConstraints:^(MASConstraintMaker *make) {
