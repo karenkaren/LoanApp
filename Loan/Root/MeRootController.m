@@ -11,6 +11,7 @@
 #import "SettingController.h"
 #import "RecordController.h"
 #import "ProfileController.h"
+#import "ProfileModel.h"
 
 @interface MeRootController ()
 
@@ -59,6 +60,10 @@
                            @{@"title" : @"设置",
                              @"image" : @"icon_account",
                              @"sel" : @"goSetting"}];
+    
+    [ProfileModel getProfileInfoWithBlock:^(id response, id data, NSError *error) {
+        
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

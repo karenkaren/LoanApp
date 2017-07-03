@@ -16,6 +16,8 @@
 		235E7CEE1EFE16FA0084D2D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235E7CED1EFE16FA0084D2D4 /* Assets.xcassets */; };
 		235E7CFC1EFE16FA0084D2D4 /* LoanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7CFB1EFE16FA0084D2D4 /* LoanTests.m */; };
 		235E7D071EFE16FA0084D2D4 /* LoanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7D061EFE16FA0084D2D4 /* LoanUITests.m */; };
+		2373435A1F0A897200CAF9F5 /* ProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 237343591F0A897200CAF9F5 /* ProfileModel.m */; };
+		2373435D1F0A8D2600CAF9F5 /* LoanRootHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2373435C1F0A8D2600CAF9F5 /* LoanRootHeaderView.m */; };
 		23B7DF7C1EFE3883000F89F8 /* ProjectRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF7B1EFE3883000F89F8 /* ProjectRootController.m */; };
 		23B7DF821EFE396D000F89F8 /* HomeRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF811EFE396D000F89F8 /* HomeRootController.m */; };
 		23B7DF921EFE39C2000F89F8 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF8B1EFE39C2000F89F8 /* AccountView.m */; };
@@ -145,6 +147,10 @@
 		235E7D021EFE16FA0084D2D4 /* LoanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		235E7D061EFE16FA0084D2D4 /* LoanUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoanUITests.m; sourceTree = "<group>"; };
 		235E7D081EFE16FA0084D2D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		237343581F0A897200CAF9F5 /* ProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileModel.h; sourceTree = "<group>"; };
+		237343591F0A897200CAF9F5 /* ProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileModel.m; sourceTree = "<group>"; };
+		2373435B1F0A8D2600CAF9F5 /* LoanRootHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanRootHeaderView.h; sourceTree = "<group>"; };
+		2373435C1F0A8D2600CAF9F5 /* LoanRootHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanRootHeaderView.m; sourceTree = "<group>"; };
 		23B7DF781EFE370D000F89F8 /* Loan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Loan-Prefix.pch"; sourceTree = "<group>"; };
 		23B7DF7A1EFE3883000F89F8 /* ProjectRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectRootController.h; sourceTree = "<group>"; };
 		23B7DF7B1EFE3883000F89F8 /* ProjectRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectRootController.m; sourceTree = "<group>"; };
@@ -433,6 +439,15 @@
 				235E7D081EFE16FA0084D2D4 /* Info.plist */,
 			);
 			path = LoanUITests;
+			sourceTree = "<group>";
+		};
+		237343571F0A895500CAF9F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				237343581F0A897200CAF9F5 /* ProfileModel.h */,
+				237343591F0A897200CAF9F5 /* ProfileModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		23B7DF791EFE3860000F89F8 /* Root */ = {
@@ -1079,6 +1094,7 @@
 		23E209D11F07DD5700874BF9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				237343571F0A895500CAF9F5 /* Model */,
 				23E209DD1F07ED6500874BF9 /* ViewModel */,
 				23E209D91F07DF3A00874BF9 /* View */,
 				23E209D21F07DD9D00874BF9 /* Controller */,
@@ -1120,6 +1136,8 @@
 			children = (
 				23E512D81EFEB2E500272005 /* LoanRootCell.h */,
 				23E512D91EFEB2E500272005 /* LoanRootCell.m */,
+				2373435B1F0A8D2600CAF9F5 /* LoanRootHeaderView.h */,
+				2373435C1F0A8D2600CAF9F5 /* LoanRootHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1347,6 +1365,7 @@
 				23B7E07D1EFE3CEB000F89F8 /* LoginModel.m in Sources */,
 				23B7DFE21EFE3AE9000F89F8 /* ImagesManager.m in Sources */,
 				23B7E0181EFE3B46000F89F8 /* ShareSnsUtils.m in Sources */,
+				2373435D1F0A8D2600CAF9F5 /* LoanRootHeaderView.m in Sources */,
 				23B7E0081EFE3B20000F89F8 /* SingleActionSheetPicker.m in Sources */,
 				23B7E0101EFE3B20000F89F8 /* MessageBox.m in Sources */,
 				23B7DFCA1EFE3AC1000F89F8 /* UIView+Frame.m in Sources */,
@@ -1371,6 +1390,7 @@
 				23B7E00C1EFE3B20000F89F8 /* TableViewDevider.m in Sources */,
 				23B7E04A1EFE3BCB000F89F8 /* BaseTableViewController.m in Sources */,
 				23B7DFC81EFE3AC1000F89F8 /* UINavigationController+FinishBlock.m in Sources */,
+				2373435A1F0A897200CAF9F5 /* ProfileModel.m in Sources */,
 				23B7E0801EFE3CEB000F89F8 /* RegisterModel.m in Sources */,
 				23B7E07B1EFE3CEB000F89F8 /* PasswordView.m in Sources */,
 				23B7E0821EFE3CEB000F89F8 /* UserRegisterView.m in Sources */,

@@ -50,6 +50,7 @@
     button.layer.masksToBounds = YES;
     button.backgroundColor = kLinkColor;
     [backgroundView addSubview:button];
+    self.footerButton = button;
     
     [backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);

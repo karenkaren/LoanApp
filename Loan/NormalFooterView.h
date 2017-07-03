@@ -11,6 +11,7 @@
 @interface NormalFooterView : UIView
 
 @property (nonatomic, copy) void(^buttonClickBlock)(UIButton * button);
+@property (nonatomic, strong) UIButton * footerButton;
 - (instancetype)initWithTitle:(NSString *)title;
 
 @end

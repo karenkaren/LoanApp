@@ -9,11 +9,14 @@
 #import "ProfileController.h"
 #import "NormalFooterView.h"
 #import "ProfileCell.h"
+#import "ActionSheetStringPicker.h"
+#import "ProfileModel.h"
 
 @interface ProfileController ()
 
 @property (nonatomic, strong) NSArray * cellData;
 @property (nonatomic, strong) NormalFooterView * footerView;
+@property (nonatomic, strong) NSMutableDictionary * profileData;
 
 @end
 
@@ -23,22 +26,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"个人资料";
-    
-//    [self registerCell];
+
     _footerView = [[NormalFooterView alloc] initWithTitle:@"确定"];
     _footerView.height = 60;
     _footerView.width = self.tableView.width;
+    _footerView.footerButton.enabled = NO;
+    kWeakSelf
+    _footerView.buttonClickBlock = ^(UIButton *button) {
+        kStrongSelf
+        [strongSelf updateProfileInfo];
+    };
     self.tableView.tableFooterView = _footerView;
     self.cellData = [ProfileViewModel getCellDataWithData:nil];
-    
+    self.profileData = [NSMutableDictionary dictionary];
+    [self.profileData setValue:@NO forKey:kProfileKeyOfCredit];
 }
-
-//- (void)registerCell
-//{
-//    [self.tableView registerClass:[ProfileCell class] forCellReuseIdentifier:@"ProfileCellInput"];
-//    [self.tableView registerClass:[ProfileCell class] forCellReuseIdentifier:@"ProfileCellSelect"];
-//    [self.tableView registerClass:[ProfileCell class] forCellReuseIdentifier:@"ProfileCellSwitch"];
-//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -79,14 +81,27 @@
     }
     cell.cellData = cellData;
     if (cellType == ProfileTypeSelect) {
-        cell.selectBlock = ^{
+        cell.selectBlock = ^(UITextField * textField){
             NSLog(@"选择");
+            [self selectAtIndexPath:indexPath forTextField:textField];
         };
     } else if (cellType == ProfileTypeSwitch) {
         cell.switchStatusChangedBlock = ^(BOOL on) {
             NSLog(@"开关：%d", on);
+            [self.profileData setValue:@(on) forKey:kProfileKeyOfCredit];
+            [self changeButtonStatus];
         };
     }
+    
+    cell.textChangedBlock = ^(NSString *key, NSString *text) {
+        if (text.length) {
+            [self.profileData setValue:text forKey:key];
+            [self changeButtonStatus];
+        } else {
+            [self.profileData removeObjectForKey:key];
+            [self changeButtonStatus];
+        }
+    };
     return cell;
 }
 
@@ -97,6 +112,48 @@
     if ([self respondsToSelector:action]) {
         [self performSelector:action withObject:nil afterDelay:0.0f];
     }
+}
+
+- (void)selectAtIndexPath:(NSIndexPath *)indexPath forTextField:(UITextField *)textField
+{
+    NSArray * rows = nil;
+    NSString * title = nil;
+    NSString * key = self.cellData[indexPath.row][kProfileKey];
+    if ([key isEqualToString:kProfileKeyOfIncome]) {
+        rows = @[@"5000以下", @"5000～10000", @"10000～20000", @"20000～30000", @"30000～50000", @"50000以上"];
+        title = @"请选择收入";
+    } else if ([key isEqualToString:kProfileKeyOfProfession]) {
+        rows = @[@"自由职业", @"工薪阶层", @"私营业主", @"网店卖家", @"学生"];
+        title = @"请选择文化程度";
+    } else if ([key isEqualToString:kProfileKeyOfEdition]) {
+        rows = @[@"初中", @"高中／中专", @"大专", @"本科", @"硕士及以上"];
+        title = @"请选择职业";
+    }
+
+    [ActionSheetStringPicker showPickerWithTitle:title
+                                            rows:rows
+                                initialSelection:0
+                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                           textField.text = selectedValue;
+                                           [self.profileData setValue:selectedValue forKey:self.cellData[indexPath.row][kProfileKey]];
+                                           [self changeButtonStatus];
+                                       }
+                                     cancelBlock:^(ActionSheetStringPicker *picker) {
+                                         NSLog(@"Block Picker Canceled");
+                                     }
+                                          origin:textField];
+}
+
+- (void)changeButtonStatus
+{
+    self.footerView.footerButton.enabled = self.profileData.count == self.cellData.count;
+}
+
+- (void)updateProfileInfo
+{
+    [ProfileModel updateProfileInfoWithParams:self.profileData block:^(id response, NSError *error) {
+        
+    }];
 }
 
 @end

@@ -14,7 +14,8 @@
 @property (nonatomic, strong) NSDictionary * cellData;
 - (instancetype)initWithProfileType:(ProfileType)type reuseIdentifier:(NSString *)reuseIdentifier;
 
-@property (nonatomic, copy) void(^selectBlock)();
+@property (nonatomic, copy) void(^selectBlock)(UITextField * textField);
 @property (nonatomic, copy) void(^switchStatusChangedBlock)(BOOL on);
+@property (nonatomic, copy) void(^textChangedBlock)(NSString * key, NSString * text);
 
 @end

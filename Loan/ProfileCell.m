@@ -67,6 +67,8 @@
     
     self.valueTextField = [[UITextField alloc] init];
     self.valueTextField.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldValueChanged:) name:UITextFieldTextDidChangeNotification object:nil];
+//    [self.valueTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.contentView addSubview:self.valueTextField];
     
     [self.valueTextField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,7 +84,7 @@
     
     self.detailButton = [UIButton createButtonWithIconName:@"icon_arrow" block:^(UIButton *button) {
         if (self.selectBlock) {
-            self.selectBlock();
+            self.selectBlock(self.valueTextField);
         }
     }];
     [self.contentView addSubview:self.detailButton];
@@ -131,11 +133,19 @@
     ProfileType type = [_cellData[kProfileType] integerValue];
     if (type == ProfileTypeSelect) {
         if (self.selectBlock) {
-            self.selectBlock();
+            self.selectBlock(textField);
         }
         return NO;
     }
     return YES;
+}
+
+- (void)textFieldValueChanged:(NSNotification *)notification
+{
+    UITextField * textField = notification.object;
+    if (self.textChangedBlock) {
+        self.textChangedBlock(self.cellData[kProfileKey], textField.text);
+    }
 }
 
 - (void)switchStatusChanged:(UISwitch *)switchButton
