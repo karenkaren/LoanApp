@@ -20,6 +20,7 @@ typedef void (^ButtonBlockAction)(UIButton * button);
 
 #pragma mark - 背景颜色
 - (void)setDisenableBackgroundColor:(UIColor *)disenableColor enableBackgroundColor:(UIColor *)enableColor;
+- (void)setBackgroundColor:(UIColor *)color forStatus:(UIControlState)state;
 
 #pragma mark - 按钮创建
 + (UIButton *)createButtonWithNomalIconName:(NSString *)nomalIconName selectedIconName:(NSString *)selectedIconName block:(ButtonBlockAction)block;

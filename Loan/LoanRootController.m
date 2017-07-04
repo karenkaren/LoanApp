@@ -9,10 +9,12 @@
 #import "LoanRootController.h"
 #import "LoanRootCell.h"
 #import "ProductDetailController.h"
+#import "FilterView.h"
 
 @interface LoanRootController ()
 
 @property (nonatomic, strong) NSMutableArray * productList;
+@property (nonatomic, copy) NSString * tagString;
 
 @end
 
@@ -22,12 +24,21 @@
     [super viewDidLoad];
     
     self.title = @"贷款";
+    
+    FilterView * filterView = [[FilterView alloc] initWithFrame:self.view.bounds];
+    [filterView setDefaultFilterType:FilterTypeALL filterChangedBlock:^(UIButton *button, NSString *keyString) {
+        self.tagString = keyString;
+        [self startRefresh];
+        [self refreshAction];
+    }];
+    [self.view addSubview:filterView];
+    
+    self.tableView.frame = CGRectMake(0, filterView.bottom, kScreenWidth, self.view.height - filterView.height - self.tabBarController.tabBar.height);
     [self.tableView registerClass:[LoanRootCell class] forCellReuseIdentifier:@"Cell"];
     self.tableView.backgroundColor = kColorD8D8D8;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.productList = [NSMutableArray array];
 
-    [self refreshAction];
 }
 
 - (void)refreshAction
@@ -41,7 +52,7 @@
         }
     }
     
-    NSDictionary * params = @{@"currentPage" : @(self.currentPage), @"pageSize" : @(self.pageSize)};
+    NSDictionary * params = @{@"currentPage" : @(self.currentPage), @"pageSize" : @(self.pageSize), @"tagString" : self.tagString};
     kWeakSelf
     [ProductModel getLoanListWithParams:params block:^(id response, NSArray *productList, NSInteger totalCount, NSError *error) {
         kStrongSelf

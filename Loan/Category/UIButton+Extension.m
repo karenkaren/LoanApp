@@ -64,8 +64,13 @@ static char leftNameKey;
 #pragma mark - 背景颜色
 - (void)setDisenableBackgroundColor:(UIColor *)disenableColor enableBackgroundColor:(UIColor *)enableColor
 {
-    [self setBackgroundImage:[UIImage imageWithColor:enableColor] forState:UIControlStateNormal];
-    [self setBackgroundImage:[UIImage imageWithColor:disenableColor] forState:UIControlStateDisabled];
+    [self setBackgroundColor:enableColor forStatus:UIControlStateNormal];
+    [self setBackgroundColor:disenableColor forStatus:UIControlStateDisabled];
+}
+
+- (void)setBackgroundColor:(UIColor *)color forStatus:(UIControlState)state
+{
+    [self setBackgroundImage:[UIImage imageWithColor:color] forState:state];
 }
 
 #pragma mark 创建自定义按钮

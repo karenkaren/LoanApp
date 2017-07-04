@@ -54,7 +54,7 @@
         [[CurrentUser mine] reset];
         [[ControllersManager sharedControllersManager] setupProjectRootViewController];
     }];
-    logoutButton.backgroundColor = [UIColor yellowColor];
+    logoutButton.backgroundColor = kMainColor;
     [footerView addSubview:logoutButton];
     
     [logoutButton mas_makeConstraints:^(MASConstraintMaker *make) {

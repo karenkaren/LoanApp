@@ -11,13 +11,13 @@
 		2347F4991EFF68360044CFFE /* ProductDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2347F4981EFF68360044CFFE /* ProductDetailHeaderView.m */; };
 		2347F4A01EFF68BE0044CFFE /* ProductDetailFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2347F49F1EFF68BE0044CFFE /* ProductDetailFooterView.m */; };
 		2347F4A31EFF809D0044CFFE /* ProductDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2347F4A21EFF809D0044CFFE /* ProductDetailCell.m */; };
+		235652DA1F0BC8CE00A6D6C3 /* FilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 235652D91F0BC8CE00A6D6C3 /* FilterView.m */; };
 		235E7CE31EFE16F90084D2D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7CE21EFE16F90084D2D4 /* main.m */; };
 		235E7CE61EFE16F90084D2D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7CE51EFE16F90084D2D4 /* AppDelegate.m */; };
 		235E7CEE1EFE16FA0084D2D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 235E7CED1EFE16FA0084D2D4 /* Assets.xcassets */; };
 		235E7CFC1EFE16FA0084D2D4 /* LoanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7CFB1EFE16FA0084D2D4 /* LoanTests.m */; };
 		235E7D071EFE16FA0084D2D4 /* LoanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7D061EFE16FA0084D2D4 /* LoanUITests.m */; };
 		2373435A1F0A897200CAF9F5 /* ProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 237343591F0A897200CAF9F5 /* ProfileModel.m */; };
-		2373435D1F0A8D2600CAF9F5 /* LoanRootHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2373435C1F0A8D2600CAF9F5 /* LoanRootHeaderView.m */; };
 		23B7DF7C1EFE3883000F89F8 /* ProjectRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF7B1EFE3883000F89F8 /* ProjectRootController.m */; };
 		23B7DF821EFE396D000F89F8 /* HomeRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF811EFE396D000F89F8 /* HomeRootController.m */; };
 		23B7DF921EFE39C2000F89F8 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF8B1EFE39C2000F89F8 /* AccountView.m */; };
@@ -135,6 +135,8 @@
 		2347F49F1EFF68BE0044CFFE /* ProductDetailFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailFooterView.m; sourceTree = "<group>"; };
 		2347F4A11EFF809D0044CFFE /* ProductDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailCell.h; sourceTree = "<group>"; };
 		2347F4A21EFF809D0044CFFE /* ProductDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailCell.m; sourceTree = "<group>"; };
+		235652D81F0BC8CE00A6D6C3 /* FilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterView.h; sourceTree = "<group>"; };
+		235652D91F0BC8CE00A6D6C3 /* FilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterView.m; sourceTree = "<group>"; };
 		235E7CDE1EFE16F90084D2D4 /* Loan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		235E7CE21EFE16F90084D2D4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		235E7CE41EFE16F90084D2D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -149,8 +151,6 @@
 		235E7D081EFE16FA0084D2D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		237343581F0A897200CAF9F5 /* ProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileModel.h; sourceTree = "<group>"; };
 		237343591F0A897200CAF9F5 /* ProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileModel.m; sourceTree = "<group>"; };
-		2373435B1F0A8D2600CAF9F5 /* LoanRootHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoanRootHeaderView.h; sourceTree = "<group>"; };
-		2373435C1F0A8D2600CAF9F5 /* LoanRootHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoanRootHeaderView.m; sourceTree = "<group>"; };
 		23B7DF781EFE370D000F89F8 /* Loan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Loan-Prefix.pch"; sourceTree = "<group>"; };
 		23B7DF7A1EFE3883000F89F8 /* ProjectRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectRootController.h; sourceTree = "<group>"; };
 		23B7DF7B1EFE3883000F89F8 /* ProjectRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectRootController.m; sourceTree = "<group>"; };
@@ -1136,8 +1136,8 @@
 			children = (
 				23E512D81EFEB2E500272005 /* LoanRootCell.h */,
 				23E512D91EFEB2E500272005 /* LoanRootCell.m */,
-				2373435B1F0A8D2600CAF9F5 /* LoanRootHeaderView.h */,
-				2373435C1F0A8D2600CAF9F5 /* LoanRootHeaderView.m */,
+				235652D81F0BC8CE00A6D6C3 /* FilterView.h */,
+				235652D91F0BC8CE00A6D6C3 /* FilterView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1359,13 +1359,13 @@
 				23B7DFBF1EFE3AC1000F89F8 /* NSString+Check.m in Sources */,
 				23B7E0861EFE3CEB000F89F8 /* UserModifyView.m in Sources */,
 				23D43B051EFFD87F006371CE /* RecordCell.m in Sources */,
+				235652DA1F0BC8CE00A6D6C3 /* FilterView.m in Sources */,
 				23B7E0281EFE3B7E000F89F8 /* IntroductionView.m in Sources */,
 				23B7E0451EFE3BCB000F89F8 /* BaseViewController.m in Sources */,
 				23B7E0851EFE3CEB000F89F8 /* RetrieveModel.m in Sources */,
 				23B7E07D1EFE3CEB000F89F8 /* LoginModel.m in Sources */,
 				23B7DFE21EFE3AE9000F89F8 /* ImagesManager.m in Sources */,
 				23B7E0181EFE3B46000F89F8 /* ShareSnsUtils.m in Sources */,
-				2373435D1F0A8D2600CAF9F5 /* LoanRootHeaderView.m in Sources */,
 				23B7E0081EFE3B20000F89F8 /* SingleActionSheetPicker.m in Sources */,
 				23B7E0101EFE3B20000F89F8 /* MessageBox.m in Sources */,
 				23B7DFCA1EFE3AC1000F89F8 /* UIView+Frame.m in Sources */,
