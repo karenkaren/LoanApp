@@ -40,6 +40,17 @@
     self.cellData = [ProfileViewModel getCellDataWithData:nil];
     self.profileData = [NSMutableDictionary dictionary];
     [self.profileData setValue:@NO forKey:kProfileKeyOfCredit];
+    
+    [ProfileModel getProfileInfoWithBlock:^(id response, id data, NSError *error) {
+        self.cellData = [ProfileViewModel getCellDataWithData:data];
+        [self.profileData removeAllObjects];
+        for (NSDictionary * dic in self.cellData) {
+            if (![NSString isEmpty:esString(dic[kProfileValue])]) {
+                [self.profileData setValue:esString(dic[kProfileValue]) forKey:kProfileValue];
+            }
+        }
+        [self.tableView reloadData];
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -152,7 +163,8 @@
 - (void)updateProfileInfo
 {
     [ProfileModel updateProfileInfoWithParams:self.profileData block:^(id response, NSError *error) {
-        
+        NSLog(@"个人资料修改成功");
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

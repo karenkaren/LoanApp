@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UILabel * titleLabel;
 @property (nonatomic, strong) UITextField * valueTextField;
 @property (nonatomic, strong) UIButton * detailButton;
+@property (nonatomic, strong) UISwitch * switchButton;
 
 @end
 
@@ -113,6 +114,7 @@
     UISwitch * switchButton = [[UISwitch alloc] init];
     [switchButton addTarget:self action:@selector(switchStatusChanged:) forControlEvents:UIControlEventValueChanged];
     [self.contentView addSubview:switchButton];
+    self.switchButton = switchButton;
     
     [switchButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.centerY.equalTo(self);
@@ -126,6 +128,8 @@
     _cellData = cellData;
     self.titleLabel.text = cellData[kProfileTitle];
     self.valueTextField.placeholder = cellData[kProfilePlaceholder];
+    self.valueTextField.text = cellData[kProfileValue];
+    self.switchButton.on = [cellData[kProfileValue] boolValue];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
