@@ -19,4 +19,5 @@ pod 'UMengUShare/Social/ReducedWeChat'
 pod 'UMengUShare/Social/ReducedQQ'
 # 集成新浪微博(精简版1M)
 pod 'UMengUShare/Social/ReducedSina'
+#pod 'UMengSocialCOM', '5.2.1'
 end

@@ -169,11 +169,13 @@
             NSDictionary * dic = applyStepArray[i / 2];
             UILabel * titleLabel = [[UILabel alloc] init];
             titleLabel.text = esString(dic[@"stepName"]);
+            titleLabel.font = kFont(12);
+            [titleLabel adjustsFontSizeToFitWidth];
             [titleLabel sizeToFit];
             [self.applyProcessView addSubview:titleLabel];
             
             [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(imageView.mas_bottom).offset(5);
+                make.top.equalTo(imageView.mas_bottom).offset(10);
                 make.centerX.equalTo(imageView);
             }];
         }

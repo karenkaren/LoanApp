@@ -62,9 +62,10 @@
     footerView.applyClickBlock = ^(UIButton *button) {
         [ControllersManager actionWhenLogin:^{
             [ProductModel addApplyRecordWithProduct:self.product block:nil];
+            BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:self.product.h5link];
+            [self.navigationController pushViewController:webController animated:YES];
         }];
-        BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:self.product.h5link];
-        [self.navigationController pushViewController:webController animated:YES];
+        
     };
     
     self.cellData = @[@[@{@"title" : @"申请条件",
