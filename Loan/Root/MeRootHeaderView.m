@@ -32,9 +32,9 @@
 
 - (void)buildUI
 {
-    self.avatarImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
-    self.avatarImageView.layer.cornerRadius = 50;
-    self.avatarImageView.layer.masksToBounds = YES;
+    self.avatarImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_avatar"]];
+//    self.avatarImageView.layer.cornerRadius = 50;
+//    self.avatarImageView.layer.masksToBounds = YES;
     [self addSubview:self.avatarImageView];
     
     self.userNameLabel = [[UILabel alloc] init];

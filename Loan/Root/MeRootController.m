@@ -49,16 +49,16 @@
     };
     
     self.originalDatas = @[@{@"title" : @"我的申请",
-                             @"image" : @"icon_account",
+                             @"image" : @"icon_apply",
                              @"sel" : @"goApplyRercord"},
                            @{@"title" : @"浏览记录",
-                             @"image" : @"icon_account",
+                             @"image" : @"icon_visit",
                              @"sel" : @"goVisitRercord"},
                            @{@"title" : @"我的消息",
-                             @"image" : @"icon_account",
-                             @"sel" : @""},
+                             @"image" : @"icon_message",
+                             @"sel" : @"goMessage"},
                            @{@"title" : @"设置",
-                             @"image" : @"icon_account",
+                             @"image" : @"icon_setting",
                              @"sel" : @"goSetting"}];
     
     [ProfileModel getProfileInfoWithBlock:^(id response, id data, NSError *error) {

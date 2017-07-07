@@ -251,6 +251,11 @@ THE SOFTWARE.
 
 
 
+## UMengUShare
+
+Copyright 2011 - 2017 UMeng.com. All rights reserved.
+
+
 ## YTKKeyValueStore
 
 Copyright (c) 2012-2014 YTKKeyValueStore https://github.com/yuantiku
