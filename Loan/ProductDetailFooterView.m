@@ -28,7 +28,7 @@
     [self addSubview:backgroundView];
     
     kWeakSelf
-    UIButton * applyButton = [UIButton createButtonWithTitle:@"立即申请" color:kWhiteColor font:kFont(18) block:^(UIButton *button) {
+    UIButton * applyButton = [UIButton createButtonWithTitle:@"立即申请" color:kBlackColor font:kFont(18) block:^(UIButton *button) {
         kStrongSelf
         if (strongSelf.applyClickBlock) {
             strongSelf.applyClickBlock(button);
@@ -36,7 +36,7 @@
     }];
     applyButton.layer.cornerRadius = 5;
     applyButton.layer.masksToBounds = YES;
-    applyButton.backgroundColor = kLinkColor;
+    applyButton.backgroundColor = kMainColor;
     [backgroundView addSubview:applyButton];
     
     [backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {

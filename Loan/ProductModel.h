@@ -72,6 +72,13 @@ typedef NS_ENUM(NSUInteger, RecordListType) {
  */
 + (void)getLoanListWithParams:(NSDictionary *)params block:(void (^)(id response, NSArray * productList, NSInteger totalCount, NSError *error))block;
 /**
+ 获取贷款筛选列表
+ 
+ @param params 请求参数
+ @param block 回调block
+ */
++ (void)getLoanQueryListWithParams:(NSDictionary *)params block:(void (^)(id response, NSArray * loanList, NSInteger totalCount, NSError * error))block;
+/**
  增加浏览记录
  
  @param product 浏览的产品

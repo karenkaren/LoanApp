@@ -33,6 +33,7 @@ NSString * const kUserLocationUrl = @"/user/location";
 #pragma mark -- 业务服务
 NSString * const kBannerList = @"/banner/list"; // 首页banners
 NSString * const kLoanList = @"/cloan/list";    // 贷款列表
+NSString * const kLoanQueryList = @"/cloan/tag/list";    // 贷款筛选列表
 NSString * const kRecordList = @"/cloan/record/list";    // 浏览/申请列表
 NSString * const kAddApplyRecord = @"/cloan/record/add";    // 新增申请记录
 NSString * const kAddVisitRecord = @"/cloan/record/add";    // 新增浏览记录

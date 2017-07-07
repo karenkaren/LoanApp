@@ -102,6 +102,16 @@
     [self.collectionView.mj_footer endRefreshing];
 }
 
+- (BOOL)isRefreshing
+{
+    if ([self.collectionView.mj_header isRefreshing]) {
+        return YES;
+    }
+    if ([self.collectionView.mj_footer isRefreshing]) {
+        return YES;
+    }
+    return NO;
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

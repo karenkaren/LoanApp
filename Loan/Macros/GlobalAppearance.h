@@ -39,11 +39,12 @@
 #define kColor999999 kHexColor(0x999999)
 #define kColorD8D8D8 kHexColor(0xD8D8D8)
 
-#define kMainColor kColorFF6600
+#define kMainColor kHexColor(0xFDD952)
 #define kLineColor kColorD8D8D8
 #define kTextColor kColor333333
 #define kLinkColor kColor156FBB
 #define kDisabledColor kColorD8D8D8
 #define kWhiteColor [UIColor whiteColor]
+#define kBlackColor [UIColor blackColor]
 
 #endif /* GlobalAppearance_h */

@@ -44,14 +44,14 @@
     [self addSubview:self.userNameLabel];
     
     kWeakSelf
-    self.carInfoButton = [UIButton createButtonWithTitle:@"我的爱车" color:kTextColor font:kFont(18) block:^(UIButton *button) {
-        kStrongSelf
-        if (strongSelf.myCarClickBlock) {
-            strongSelf.myCarClickBlock(button);
-        }
-    }];
-    self.carInfoButton.userInteractionEnabled = NO;
-    [self addSubview:self.carInfoButton];
+//    self.carInfoButton = [UIButton createButtonWithTitle:@"我的爱车" color:kTextColor font:kFont(18) block:^(UIButton *button) {
+//        kStrongSelf
+//        if (strongSelf.myCarClickBlock) {
+//            strongSelf.myCarClickBlock(button);
+//        }
+//    }];
+//    self.carInfoButton.userInteractionEnabled = NO;
+//    [self addSubview:self.carInfoButton];
     
 //    self.accountView = [[AccountView alloc] init];
 //    [self addSubview:self.accountView];

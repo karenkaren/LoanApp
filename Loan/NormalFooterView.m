@@ -39,16 +39,16 @@
     [self addSubview:lineView];
     
     kWeakSelf
-    UIButton * button = [UIButton createButtonWithTitle:_title color:kWhiteColor font:kFont(18) block:^(UIButton *button) {
+    UIButton * button = [UIButton createButtonWithTitle:_title color:kBlackColor font:kFont(18) block:^(UIButton *button) {
         kStrongSelf
         if (strongSelf.buttonClickBlock) {
             strongSelf.buttonClickBlock(button);
         }
     }];
-    [button setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:[UIColor blueColor]];
+    [button setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:kMainColor];
     button.layer.cornerRadius = 5;
     button.layer.masksToBounds = YES;
-    button.backgroundColor = kLinkColor;
+    button.backgroundColor = kMainColor;
     [backgroundView addSubview:button];
     self.footerButton = button;
     

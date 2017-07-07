@@ -86,6 +86,10 @@
     NSInteger errorCode = [(NSNumber *)[response valueForKeyPath:@"resultCode"] integerValue];
     if (errorCode != 0) {
         error = [NSError errorWithDomain:API_BASE_URL code:errorCode userInfo:response];
+        if (errorCode == 10000006) {
+            [[ControllersManager sharedControllersManager] sessionKeyTimeOut:nil];
+            return error;
+        }
         //错误提示
         if (autoShowError) {
             [NSObject showError:error];

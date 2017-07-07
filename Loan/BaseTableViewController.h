@@ -28,5 +28,6 @@
 - (void)refreshAction;
 - (void)startRefresh;
 - (void)stopRefresh;
+- (BOOL)isRefreshing;
 
 @end

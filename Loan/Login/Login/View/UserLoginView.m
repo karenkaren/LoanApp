@@ -52,7 +52,7 @@
     [self addSubview:captchaView];
     self.captchaView = captchaView;
     
-    UIButton * loginButton = [UIButton createButtonWithTitle:@"登录" color:kWhiteColor font:kFont(16) block:^(UIButton *button) {
+    UIButton * loginButton = [UIButton createButtonWithTitle:@"登录" color:kBlackColor font:kFont(16) block:^(UIButton *button) {
         if (self.loginClickBlock) {
             self.loginClickBlock(button);
         }

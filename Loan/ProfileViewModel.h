@@ -25,9 +25,9 @@ typedef enum : NSUInteger {
 
 // key
 #define kProfileKeyOfName @"userName"
-#define kProfileKeyOfIDCard @"idCard"
-#define kProfileKeyOfEdition @"edition"
-#define kProfileKeyOfProfession @"profession"
+#define kProfileKeyOfIDCard @"idcard"
+#define kProfileKeyOfEdition @"education"
+#define kProfileKeyOfProfession @"job"
 #define kProfileKeyOfIncome @"income"
 #define kProfileKeyOfCredit @"hasCreditCard"
 

@@ -29,6 +29,7 @@ extern NSString * const kUserLocationUrl;   // 上传用户位置
 #pragma mark -- 业务服务
 extern NSString * const kBannerList;    // 首页banners
 extern NSString * const kLoanList;    // 贷款列表
+extern NSString * const kLoanQueryList;    // 贷款筛选列表
 extern NSString * const kRecordList;    // 浏览/申请列表
 extern NSString * const kAddApplyRecord;    // 新增申请记录
 extern NSString * const kAddVisitRecord;    // 新增浏览记录

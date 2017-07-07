@@ -69,9 +69,8 @@
     self.valueTextField = [[UITextField alloc] init];
     self.valueTextField.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldValueChanged:) name:UITextFieldTextDidChangeNotification object:nil];
-//    [self.valueTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.contentView addSubview:self.valueTextField];
-    
+//    [self.valueTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.valueTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel.mas_right);
         make.top.height.equalTo(self.titleLabel);
@@ -147,6 +146,9 @@
 - (void)textFieldValueChanged:(NSNotification *)notification
 {
     UITextField * textField = notification.object;
+    if (textField != self.valueTextField) {
+        return;
+    }
     if (self.textChangedBlock) {
         self.textChangedBlock(self.cellData[kProfileKey], textField.text);
     }

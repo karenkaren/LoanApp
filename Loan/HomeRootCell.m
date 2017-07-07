@@ -58,7 +58,7 @@
     
     [_markImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.right.equalTo(self);
-        make.width.height.equalTo(self.mas_width).multipliedBy(1.0 / 5.0);
+        make.width.height.equalTo(self.mas_width).multipliedBy(1.0 / 3.0);
     }];
 }
 
@@ -75,9 +75,13 @@
     NSString * markImageName = nil;
     
     if ([product.cloanTags isEqualToString:@"new"]) {
-        markImageName = @"icon_note";
+        markImageName = @"icon_zuixin";
     } else if ([product.cloanTags isEqualToString:@"hot"]) {
-        markImageName = @"icon_show";
+        markImageName = @"icon_zuire";
+    } else if ([product.cloanTags isEqualToString:@"tuijian"]) {
+        markImageName = @"icon_tuijian";
+    } else if ([product.cloanTags isEqualToString:@"dixi"]) {
+        markImageName = @"icon_dixi";
     }
 
     _markImageView.hidden = [NSString isEmpty:markImageName] ? YES : NO;

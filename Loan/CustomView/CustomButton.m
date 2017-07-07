@@ -51,8 +51,8 @@
 {
     CustomButton * button = [[CustomButton alloc] init];
     [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:kWhiteColor forState:UIControlStateNormal];
-    [button setTitleColor:[kWhiteColor colorWithAlphaComponent:0.8] forState:UIControlStateDisabled];
+    [button setTitleColor:kBlackColor forState:UIControlStateNormal];
+    [button setTitleColor:[kBlackColor colorWithAlphaComponent:0.8] forState:UIControlStateDisabled];
     [button.titleLabel setFont:kFont18];
     [button sizeToFit];
     button.tappedBlock = actionBolck;

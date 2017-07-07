@@ -100,6 +100,17 @@
     [self.tableView.mj_footer endRefreshing];
 }
 
+- (BOOL)isRefreshing
+{
+    if ([self.tableView.mj_header isRefreshing]) {
+        return YES;
+    }
+    if ([self.tableView.mj_footer isRefreshing]) {
+        return YES;
+    }
+    return NO;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 0;

@@ -46,9 +46,10 @@
         [self.profileData removeAllObjects];
         for (NSDictionary * dic in self.cellData) {
             if (![NSString isEmpty:esString(dic[kProfileValue])]) {
-                [self.profileData setValue:esString(dic[kProfileValue]) forKey:kProfileValue];
+                [self.profileData setValue:esString(dic[kProfileValue]) forKey:dic[kProfileKey]];
             }
         }
+        [self changeButtonStatus];
         [self.tableView reloadData];
     }];
 }
@@ -94,6 +95,7 @@
     if (cellType == ProfileTypeSelect) {
         cell.selectBlock = ^(UITextField * textField){
             NSLog(@"选择");
+            [self.view endEditing:YES];
             [self selectAtIndexPath:indexPath forTextField:textField];
         };
     } else if (cellType == ProfileTypeSwitch) {

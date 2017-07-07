@@ -44,6 +44,28 @@
     }];
 }
 
+/**
+ 获取贷款筛选列表
+ 
+ @param params 请求参数
+ @param block 回调block
+ */
++ (void)getLoanQueryListWithParams:(NSDictionary *)params block:(void (^)(id response, NSArray * loanList, NSInteger totalCount, NSError * error))block
+{
+    [[NetAPIManager sharedNetAPIManager] requestWithPath:kLoanQueryList params:params methodType:Get block:^(id response, NSError *error) {
+        NSArray * loanList = nil;
+        NSInteger totalCount = 0;
+        if (!error) {
+            BaseDto * dto = [BaseDto mj_objectWithKeyValues:response];
+            loanList = [ProductModel mj_objectArrayWithKeyValuesArray:dto.data[@"cloanList"]];
+            totalCount = [dto.data[@"totalCount"] integerValue];
+        }
+        if (block) {
+            block(response, loanList, totalCount, nil);
+        }
+    }];
+}
+
 
 /**
  增加浏览记录
