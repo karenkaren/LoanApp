@@ -91,38 +91,38 @@
     [self addSubview:secondVertialLineView];
     
     UIView * bottomView = [[UIView alloc] init];
-    bottomView.backgroundColor = kColorD8D8D8;
+    bottomView.backgroundColor = kBackgroundColor;
     [self addSubview:bottomView];
     
     [iconImageVIew mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(kCommonMargin);
-        make.left.equalTo(self).offset(kCommonMargin);
-        make.size.mas_offset(CGSizeMake(30, 30));
+        make.top.equalTo(self).offset(27);
+        make.left.equalTo(self).offset(20);
+        make.size.mas_offset(CGSizeMake(45, 45));
     }];
     
     [productNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(iconImageVIew.mas_right).offset(kCommonMargin);
+        make.left.equalTo(iconImageVIew.mas_right).offset(27);
         make.bottom.equalTo(iconImageVIew.mas_centerY).offset(-5);
-        make.width.lessThanOrEqualTo(self).offset(-2 * kCommonMargin - 50);
+        make.width.lessThanOrEqualTo(self).offset(-2 * 20 - 72);
         make.height.equalTo(@18);
     }];
     
     [applyNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(productNameLabel);
         make.top.equalTo(iconImageVIew.mas_centerY).offset(5);
-        make.width.lessThanOrEqualTo(self).offset(-2 * kCommonMargin - 50);
+        make.width.lessThanOrEqualTo(self).offset(-2 * 20 - 72);
         make.height.equalTo(@14);
     }];
     
     [topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self);
-        make.top.equalTo(applyNumLabel.mas_bottom).offset(10);
+        make.top.equalTo(iconImageVIew.mas_bottom).offset(27);
         make.height.equalTo(@(kLineThick));
     }];
     
     [loanRangeTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
-        make.top.equalTo(topLineView.mas_bottom).offset(10);
+        make.top.equalTo(topLineView.mas_bottom).offset(14);
         make.width.equalTo(self).multipliedBy(1.0 / 3.0);
         make.height.equalTo(@14);
     }];
@@ -172,7 +172,7 @@
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self);
         make.top.equalTo(bottomLineView.mas_bottom);
-        make.height.equalTo(@10);
+        make.height.equalTo(@14);
     }];
 }
 

@@ -32,7 +32,7 @@
     
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.itemSize = CGSizeMake(kScreenWidth / 3.0, kScreenWidth / 3.0);
+    layout.itemSize = CGSizeMake(kScreenWidth / 4.0, kScreenWidth / 4.0);
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
     [self createCollectionViewWithCollectionViewLayout:layout];
@@ -92,7 +92,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return CGSizeMake(kScreenWidth, 180);
+        return CGSizeMake(kScreenWidth, 230);
     }
     else {
         return CGSizeMake(0, 0);

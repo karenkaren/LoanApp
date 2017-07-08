@@ -9,9 +9,9 @@
 #import "GlobalManager.h"
 #import "AppDelegate.h"
 #import "SocialConstants.h"
-//#import "UMSocial.h"
-//#import "UMSocialWechatHandler.h"
-//#import "UMSocialQQHandler.h"
+#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialQQHandler.h"
 //#import "UMSocialSinaSSOHandler.h"
 
 @implementation GlobalManager
@@ -24,32 +24,32 @@
     // 显示
     [self initializeGlobleApprence];
     // 分享
-//    [self shareSetting];
+    [self shareSetting];
     // 推送
 }
 
 // 友盟分享设置
-//+ (void)shareSetting
-//{
-//    //设置友盟社会化组件appkey
-//    [UMSocialData setAppKey:UMENG_APP_KEY];
-//    
-//    //打开调试log的开关
-//    [UMSocialData openLog:YES];
-//    
-//    //设置微信AppId、appSecret，分享url
-//    [UMSocialWechatHandler setWXAppId:WECHAT_APP_ID appSecret:WECHAT_APP_SECRET url:defaultUrlForShare];
-//    
-//    //设置手机QQ 的AppId，Appkey，和分享URL，需要#import "UMSocialQQHandler.h"
-//    [UMSocialQQHandler setQQWithAppId:QQ_APP_ID appKey:QQ_APP_KEY url:defaultUrlForShare];
-//    //设置支持没有客户端情况下使用SSO授权
-//    [UMSocialQQHandler setSupportWebView:YES];
-//    
-//    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 #import "UMSocialSinaSSOHandler.h"
++ (void)shareSetting
+{
+    //设置友盟社会化组件appkey
+    [UMSocialData setAppKey:UMENG_APP_KEY];
+    
+    //打开调试log的开关
+    [UMSocialData openLog:YES];
+    
+    //设置微信AppId、appSecret，分享url
+    [UMSocialWechatHandler setWXAppId:WECHAT_APP_ID appSecret:WECHAT_APP_SECRET url:defaultUrlForShare];
+    
+    //设置手机QQ 的AppId，Appkey，和分享URL，需要#import "UMSocialQQHandler.h"
+    [UMSocialQQHandler setQQWithAppId:QQ_APP_ID appKey:QQ_APP_KEY url:defaultUrlForShare];
+    //设置支持没有客户端情况下使用SSO授权
+    [UMSocialQQHandler setSupportWebView:YES];
+    
+    //打开新浪微博的SSO开关，设置新浪微博回调地址，这里必须要和你在新浪微博后台设置的回调地址一致。需要 #import "UMSocialSinaSSOHandler.h"
 //    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:SINA_APP_KEY secret:SINA_APP_SECRET RedirectURL:SINA_APP_REDIRECT_URL];
-//    
-//    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToSina, UMShareToWechatSession, UMShareToWechatTimeline]];
-//}
+    
+    [UMSocialConfig hiddenNotInstallPlatforms:@[UMShareToQQ, UMShareToSina, UMShareToWechatSession, UMShareToWechatTimeline]];
+}
 
 #pragma mark -- 全局显示
 + (void)initializeGlobleApprence

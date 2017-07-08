@@ -142,13 +142,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray * rows = self.recordList[indexPath.section][@"value"];
-    ProductModel * product = rows[indexPath.row];
+    ProductModel * product = self.recordList[indexPath.row];
     ProductDetailController * productDetailController = [[ProductDetailController alloc] initWithProduct:product];
     productDetailController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:productDetailController animated:YES];
 }
-
-
 
 @end

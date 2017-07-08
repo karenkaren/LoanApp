@@ -7,14 +7,12 @@
 //
 
 #import "MeRootHeaderView.h"
-//#import "AccountView.h"
 
 @interface MeRootHeaderView ()
 
 @property (nonatomic, strong) UIImageView * avatarImageView;    //头像
-@property (nonatomic, strong) UIButton * carInfoButton; //爱车档案
+@property (nonatomic, strong) UILabel * phoneNoLabel;   //手机号
 @property (nonatomic, strong) UILabel * userNameLabel;  //用户名
-//@property (nonatomic, strong) AccountView * accountView;    // 账户信息
 @property (nonatomic, strong) UIButton * userInfoButton;    //  个人信息
 
 @end
@@ -25,6 +23,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = kWhiteColor;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUserInfo) name:@"userInfoChangedNotification" object:nil];
         [self buildUI];
     }
     return self;
@@ -33,49 +33,44 @@
 - (void)buildUI
 {
     self.avatarImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_avatar"]];
-//    self.avatarImageView.layer.cornerRadius = 50;
-//    self.avatarImageView.layer.masksToBounds = YES;
     [self addSubview:self.avatarImageView];
+    
+    self.phoneNoLabel = [[UILabel alloc] init];
+    self.phoneNoLabel.textColor = kTextColor;
+    self.phoneNoLabel.font = kFont(18);
+    self.phoneNoLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kMobileNo];
+    [self addSubview:self.phoneNoLabel];
+    
     
     self.userNameLabel = [[UILabel alloc] init];
     self.userNameLabel.textColor = kTextColor;
     self.userNameLabel.font = kFont(18);
-    self.userNameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kMobileNo];
+    self.userNameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kUserName];
     [self addSubview:self.userNameLabel];
-    
+
     kWeakSelf
-//    self.carInfoButton = [UIButton createButtonWithTitle:@"我的爱车" color:kTextColor font:kFont(18) block:^(UIButton *button) {
-//        kStrongSelf
-//        if (strongSelf.myCarClickBlock) {
-//            strongSelf.myCarClickBlock(button);
-//        }
-//    }];
-//    self.carInfoButton.userInteractionEnabled = NO;
-//    [self addSubview:self.carInfoButton];
-    
-//    self.accountView = [[AccountView alloc] init];
-//    [self addSubview:self.accountView];
-    
     self.userInfoButton = [UIButton createButtonWithIconName:@"icon_arrow" block:^(UIButton *button) {
         kStrongSelf
         if (strongSelf.userInfoClickBlock) {
             strongSelf.userInfoClickBlock(button);
         }
     }];
+    [self.userInfoButton setEnlargeEdge:50];
     [self addSubview:self.userInfoButton];
     
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self).offset(kCommonMargin);
+        make.left.equalTo(self).offset(30);
+        make.centerY.equalTo(self);
         make.width.height.equalTo(@100);
     }];
     
-    [self.userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.avatarImageView.mas_right).offset(kCommonMargin);
+    [self.phoneNoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.avatarImageView.mas_right).offset(24);
         make.bottom.equalTo(self.avatarImageView.mas_centerY);
     }];
     
-    [self.carInfoButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.userNameLabel);
+    [self.userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.phoneNoLabel);
         make.top.equalTo(self.avatarImageView.mas_centerY);
     }];
     
@@ -84,12 +79,17 @@
         make.centerY.equalTo(self);
         make.right.equalTo(self).offset(-kCommonMargin);
     }];
-    
-//    [self.accountView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.width.equalTo(self);
-//        make.top.equalTo(self.avatarImageView.mas_bottom).offset(kCommonMargin);
-//        make.height.equalTo(@50);
-//    }];
+}
+
+- (void)refreshUserInfo
+{
+    self.phoneNoLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kMobileNo];
+    self.userNameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kUserName];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

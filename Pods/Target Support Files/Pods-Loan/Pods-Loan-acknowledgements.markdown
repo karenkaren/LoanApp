@@ -251,9 +251,9 @@ THE SOFTWARE.
 
 
 
-## UMengUShare
+## UMengSocialCOM
 
-Copyright 2011 - 2017 UMeng.com. All rights reserved.
+Copyright 2011 - 2016 UMeng.com. All rights reserved.
 
 
 ## YTKKeyValueStore

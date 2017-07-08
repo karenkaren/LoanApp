@@ -12,7 +12,7 @@
 
 #pragma mark 分享
 //umeng
-NSString * const UMENG_APP_KEY = @"566a7baee0f55a8393000146";
+NSString * const UMENG_APP_KEY = @"5960f8c8b27b0a3bae0001d0";
 
 //wechat
 NSString * const WECHAT_APP_ID = @"wx48dd00fc989b7326";
@@ -20,9 +20,9 @@ NSString * const WECHAT_APP_KEY = @"97ff25e9b9389470fbc0470727ed1de6";
 NSString * const WECHAT_APP_SECRET = @"97ff25e9b9389470fbc0470727ed1de6";
 
 //sina weibo
-NSString * const SINA_APP_KEY = @"1395891233";
-NSString * const SINA_APP_SECRET = @"68ece3a3b91bc4cd169ae131ea52301e";
-NSString * const SINA_APP_REDIRECT_URL = @"http://sns.whalecloud.com/sina2/callback";
+//NSString * const SINA_APP_KEY = @"1395891233";
+//NSString * const SINA_APP_SECRET = @"68ece3a3b91bc4cd169ae131ea52301e";
+//NSString * const SINA_APP_REDIRECT_URL = @"http://sns.whalecloud.com/sina2/callback";
 
 //Tencent
 NSString * const  QQ_APP_ID = @"1105016856";

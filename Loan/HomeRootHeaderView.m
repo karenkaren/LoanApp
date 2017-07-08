@@ -36,12 +36,12 @@
     self.bannerView = [[BannerView alloc] init];
     [self addSubview:self.bannerView];
     
-//    UILabel * label = [[UILabel alloc] init];
+    UILabel * label = [[UILabel alloc] init];
 //    label.textAlignment = NSTextAlignmentCenter;
 //    label.numberOfLines = 0;
-//    label.text = @"本周晴朗，适合洗车，已为您推荐最佳洗车店，预约走起";
-//    [self addSubview:label];
-//    
+    label.text = @"为您推荐";
+    [self addSubview:label];
+//
 //    UIButton * button = [UIButton createButtonWithTitle:@"洗车" color:kWhiteColor font:kFont(20) block:^(UIButton *button) {
 //        
 //    }];
@@ -53,13 +53,13 @@
         make.height.equalTo(@180);
     }];
     
-//    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self).offset(kCommonMargin);
-//        make.top.equalTo(self.bannerView.mas_bottom).offset(kCommonMargin);
-//        make.width.lessThanOrEqualTo(self).offset(-2 * kCommonMargin);
-//        make.height.greaterThanOrEqualTo(@20);
-//    }];
-//    
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(kCommonMargin);
+        make.top.equalTo(self.bannerView.mas_bottom);
+        make.width.lessThanOrEqualTo(self).offset(-2 * kCommonMargin);
+        make.height.equalTo(@50);
+    }];
+//
 //    [button mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.left.equalTo(label);
 //        make.top.equalTo(label.mas_bottom);

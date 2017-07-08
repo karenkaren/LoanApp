@@ -25,7 +25,7 @@
         self.baseNavigationController = (BaseNavigationController *)self.navigationController;
     }
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = kBackgroundColor;
     
     [self showCloseButton:self.showCloseButton];
     [self showBackButton:!self.showCloseButton];

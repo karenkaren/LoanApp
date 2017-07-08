@@ -22,6 +22,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.tableView.backgroundColor = kBackgroundColor;
     [self setEnableFooterRefresh:self.enableFooterRefresh];
     [self setEnableHeaderRefresh:self.enableHeaderRefresh];
     [self.view addSubview:self.tableView];
@@ -36,6 +37,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.tableView.backgroundColor = kBackgroundColor;
     [self setEnableFooterRefresh:self.enableFooterRefresh];
     [self setEnableHeaderRefresh:self.enableHeaderRefresh];
     [self.view addSubview:self.tableView];
@@ -83,6 +85,13 @@
     } else {
         self.tableView.mj_footer = nil;
     }
+}
+
+- (void)setEnableRefresh:(BOOL)enableRefresh
+{
+    _enableRefresh = enableRefresh;
+    self.enableHeaderRefresh = enableRefresh;
+    self.enableFooterRefresh = enableRefresh;
 }
 
 - (void)refreshAction

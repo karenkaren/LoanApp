@@ -110,7 +110,7 @@
     }];
     
     [_interestRateTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_right).offset(-100);
+        make.left.equalTo(self.mas_right).offset(-130);
         make.top.equalTo(_applyNumLabel);
         make.width.equalTo(@40);
         make.height.equalTo(@12);

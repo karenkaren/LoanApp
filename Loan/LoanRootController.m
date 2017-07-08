@@ -10,6 +10,7 @@
 #import "LoanRootCell.h"
 #import "ProductDetailController.h"
 #import "FilterView.h"
+#import "TableViewDevider.h"
 
 @interface LoanRootController ()
 
@@ -34,7 +35,6 @@
     
     self.tableView.frame = CGRectMake(0, filterView.bottom, kScreenWidth, self.view.height - filterView.height - kNavigationBarHeight - kTabBarHeight - kStatusBarHeight);
     [self.tableView registerClass:[LoanRootCell class] forCellReuseIdentifier:@"Cell"];
-    self.tableView.backgroundColor = kColorD8D8D8;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.productList = [NSMutableArray array];
 
@@ -97,6 +97,17 @@
     ProductDetailController * productDetailController = [[ProductDetailController alloc] initWithProduct:self.productList[indexPath.row]];
     productDetailController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:productDetailController animated:YES];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView * headerView = [TableViewDevider getViewWithHeight:10 margin:0 showTopLine:NO showBottomLine:YES];
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10;
 }
 
 @end

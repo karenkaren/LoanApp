@@ -166,6 +166,8 @@
 {
     [ProfileModel updateProfileInfoWithParams:self.profileData block:^(id response, NSError *error) {
         NSLog(@"个人资料修改成功");
+        [[NSUserDefaults standardUserDefaults] setValue:self.profileData[kProfileKeyOfName] forKey:kUserName];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoChangedNotification" object:nil];
         [self.navigationController popViewControllerAnimated:YES];
     }];
 }

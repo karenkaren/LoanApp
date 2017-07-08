@@ -25,7 +25,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = kColorD8D8D8;
+        self.backgroundColor = kBackgroundColor;
         [self addAllSubviews];
     }
     return self;

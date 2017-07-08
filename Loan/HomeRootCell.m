@@ -37,7 +37,7 @@
     
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
-    _nameLabel.font = kFont(18);
+    _nameLabel.font = kFont(16);
     [self addSubview:_nameLabel];
     
     _markImageView = [[UIImageView alloc] init];
@@ -53,12 +53,12 @@
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.centerX.equalTo(self);
         make.height.equalTo(@18);
-        make.top.equalTo(_iconImageView.mas_bottom).offset(20);
+        make.top.equalTo(_iconImageView.mas_bottom).offset(10);
     }];
     
     [_markImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.right.equalTo(self);
-        make.width.height.equalTo(self.mas_width).multipliedBy(1.0 / 3.0);
+        make.width.height.equalTo(self.mas_width).multipliedBy(1.0 / 2.0);
     }];
 }
 

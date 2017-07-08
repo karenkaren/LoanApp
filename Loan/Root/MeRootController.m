@@ -12,6 +12,7 @@
 #import "RecordController.h"
 #import "ProfileController.h"
 #import "ProfileModel.h"
+#import "TableViewDevider.h"
 
 @interface MeRootController ()
 
@@ -26,12 +27,13 @@
     [super viewDidLoad];
     
     self.title = @"我的";
-    
+
+//    [self.baseNavigationController hideBorder:YES];
     [self createTableViewWithStyle:UITableViewStyleGrouped];
-    
+    self.enableRefresh = NO;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"NormalCell"];
 
-    self.tableHeaderView = [[MeRootHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 130)];
+    self.tableHeaderView = [[MeRootHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 173)];
     self.tableView.tableHeaderView = self.tableHeaderView;
 //    [self.view layoutIfNeeded];
     
@@ -95,6 +97,17 @@
     if ([self respondsToSelector:action]) {
         [self performSelector:action withObject:nil afterDelay:0.0f];
     }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView * headerView = [TableViewDevider getViewWithHeight:10 margin:0 showTopLine:YES showBottomLine:NO];
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10;
 }
 
 - (void)goSetting

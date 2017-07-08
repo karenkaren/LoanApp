@@ -27,6 +27,7 @@
     if (self) {
         _titlesString = @[@"人气", @"大额", @"极速下款", @"不查征信", @"自由职业", @"全部"];
         _keysString = @[@"TAG_RENQI", @"TAG_DAE", @"TAG_JSXK", @"TAG_BCZX", @"TAG_ZYZY", @"TAG_ALL"];
+        self.backgroundColor = kWhiteColor;
         [self addAllSubviews];
     }
     return self;
@@ -46,6 +47,7 @@
         UIButton * button = [UIButton createButtonWithTitle:_titlesString[i] color:[UIColor grayColor] font:kFont(18) block:^(UIButton *button) {
             [self changeSelectStatus:button];
         }];
+        button.titleLabel.font = kFont(16);
         button.layer.cornerRadius = 2.5;
         button.layer.masksToBounds = YES;
         button.layer.borderColor = kLineColor.CGColor;

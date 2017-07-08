@@ -40,6 +40,7 @@
 #define kColorD8D8D8 kHexColor(0xD8D8D8)
 
 #define kMainColor kHexColor(0xFDD952)
+#define kBackgroundColor kHexColor(0xF9F9F9)
 #define kLineColor kColorD8D8D8
 #define kTextColor kColor333333
 #define kLinkColor kColor156FBB

@@ -25,6 +25,7 @@
 
 @property (nonatomic, assign) BOOL enableHeaderRefresh;
 @property (nonatomic, assign) BOOL enableFooterRefresh;
+@property (nonatomic, assign) BOOL enableRefresh;
 - (void)refreshAction;
 - (void)startRefresh;
 - (void)stopRefresh;

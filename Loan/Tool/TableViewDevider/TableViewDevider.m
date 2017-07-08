@@ -13,7 +13,7 @@
 + (UIView *)getViewWithHeight:(CGFloat)height margin:(CGFloat)margin showTopLine:(BOOL)showTopLine showBottomLine:(BOOL)showBottomLine
 {
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, height)];
-    view.backgroundColor = [UIColor whiteColor];
+    view.backgroundColor = kBackgroundColor;
     
     if (showTopLine) {
         UIView * topLineView = [[UIView alloc] init];
