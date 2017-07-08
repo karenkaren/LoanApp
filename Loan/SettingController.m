@@ -138,7 +138,7 @@
 
 - (void)goHelpCenter
 {
-    BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:@"http://www.163.com"];
+    BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:@"https://www.51huawuyou.com/"];
     [self.navigationController pushViewController:webController animated:YES];
 }
 

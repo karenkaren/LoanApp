@@ -25,7 +25,7 @@
 
 #ifdef BUILD_FOR_DEVELOP
 
-#define API_BASE_URL_Internal    @"http://121.42.145.216:8080"//开发环境
+#define API_BASE_URL_Internal    @"http://119.23.46.47:8080"//开发环境
 #define WEB_BASE_URL_Internal    @"http://192.168.18.233:9000"
 
 #endif
