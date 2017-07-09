@@ -91,8 +91,6 @@
                                      @"style" : @(ProductDetailCellStyleImage)}];
             if (self.cellData.count < 4) {
                 [self.cellData insertObject:stepList atIndex:0];
-            } else {
-                
             }
             [self.tableView reloadData];
         }

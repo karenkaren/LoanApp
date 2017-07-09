@@ -153,7 +153,7 @@
     
     NSArray * applyStepArray = (NSArray *)data;
     
-    CGFloat margin = kScreenWidth / (applyStepArray.count * 2 * 2 - 1);
+    CGFloat margin = kScreenWidth / 15;
     for (int i = 0; i < applyStepArray.count * 2 - 1; i++) {
         UIImageView * imageView = [[UIImageView alloc] init];
         NSString * imageName = i % 2 ? @"icon_yellow_arraw.png" : @"icon_smiling.png";
