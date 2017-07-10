@@ -48,16 +48,16 @@
             [self changeSelectStatus:button];
         }];
         button.titleLabel.font = kFont(16);
-        button.layer.cornerRadius = 2.5;
+        button.layer.cornerRadius = 2;
         button.layer.masksToBounds = YES;
         button.layer.borderColor = kLineColor.CGColor;
         button.layer.borderWidth = kLineThick;
         [button setBackgroundColor:kWhiteColor forStatus:UIControlStateNormal];
         [button setBackgroundColor:kMainColor forStatus:UIControlStateSelected];
-        CGFloat width = (kScreenWidth - 4 * 30) / 3.0;
-        CGFloat height = 30;
-        CGFloat x = 30 + (width + 30) * (i % 3);
-        CGFloat y = 20 + (height + 20) * (i / 3);
+        CGFloat width = (kScreenWidth - 2 * 32 - 2 * 21) / 3.0;
+        CGFloat height = 28;
+        CGFloat x = 32 + (width + 21) * (i % 3);
+        CGFloat y = 8 + (height + 12) * (i / 3);
         button.frame = CGRectMake(x, y, width, height);
         button.tag = i;
         [self addSubview:button];
@@ -68,7 +68,7 @@
 //            self.selectButton = button;
 //        }
         if (i == _titlesString.count - 1) {
-            self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, button.bottom + 20);
+            self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, button.bottom + 9);
         }
     }
     
@@ -84,9 +84,11 @@
     }
     self.selectButton.layer.borderWidth = kLineThick;
     self.selectButton.selected = NO;
+    [self.selectButton setTitleColor:kColor666666 forState:UIControlStateNormal];
     button.layer.borderWidth = 0;
     button.selected = YES;
     self.selectButton = button;
+    [self.selectButton setTitleColor:kBlackColor forState:UIControlStateNormal];
     if (self.filterChangedBlock) {
         self.filterChangedBlock(button, _keysString[button.tag]);
     }

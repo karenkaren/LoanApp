@@ -37,7 +37,8 @@
     
     _nameLabel = [[UILabel alloc] init];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
-    _nameLabel.font = kFont(16);
+    _nameLabel.textColor = kColor333333;
+    _nameLabel.font = kFont(11);
     [self addSubview:_nameLabel];
     
     _markImageView = [[UIImageView alloc] init];
@@ -45,20 +46,20 @@
     [self addSubview:_markImageView];
     
     [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.mas_centerY).offset(10);
-        make.width.height.equalTo(self.mas_width).multipliedBy(1.0 / 3.0);
+        make.size.mas_equalTo(CGSizeMake(kAdaptiveBaseIphone6(32), kAdaptiveBaseIphone6(32)));
         make.centerX.equalTo(self);
+        make.top.equalTo(self).offset(kAdaptiveBaseIphone6(17));
     }];
     
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.centerX.equalTo(self);
-        make.height.equalTo(@18);
-        make.top.equalTo(_iconImageView.mas_bottom).offset(10);
+        make.height.equalTo(@11);
+        make.top.equalTo(_iconImageView.mas_bottom).offset(16);
     }];
     
     [_markImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.right.equalTo(self);
-        make.width.height.equalTo(self.mas_width).multipliedBy(1.0 / 2.0);
+        make.size.mas_equalTo(CGSizeMake(kAdaptiveBaseIphone6(40), kAdaptiveBaseIphone6(40)));
     }];
 }
 

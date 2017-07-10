@@ -29,6 +29,7 @@
     FilterView * filterView = [[FilterView alloc] initWithFrame:self.view.bounds];
     [filterView setDefaultFilterType:FilterTypeALL filterChangedBlock:^(UIButton *button, NSString *keyString) {
         self.tagString = keyString;
+        self.currentPage = 0;
         [self refreshAction];
     }];
     [self.view addSubview:filterView];

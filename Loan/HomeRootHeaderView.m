@@ -37,9 +37,11 @@
     [self addSubview:self.bannerView];
     
     UILabel * label = [[UILabel alloc] init];
-//    label.textAlignment = NSTextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.backgroundColor = kBackgroundColor;
+    label.font = kFont(12);
 //    label.numberOfLines = 0;
-    label.text = @"为您推荐";
+    label.text = @"-为您推荐以下贷款产品-";
     [self addSubview:label];
 //
 //    UIButton * button = [UIButton createButtonWithTitle:@"洗车" color:kWhiteColor font:kFont(20) block:^(UIButton *button) {
@@ -54,10 +56,9 @@
     }];
     
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(kCommonMargin);
+        make.left.width.equalTo(self);
         make.top.equalTo(self.bannerView.mas_bottom);
-        make.width.lessThanOrEqualTo(self).offset(-2 * kCommonMargin);
-        make.height.equalTo(@50);
+        make.height.equalTo(@32);
     }];
 //
 //    [button mas_makeConstraints:^(MASConstraintMaker *make) {

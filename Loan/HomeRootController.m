@@ -92,7 +92,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return CGSizeMake(kScreenWidth, 230);
+        return CGSizeMake(kScreenWidth, 212);
     }
     else {
         return CGSizeMake(0, 0);

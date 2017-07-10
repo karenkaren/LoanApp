@@ -42,7 +42,7 @@
     [self.contentView addSubview:_productNameLabel];
     
     _descLabel = [[UILabel alloc] init];
-    _descLabel.font = kFont(14);
+    _descLabel.font = kFont(12);
     _descLabel.textColor = kColor999999;
     [self.contentView addSubview:_descLabel];
     
@@ -75,56 +75,56 @@
     [self.contentView addSubview:bottomLineView];
     
     [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(kGeneralSize * 0.5);
+        make.left.equalTo(self).offset(30);
         make.centerY.equalTo(self);
-        make.width.height.equalTo(self.mas_height).multipliedBy(1.0 / 2.0);
+        make.size.mas_equalTo(CGSizeMake(32, 32));
     }];
     
     [_productNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_iconImageView.mas_right).offset(kGeneralSize * 0.5);
-        make.top.equalTo(self).offset(kCommonMargin);
+        make.left.equalTo(_iconImageView.mas_right).offset(30);
+        make.top.equalTo(self).offset(10);
         make.height.equalTo(@14);
         make.right.equalTo(self);
     }];
     
     [_descLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_productNameLabel);
-        make.top.equalTo(_productNameLabel.mas_bottom).offset(10);
-        make.width.equalTo(_productNameLabel).offset(-kGeneralSize);
+        make.top.equalTo(_productNameLabel.mas_bottom).offset(5);
+        make.width.equalTo(_productNameLabel).offset(-8-15-5);
         make.height.equalTo(@14);
         
     }];
     
     [applyNumTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_descLabel);
-        make.top.equalTo(_descLabel.mas_bottom).offset(10);
+        make.top.equalTo(_descLabel.mas_bottom).offset(7);
         make.width.equalTo(@50);
         make.height.equalTo(@12);
     }];
     
     [_applyNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(applyNumTitleLabel.mas_right).offset(5);
+        make.left.equalTo(applyNumTitleLabel.mas_right);
         make.top.equalTo(applyNumTitleLabel);
         make.width.equalTo(@80);
         make.height.equalTo(@12);
     }];
     
     [_interestRateTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_right).offset(-130);
+        make.left.equalTo(self.mas_right).offset(-114);
         make.top.equalTo(_applyNumLabel);
         make.width.equalTo(@40);
         make.height.equalTo(@12);
     }];
     
     [_interestRateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(_interestRateTitleLabel.mas_right).offset(5);
+        make.left.equalTo(_interestRateTitleLabel.mas_right);
         make.top.equalTo(_interestRateTitleLabel);
         make.width.equalTo(@50);
         make.height.equalTo(@12);
     }];
     
     [arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.mas_right).offset(-kCommonMargin);
+        make.right.equalTo(self.mas_right).offset(-15);
         make.centerY.equalTo(self);
         make.size.mas_equalTo(CGSizeMake(8, 15));
     }];
@@ -140,7 +140,7 @@
 {
     self.product = product;
     
-    return _interestRateLabel.bottom + kCommonMargin;
+    return _interestRateLabel.bottom + 10;
 }
 
 - (void)setProduct:(ProductModel *)product

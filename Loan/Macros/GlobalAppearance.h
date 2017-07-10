@@ -12,6 +12,7 @@
 #pragma mark - 字体
 
 #define kFont(size)  [CustomFont heiti:size]
+#define kBoldFont(size) [CustomFont boldHeiti:size]
 #define kStringSize(string, fontSize) [string sizeWithAttributes:@{NSFontAttributeName : kFont(fontSize)}]
 
 #pragma mark 常用字体大小
@@ -38,6 +39,7 @@
 #define kColor333333 kHexColor(0x333333)
 #define kColor999999 kHexColor(0x999999)
 #define kColorD8D8D8 kHexColor(0xD8D8D8)
+#define kColor666666 kHexColor(0x666666)
 
 #define kMainColor kHexColor(0xFDD952)
 #define kBackgroundColor kHexColor(0xF9F9F9)

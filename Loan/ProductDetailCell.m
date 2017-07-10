@@ -36,8 +36,13 @@
     topLineView.backgroundColor = kLineColor;
     [self.contentView addSubview:topLineView];
     
+    UIView * vertialLineView = [[UIView alloc] init];
+    vertialLineView.backgroundColor = kMainColor;
+    [self.contentView addSubview:vertialLineView];
+    
     self.titleLabel = [[UILabel alloc] init];
-    self.titleLabel.font = kFont(16);
+    self.titleLabel.font = kFont(13);
+    self.titleLabel.textColor = kColor333333;
     [self.contentView addSubview:self.titleLabel];
     
     _seperatorLineView = [[UIView alloc] init];
@@ -45,7 +50,8 @@
     [self.contentView addSubview:_seperatorLineView];
     
     self.contentLabel = [[UILabel alloc] init];
-    self.contentLabel.font = kFont(14);
+    self.contentLabel.font = kFont(13);
+    self.contentLabel.textColor = kColor999999;
     self.contentLabel.numberOfLines = 0;
     [self.contentView addSubview:self.contentLabel];
     
@@ -61,11 +67,18 @@
         make.height.equalTo(@(kLineThick));
     }];
     
+    [vertialLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(15);
+        make.top.equalTo(self).offset(10);
+        make.width.equalTo(@2);
+        make.height.equalTo(@(32 - 20));
+    }];;
+    
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(topLineView.mas_bottom);
-        make.left.equalTo(self).offset(kCommonMargin);
-        make.width.equalTo(self).offset(-2 * kCommonMargin);
-        make.height.equalTo(@(kGeneralSize));
+        make.left.equalTo(vertialLineView.mas_right).offset(6);
+        make.width.equalTo(self).offset(-2 * 15 - 2 - 6);
+        make.height.equalTo(@32);
     }];
     
     [_seperatorLineView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -40,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = self.product.cloanName;
+    self.title = @"项目名称";
     
     [self createTableViewWithStyle:UITableViewStyleGrouped];
     self.enableFooterRefresh = NO;
