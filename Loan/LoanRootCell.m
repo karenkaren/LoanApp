@@ -154,6 +154,7 @@
     _productNameLabel.text = product.cloanName;
     _descLabel.text = product.desc;
     _applyNumLabel.text = [NSString stringWithFormat:@"%ld人", product.applyCustomer];
+    _applyNumLabel.attributedText = [_applyNumLabel.text configAttributes:@{NSForegroundColorAttributeName : kColor999999} forString:@"人"];
     
     if (product.dayRate) {
         _interestRateTitleLabel.text = @"日利率";

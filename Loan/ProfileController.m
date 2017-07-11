@@ -11,6 +11,7 @@
 #import "ProfileCell.h"
 #import "ActionSheetStringPicker.h"
 #import "ProfileModel.h"
+#import "TableViewDevider.h"
 
 @interface ProfileController ()
 
@@ -27,7 +28,7 @@
     // Do any additional setup after loading the view.
     self.title = @"个人资料";
 
-    _footerView = [[NormalFooterView alloc] initWithTitle:@"确定"];
+    _footerView = [[NormalFooterView alloc] initWithTitle:@"确认"];
     _footerView.height = 60;
     _footerView.width = self.tableView.width;
     _footerView.footerButton.enabled = NO;
@@ -116,6 +117,16 @@
         }
     };
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return [TableViewDevider getViewWithHeight:10 margin:0 showTopLine:NO showBottomLine:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

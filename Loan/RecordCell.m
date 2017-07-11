@@ -14,7 +14,7 @@
 @property (nonatomic, strong) UIImageView * iconImageView;
 @property (nonatomic, strong) UILabel * productNameLabel;
 @property (nonatomic, strong) UILabel * descLabel;
-@property (nonatomic, strong) UILabel * limitRangeLabel;
+@property (nonatomic, strong) UILabel * applyNoLabel;
 @property (nonatomic, strong) UILabel * interestRateLabel;
 
 @end
@@ -51,7 +51,6 @@
     self.descLabel = [[UILabel alloc] init];
     self.descLabel.font = kFont(12);
     self.descLabel.textColor = kColor999999;
-//    self.descLabel.numberOfLines = 0;
     [backgroundView addSubview:self.descLabel];
     
     UIImageView * arrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_arrow"]];
@@ -61,16 +60,16 @@
     separatorLineView.backgroundColor = kLineColor;
     [backgroundView addSubview:separatorLineView];
     
-    UILabel * limitRangeTitleLabel = [[UILabel alloc] init];
-    limitRangeTitleLabel.font = kFont(12);
-    limitRangeTitleLabel.textColor = kColor999999;
-    limitRangeTitleLabel.text = @"额度范围";
-    [backgroundView addSubview:limitRangeTitleLabel];
+    UILabel * applyNoTitleLabel = [[UILabel alloc] init];
+    applyNoTitleLabel.font = kFont(12);
+    applyNoTitleLabel.textColor = kColor999999;
+    applyNoTitleLabel.text = @"申请人数";
+    [backgroundView addSubview:applyNoTitleLabel];
     
-    self.limitRangeLabel = [[UILabel alloc] init];
-    self.limitRangeLabel.font = kFont(12);
-    self.limitRangeLabel.textColor = [UIColor redColor];
-    [backgroundView addSubview:self.limitRangeLabel];
+    self.applyNoLabel = [[UILabel alloc] init];
+    self.applyNoLabel.font = kFont(12);
+    self.applyNoLabel.textColor = [UIColor redColor];
+    [backgroundView addSubview:self.applyNoLabel];
     
     UILabel * interestRateTitleLabel = [[UILabel alloc] init];
     interestRateTitleLabel.font = kFont(12);
@@ -100,13 +99,14 @@
     }];
     
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(superView).offset(30);
+        make.left.equalTo(superView).offset(20);
+        make.top.equalTo(superView).offset(15);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
     
     [self.productNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.iconImageView.mas_centerY).offset(-5);
-        make.left.equalTo(self.iconImageView.mas_right).offset(30);
+        make.top.equalTo(superView).offset(15);
+        make.left.equalTo(self.iconImageView.mas_right).offset(27);
         make.right.lessThanOrEqualTo(arrowImageView.mas_left).offset(-5);
         make.height.equalTo(@14);
     }];
@@ -120,47 +120,47 @@
     
     [arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(superView.mas_right).offset(-kCommonMargin);
-        make.centerY.equalTo(self.iconImageView);
+        make.centerY.equalTo(self.descLabel);
         make.size.mas_equalTo(CGSizeMake(8, 15));
     }];
     
     [separatorLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(superView);
-        make.top.equalTo(self.iconImageView.mas_bottom).offset(30);
+        make.top.equalTo(self.descLabel.mas_bottom).offset(15);
         make.height.equalTo(@(kLineThick));
     }];
     
-    [limitRangeTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [applyNoTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconImageView);
-        make.top.equalTo(separatorLineView.mas_bottom).offset(10);
+        make.top.equalTo(separatorLineView.mas_bottom).offset(15);
         make.height.equalTo(@12);
         make.width.lessThanOrEqualTo(superView);
     }];
     
-    [self.limitRangeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(limitRangeTitleLabel);
-        make.left.equalTo(limitRangeTitleLabel.mas_right).offset(5);
+    [self.applyNoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(applyNoTitleLabel);
+        make.left.equalTo(applyNoTitleLabel.mas_right).offset(5);
         make.height.equalTo(@12);
         make.width.lessThanOrEqualTo(superView);
     }];
     
     [interestRateTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.interestRateLabel.mas_left).offset(-5);
-        make.centerY.equalTo(limitRangeTitleLabel);
+        make.centerY.equalTo(applyNoTitleLabel);
         make.width.lessThanOrEqualTo(superView);
         make.height.equalTo(@12);
     }];
     
     [self.interestRateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(arrowImageView);
-        make.centerY.equalTo(limitRangeTitleLabel);
+        make.centerY.equalTo(applyNoTitleLabel);
         make.width.lessThanOrEqualTo(superView);
         make.height.equalTo(@12);
     }];
     
     [bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.height.equalTo(topLineView);
-        make.top.equalTo(limitRangeTitleLabel.mas_bottom).offset(10);
+        make.top.equalTo(applyNoTitleLabel.mas_bottom).offset(10);
     }];
 }
 
@@ -170,8 +170,9 @@
     
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:product.cloanLogo] placeholderImage:[UIImage imageNamed:@"logo"] options:SDWebImageRetryFailed];
     self.productNameLabel.text = product.cloanName;
-    self.descLabel.text = @"测试测试测试放得开见风使舵雷锋精神的雷锋精神的老骥伏枥是大家发圣诞快乐飞机数量达到了房间里大煞风景的是离开";
-    self.limitRangeLabel.text = @"500-5000元";
+    self.descLabel.text = product.desc;
+    self.applyNoLabel.text = [NSString stringWithFormat:@"%ld人", product.applyCustomer];
+    self.applyNoLabel.attributedText = [self.applyNoLabel.text configAttributes:@{NSForegroundColorAttributeName : kColor999999} forString:@"人"];
     self.interestRateLabel.text = [NSString stringWithFormat:@"%.2f%%", product.dayRate];
     
     [self layoutIfNeeded];

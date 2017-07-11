@@ -26,6 +26,8 @@
     
     [self createTableViewWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight - kStatusBarHeight) style:UITableViewStyleGrouped];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 16, 0, 0);
+    self.enableRefresh = NO;
     self.tableView.tableFooterView = [self getTableFooterView];
 
     self.originalDatas = @[@[@{@"title" : @"意见反馈",
@@ -54,20 +56,22 @@
 
 - (UIView *)getTableFooterView
 {
-    UIView * footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 100)];
+    UIView * footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 70)];
     
     UIButton * logoutButton = [UIButton createButtonWithTitle:@"退出登录" color:kBlackColor font:kFont(18) block:^(UIButton *button) {
         [[CurrentUser mine] reset];
         [[ControllersManager sharedControllersManager] setupProjectRootViewController];
     }];
+    logoutButton.layer.cornerRadius = 5;
+    logoutButton.layer.masksToBounds = YES;
     logoutButton.backgroundColor = kMainColor;
     [footerView addSubview:logoutButton];
     
     [logoutButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(footerView).offset(-4 * kCommonMargin);
-        make.center.equalTo(footerView);
+        make.width.equalTo(footerView).offset(-30);
+        make.bottom.equalTo(footerView);
         make.height.equalTo(@(kGeneralSize));
-
+        make.left.equalTo(footerView).offset(15);
     }];
     
     return footerView;
@@ -107,7 +111,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (section) {
+        return 53;
+    }
     return 10;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return CGFLOAT_MIN;
 }
 
 - (void)shareToFriends

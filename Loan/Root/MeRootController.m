@@ -23,28 +23,33 @@
 
 @implementation MeRootController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.baseNavigationController hideBorder:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.baseNavigationController hideBorder:NO];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"我的";
-
-//    [self.baseNavigationController hideBorder:YES];
+    
     [self createTableViewWithStyle:UITableViewStyleGrouped];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 16, 0, 0);
     self.enableRefresh = NO;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"NormalCell"];
 
-    self.tableHeaderView = [[MeRootHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 173)];
+    self.tableHeaderView = [[MeRootHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 141)];
     self.tableView.tableHeaderView = self.tableHeaderView;
-//    [self.view layoutIfNeeded];
     
     kWeakSelf
-//    self.tableHeaderView.myCarClickBlock = ^(UIButton * button) {
-//        DLog(@"我的爱车");
-//        kStrongSelf
-//        [strongSelf showMyCar];
-//    };
-    
-    self.tableHeaderView.userInfoClickBlock = ^(UIButton * button) {
+    self.tableHeaderView.userInfoClickBlock = ^() {
         DLog(@"查看个人信息");
         kStrongSelf
         [strongSelf showUserInfo];

@@ -31,7 +31,6 @@
 - (void)addAllSubviews
 {
     UIView * backgroundView = [[UIView alloc] init];
-    backgroundView.backgroundColor = kWhiteColor;
     [self addSubview:backgroundView];
     
     UIView * lineView = [[UIView alloc] init];
@@ -46,9 +45,10 @@
         }
     }];
     [button setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:kMainColor];
+    [button setTitleColor:kBlackColor forState:UIControlStateNormal];
+    [button setTitleColor:kWhiteColor forState:UIControlStateDisabled];
     button.layer.cornerRadius = 5;
     button.layer.masksToBounds = YES;
-    button.backgroundColor = kMainColor;
     [backgroundView addSubview:button];
     self.footerButton = button;
     

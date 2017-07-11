@@ -11,6 +11,7 @@
 @interface ProductDetailCell ()
 {
     UIView * _seperatorLineView;
+    UIView * _bottomLineView;
 }
 
 @property (nonatomic, strong) UILabel * titleLabel;
@@ -61,6 +62,7 @@
     UIView * bottomLineView = [[UIView alloc] init];
     bottomLineView.backgroundColor = kLineColor;
     [self.contentView addSubview:bottomLineView];
+    _bottomLineView = bottomLineView;
     
     [topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.width.equalTo(self);
@@ -88,21 +90,22 @@
     }];
     
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.width.equalTo(self.titleLabel);
-        make.height.greaterThanOrEqualTo(@14);
-        make.top.equalTo(_seperatorLineView.mas_bottom).offset(10);
+        make.left.equalTo(@15);
+        make.height.greaterThanOrEqualTo(@13);
+        make.top.equalTo(_seperatorLineView.mas_bottom).offset(12);
+        make.width.lessThanOrEqualTo(self.contentView).offset(-30);
     }];
     
     [self.applyProcessView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.width.equalTo(self);
         make.top.equalTo(_seperatorLineView.mas_bottom);
-        make.height.equalTo(@(kGeneralSize * 2));
+        make.height.equalTo(@65);
     }];
     
     [bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.with.height.equalTo(topLineView);
         if (!self.contentLabel.hidden) {
-            make.top.equalTo(self.contentLabel.mas_bottom).offset(10);
+            make.top.equalTo(self.contentLabel.mas_bottom).offset(24);
         } else if (!self.applyProcessView.hidden) {
             make.top.equalTo(self.applyProcessView.mas_bottom);
         }
@@ -143,7 +146,7 @@
     CGFloat height = 0.0;
     switch (style) {
         case ProductDetailCellStyleText:
-            height = self.contentLabel.bottom + 10;
+            height = self.contentLabel.bottom + 24;
             break;
         case ProductDetailCellStyleImage:
             height = self.applyProcessView.bottom;
@@ -174,7 +177,7 @@
         [self.applyProcessView addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.applyProcessView).offset(margin + margin * i * 2);
-            make.top.equalTo(self.applyProcessView).offset(15);
+            make.top.equalTo(self.applyProcessView).offset(8);
             make.size.mas_equalTo(CGSizeMake(margin, margin));
         }];
         
@@ -188,7 +191,7 @@
             [self.applyProcessView addSubview:titleLabel];
             
             [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(imageView.mas_bottom).offset(10);
+                make.top.equalTo(imageView.mas_bottom).offset(5);
                 make.centerX.equalTo(imageView);
             }];
         }

@@ -26,6 +26,8 @@
         self.backgroundColor = kWhiteColor;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUserInfo) name:@"userInfoChangedNotification" object:nil];
         [self buildUI];
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showUserInfo)];
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
@@ -48,20 +50,20 @@
     self.userNameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kUserName];
     [self addSubview:self.userNameLabel];
 
-    kWeakSelf
-    self.userInfoButton = [UIButton createButtonWithIconName:@"icon_arrow" block:^(UIButton *button) {
-        kStrongSelf
-        if (strongSelf.userInfoClickBlock) {
-            strongSelf.userInfoClickBlock(button);
-        }
-    }];
-    [self.userInfoButton setEnlargeEdge:50];
-    [self addSubview:self.userInfoButton];
+//    kWeakSelf
+//    self.userInfoButton = [UIButton createButtonWithIconName:@"icon_arrow" block:^(UIButton *button) {
+//        kStrongSelf
+//        if (strongSelf.userInfoClickBlock) {
+//            strongSelf.userInfoClickBlock(button);
+//        }
+//    }];
+//    [self.userInfoButton setEnlargeEdge:50];
+//    [self addSubview:self.userInfoButton];
     
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(30);
-        make.centerY.equalTo(self);
-        make.width.height.equalTo(@100);
+        make.top.equalTo(self).offset(40);
+        make.width.height.equalTo(@69);
     }];
     
     [self.phoneNoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -74,11 +76,11 @@
         make.top.equalTo(self.avatarImageView.mas_centerY);
     }];
     
-    [self.userInfoButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(8, 15));
-        make.centerY.equalTo(self);
-        make.right.equalTo(self).offset(-kCommonMargin);
-    }];
+//    [self.userInfoButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(8, 15));
+//        make.centerY.equalTo(self);
+//        make.right.equalTo(self).offset(-kCommonMargin);
+//    }];
 }
 
 - (void)refreshUserInfo
@@ -90,6 +92,13 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)showUserInfo
+{
+    if (self.userInfoClickBlock) {
+        self.userInfoClickBlock();
+    }
 }
 
 @end
