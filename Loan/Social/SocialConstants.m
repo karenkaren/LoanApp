@@ -15,9 +15,9 @@
 NSString * const UMENG_APP_KEY = @"5960f8c8b27b0a3bae0001d0";
 
 //wechat
-NSString * const WECHAT_APP_ID = @"wx48dd00fc989b7326";
-NSString * const WECHAT_APP_KEY = @"97ff25e9b9389470fbc0470727ed1de6";
-NSString * const WECHAT_APP_SECRET = @"97ff25e9b9389470fbc0470727ed1de6";
+NSString * const WECHAT_APP_ID = @"wxf9d2f910c802657d";
+NSString * const WECHAT_APP_KEY = @"wxf9d2f910c802657d";
+NSString * const WECHAT_APP_SECRET = @"eb3722bb259e84d5a20b0237cdd259d2";
 
 //sina weibo
 //NSString * const SINA_APP_KEY = @"1395891233";
@@ -25,10 +25,10 @@ NSString * const WECHAT_APP_SECRET = @"97ff25e9b9389470fbc0470727ed1de6";
 //NSString * const SINA_APP_REDIRECT_URL = @"http://sns.whalecloud.com/sina2/callback";
 
 //Tencent
-NSString * const  QQ_APP_ID = @"1105016856";
-NSString * const  QQ_APP_KEY = @"4cpjC8bbJeWHKw6q";
+//NSString * const  QQ_APP_ID = @"1105821097";
+//NSString * const  QQ_APP_KEY = @"";
 
 // 分享链接
-NSString * const  defaultUrlForShare = @"http://www.baidu.com";
+NSString * const  defaultUrlForShare = @"https://www.baidu.com";
 
 @end

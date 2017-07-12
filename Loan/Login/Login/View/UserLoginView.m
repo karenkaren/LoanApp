@@ -25,6 +25,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = kWhiteColor;
         [self buildUI];
         [self addNotifications];
     }
@@ -57,6 +58,10 @@
             self.loginClickBlock(button);
         }
     }];
+    loginButton.layer.cornerRadius = 2;
+    loginButton.layer.masksToBounds = YES;
+    [loginButton setTitleColor:kBlackColor forState:UIControlStateNormal];
+    [loginButton setTitleColor:kWhiteColor forState:UIControlStateDisabled];
     loginButton.enabled = NO;
     [loginButton setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:kMainColor];
     [self addSubview:loginButton];

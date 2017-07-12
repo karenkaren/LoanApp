@@ -11,7 +11,7 @@
 #import "FeedbackController.h"
 #import "ShareSnsUtils.h"
 
-@interface SettingController ()<UMSocialUIDelegate>
+@interface SettingController ()
 
 @property (nonatomic, strong) NSArray * originalDatas;
 
@@ -125,7 +125,7 @@
 - (void)shareToFriends
 {
     DLog(@"share");
-    [ShareSnsUtils shareSnsOnViewController:self delegate:self];
+    [[[ShareSnsUtils alloc] init] shareOnViewController:self];
 }
 
 - (void)callService:(NSString *)telephoneNo

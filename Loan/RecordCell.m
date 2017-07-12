@@ -171,7 +171,7 @@
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:product.cloanLogo] placeholderImage:[UIImage imageNamed:@"logo"] options:SDWebImageRetryFailed];
     self.productNameLabel.text = product.cloanName;
     self.descLabel.text = product.desc;
-    self.applyNoLabel.text = [NSString stringWithFormat:@"%ld人", product.applyCustomer];
+    self.applyNoLabel.text = [NSString stringWithFormat:@"%ld人", (long)product.applyCustomer];
     self.applyNoLabel.attributedText = [self.applyNoLabel.text configAttributes:@{NSForegroundColorAttributeName : kColor999999} forString:@"人"];
     self.interestRateLabel.text = [NSString stringWithFormat:@"%.2f%%", product.dayRate];
     

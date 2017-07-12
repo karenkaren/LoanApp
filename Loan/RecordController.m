@@ -46,21 +46,6 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[RecordCell class] forCellReuseIdentifier:@"Cell"];
     
-//    NSMutableArray * recordList = [NSMutableArray arrayWithCapacity:3];
-//    for (int i = 0 ; i < 3; i++) {
-//        NSMutableDictionary * sectionDic = [NSMutableDictionary dictionaryWithCapacity:2];
-//        [sectionDic setValue:[NSString stringWithFormat:@"6月%u日", arc4random_uniform(30) + 1] forKey:@"title"];
-//        NSInteger rows = arc4random_uniform(20) + 1;
-//        NSMutableArray * rowArray = [NSMutableArray arrayWithCapacity:rows];
-//        for (int j = 0; j < rows; j++) {
-//            ProductModel * record = [[ProductModel alloc] init];
-//            [rowArray addObject:record];
-//        }
-//        [sectionDic setValue:rowArray forKey:@"value"];
-//        [recordList addObject:sectionDic];
-//    }
-//    self.recordList = recordList;
-    
     self.recordList = [NSMutableArray array];
     [self refreshAction];
 }

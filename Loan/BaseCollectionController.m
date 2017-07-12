@@ -22,7 +22,7 @@
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.itemSize = CGSizeMake(100, 100);
     [self createCollectionViewWithCollectionViewLayout:layout];
-    self.pageSize = 10;
+    self.pageSize = 20;
     self.enableFooterRefresh = YES;
     self.enableHeaderRefresh = YES;
 }

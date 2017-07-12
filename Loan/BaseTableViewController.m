@@ -50,7 +50,7 @@
     [self createTableViewWithStyle:UITableViewStylePlain];
     self.enableFooterRefresh = YES;
     self.enableHeaderRefresh = YES;
-    self.pageSize = 10;
+    self.pageSize = 20;
 }
 
 - (void)setEnableHeaderRefresh:(BOOL)enableHeaderRefresh

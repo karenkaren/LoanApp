@@ -28,6 +28,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.agree = YES;
+        self.backgroundColor = kWhiteColor;
         [self buildUI];
         [self addNotifications];
     }
@@ -63,6 +64,10 @@
     }];
     registerButton.enabled = NO;
     [registerButton setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:kMainColor];
+    registerButton.layer.cornerRadius = 2;
+    registerButton.layer.masksToBounds = YES;
+    [registerButton setTitleColor:kBlackColor forState:UIControlStateNormal];
+    [registerButton setTitleColor:kWhiteColor forState:UIControlStateDisabled];
     [self addSubview:registerButton];
     self.registerButton = registerButton;
     

@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UMSocial.h"
+#import <UMSocialCore/UMSocialCore.h>
 
 @interface ShareSnsUtils : NSObject
 
 #pragma mark - shareSns
-+ (void)shareSnsOnViewController:(UIViewController *)viewController delegate:(id<UMSocialUIDelegate>)delegeta;
-+ (void)shareSnsOnViewController:(UIViewController *)viewController shareTitle:(NSString *)shareTitle shareText:(NSString *)shareText shareImage:(NSString *)shareImage shareUrl:(NSString *)shareUrl delegate:(id<UMSocialUIDelegate>)delegate;
+//+ (void)shareSnsOnViewController:(UIViewController *)viewController delegate:(id<UMSocialUIDelegate>)delegeta;
+//+ (void)shareSnsOnViewController:(UIViewController *)viewController shareTitle:(NSString *)shareTitle shareText:(NSString *)shareText shareImage:(NSString *)shareImage shareUrl:(NSString *)shareUrl delegate:(id<UMSocialUIDelegate>)delegate;
+- (void)shareOnViewController:(UIViewController *)viewController;
 
 @end
