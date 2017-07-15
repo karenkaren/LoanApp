@@ -41,6 +41,7 @@
     [self setEnableFooterRefresh:self.enableFooterRefresh];
     [self setEnableHeaderRefresh:self.enableHeaderRefresh];
     [self.view addSubview:self.tableView];
+    
 }
 
 - (void)viewDidLoad {
@@ -51,6 +52,7 @@
     self.enableFooterRefresh = YES;
     self.enableHeaderRefresh = YES;
     self.pageSize = 20;
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
 
 - (void)setEnableHeaderRefresh:(BOOL)enableHeaderRefresh
