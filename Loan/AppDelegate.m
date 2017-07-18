@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "StartPageManager.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import "LoadingViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,7 +26,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = kWhiteColor;
     
-    [[ControllersManager sharedControllersManager] setupProjectRootViewController];
+//    [[ControllersManager sharedControllersManager] setupProjectRootViewController];
+    LoadingViewController * loadingController = [[LoadingViewController alloc] init];
+    self.window.rootViewController = loadingController;
     
     [self.window makeKeyAndVisible];
     

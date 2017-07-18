@@ -17,6 +17,7 @@
 //#import "FeedbackController.h"
 #import "LoginModel.h"
 #import "UIAlertView+Block.h"
+#import "SHRootViewController.h"
 
 @interface ControllersManager ()<UIAlertViewDelegate>
 
@@ -29,10 +30,17 @@ singleton_implementation(ControllersManager)
 #pragma mark - 设置根视图
 - (void)setupProjectRootViewController
 {
-    NSLog(@"web url:%@", WEB_BASE_URL);
-    ProjectRootController * rootController = [[ProjectRootController alloc] init];
-    [[GlobalManager mainWindow] setRootViewController:rootController];
-    self.rootViewController = rootController;
+    NSString * iosStatus = [[NSUserDefaults standardUserDefaults] valueForKey:@"iosStatus"];
+    
+    if ([iosStatus isEqualToString:@"SHENHE"]) {
+        SHRootViewController * rootController = [[SHRootViewController alloc] init];
+        [[GlobalManager mainWindow] setRootViewController:rootController];
+        self.rootViewController = rootController;
+    } else {
+        ProjectRootController * rootController = [[ProjectRootController alloc] init];
+        [[GlobalManager mainWindow] setRootViewController:rootController];
+        self.rootViewController = rootController;
+    }
 }
 
 #pragma mark - private methods

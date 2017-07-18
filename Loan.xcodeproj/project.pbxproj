@@ -20,6 +20,11 @@
 		235E7CFC1EFE16FA0084D2D4 /* LoanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7CFB1EFE16FA0084D2D4 /* LoanTests.m */; };
 		235E7D071EFE16FA0084D2D4 /* LoanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7D061EFE16FA0084D2D4 /* LoanUITests.m */; };
 		2373435A1F0A897200CAF9F5 /* ProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 237343591F0A897200CAF9F5 /* ProfileModel.m */; };
+		238715871F1E400700445005 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 238715861F1E400700445005 /* LoadingViewController.m */; };
+		2387158C1F1E547500445005 /* SHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2387158B1F1E547500445005 /* SHHomeViewController.m */; };
+		2387158F1F1E54B200445005 /* SHRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2387158E1F1E54B200445005 /* SHRootViewController.m */; };
+		238715931F1E591000445005 /* SHHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 238715921F1E591000445005 /* SHHomeView.m */; };
+		238715971F1E59C500445005 /* SHBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 238715961F1E59C500445005 /* SHBaseModel.m */; };
 		23B7DF7C1EFE3883000F89F8 /* ProjectRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF7B1EFE3883000F89F8 /* ProjectRootController.m */; };
 		23B7DF821EFE396D000F89F8 /* HomeRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF811EFE396D000F89F8 /* HomeRootController.m */; };
 		23B7DF921EFE39C2000F89F8 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7DF8B1EFE39C2000F89F8 /* AccountView.m */; };
@@ -157,6 +162,16 @@
 		235E7D081EFE16FA0084D2D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		237343581F0A897200CAF9F5 /* ProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileModel.h; sourceTree = "<group>"; };
 		237343591F0A897200CAF9F5 /* ProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileModel.m; sourceTree = "<group>"; };
+		238715851F1E400700445005 /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
+		238715861F1E400700445005 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
+		2387158A1F1E547500445005 /* SHHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHHomeViewController.h; sourceTree = "<group>"; };
+		2387158B1F1E547500445005 /* SHHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHHomeViewController.m; sourceTree = "<group>"; };
+		2387158D1F1E54B200445005 /* SHRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHRootViewController.h; sourceTree = "<group>"; };
+		2387158E1F1E54B200445005 /* SHRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHRootViewController.m; sourceTree = "<group>"; };
+		238715911F1E591000445005 /* SHHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHHomeView.h; sourceTree = "<group>"; };
+		238715921F1E591000445005 /* SHHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHHomeView.m; sourceTree = "<group>"; };
+		238715951F1E59C500445005 /* SHBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBaseModel.h; sourceTree = "<group>"; };
+		238715961F1E59C500445005 /* SHBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHBaseModel.m; sourceTree = "<group>"; };
 		23B7DF781EFE370D000F89F8 /* Loan-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Loan-Prefix.pch"; sourceTree = "<group>"; };
 		23B7DF7A1EFE3883000F89F8 /* ProjectRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectRootController.h; sourceTree = "<group>"; };
 		23B7DF7B1EFE3883000F89F8 /* ProjectRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectRootController.m; sourceTree = "<group>"; };
@@ -463,6 +478,45 @@
 			children = (
 				237343581F0A897200CAF9F5 /* ProfileModel.h */,
 				237343591F0A897200CAF9F5 /* ProfileModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		238715881F1E53DE00445005 /* ShenHe */ = {
+			isa = PBXGroup;
+			children = (
+				238715941F1E599E00445005 /* Model */,
+				238715901F1E57C900445005 /* Root */,
+				238715891F1E544400445005 /* Home */,
+			);
+			name = ShenHe;
+			sourceTree = "<group>";
+		};
+		238715891F1E544400445005 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2387158A1F1E547500445005 /* SHHomeViewController.h */,
+				2387158B1F1E547500445005 /* SHHomeViewController.m */,
+				238715911F1E591000445005 /* SHHomeView.h */,
+				238715921F1E591000445005 /* SHHomeView.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		238715901F1E57C900445005 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				2387158D1F1E54B200445005 /* SHRootViewController.h */,
+				2387158E1F1E54B200445005 /* SHRootViewController.m */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		238715941F1E599E00445005 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				238715951F1E59C500445005 /* SHBaseModel.h */,
+				238715961F1E59C500445005 /* SHBaseModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -868,6 +922,8 @@
 				23B7E0431EFE3BCB000F89F8 /* BaseTableViewController.m */,
 				23B7E0A11EFE6BB4000F89F8 /* BaseCollectionController.h */,
 				23B7E0A21EFE6BB4000F89F8 /* BaseCollectionController.m */,
+				238715851F1E400700445005 /* LoadingViewController.h */,
+				238715861F1E400700445005 /* LoadingViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1055,6 +1111,7 @@
 		23B7E0881EFE3D08000F89F8 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				238715881F1E53DE00445005 /* ShenHe */,
 				23B7DF791EFE3860000F89F8 /* Root */,
 				23B7DF7E1EFE3942000F89F8 /* Home */,
 				23B7DF981EFE3A25000F89F8 /* Loan */,
@@ -1382,6 +1439,7 @@
 				235652DA1F0BC8CE00A6D6C3 /* FilterView.m in Sources */,
 				23B7E0281EFE3B7E000F89F8 /* IntroductionView.m in Sources */,
 				23B7E0451EFE3BCB000F89F8 /* BaseViewController.m in Sources */,
+				238715931F1E591000445005 /* SHHomeView.m in Sources */,
 				23B7E0851EFE3CEB000F89F8 /* RetrieveModel.m in Sources */,
 				23B7E07D1EFE3CEB000F89F8 /* LoginModel.m in Sources */,
 				23B7DFE21EFE3AE9000F89F8 /* ImagesManager.m in Sources */,
@@ -1400,6 +1458,7 @@
 				23B7E09D1EFE44F9000F89F8 /* LoginHeaderView.m in Sources */,
 				23D43B091EFFE54C006371CE /* RecordController.m in Sources */,
 				23B7E0A01EFE5220000F89F8 /* SettingController.m in Sources */,
+				238715871F1E400700445005 /* LoadingViewController.m in Sources */,
 				23B7E09A1EFE40C4000F89F8 /* HomeModel.m in Sources */,
 				23B7E07A1EFE3CEB000F89F8 /* CaptchaView.m in Sources */,
 				23B7E0291EFE3B7E000F89F8 /* SplashView.m in Sources */,
@@ -1429,6 +1488,7 @@
 				23B7E0831EFE3CEB000F89F8 /* UserModifyController.m in Sources */,
 				23B7E07C1EFE3CEB000F89F8 /* UserLoginController.m in Sources */,
 				23B7DFD61EFE3ADB000F89F8 /* Defines.m in Sources */,
+				2387158F1F1E54B200445005 /* SHRootViewController.m in Sources */,
 				23B7E00A1EFE3B20000F89F8 /* APIUrlConstants.m in Sources */,
 				23B7DF921EFE39C2000F89F8 /* AccountView.m in Sources */,
 				23B7E0A31EFE6BB4000F89F8 /* BaseCollectionController.m in Sources */,
@@ -1441,8 +1501,10 @@
 				23B7E0441EFE3BCB000F89F8 /* BaseNavigationController.m in Sources */,
 				23B7E00E1EFE3B20000F89F8 /* CustomTextField.m in Sources */,
 				23B7DFC61EFE3AC1000F89F8 /* UIImage+Extension.m in Sources */,
+				238715971F1E59C500445005 /* SHBaseModel.m in Sources */,
 				23B7E00D1EFE3B20000F89F8 /* CustomFont.m in Sources */,
 				23B7DFC21EFE3AC1000F89F8 /* UIBarButtonItem+ClearBackground.m in Sources */,
+				2387158C1F1E547500445005 /* SHHomeViewController.m in Sources */,
 				23B7E0351EFE3BAC000F89F8 /* BaseModel.m in Sources */,
 				23B7DFC01EFE3AC1000F89F8 /* NSString+Common.m in Sources */,
 				23B7DFE91EFE3B08000F89F8 /* BaseJSActions.m in Sources */,
