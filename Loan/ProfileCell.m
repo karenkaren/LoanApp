@@ -20,15 +20,6 @@
 
 @implementation ProfileCell
 
-//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-//{
-//    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-//    if (self) {
-//        [self addAllSubviews];
-//    }
-//    return self;
-//}
-
 - (instancetype)initWithProfileType:(ProfileType)type reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
@@ -67,10 +58,10 @@
     [self addTitleLabel];
     
     self.valueTextField = [[UITextField alloc] init];
+    self.valueTextField.font = kFont(14);
     self.valueTextField.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldValueChanged:) name:UITextFieldTextDidChangeNotification object:nil];
     [self.contentView addSubview:self.valueTextField];
-//    [self.valueTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.valueTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel.mas_right);
         make.top.height.equalTo(self.titleLabel);
@@ -96,6 +87,7 @@
     }];
     
     self.valueTextField = [[UITextField alloc] init];
+    self.valueTextField.font = kFont(14);
     self.valueTextField.delegate = self;
     [self.contentView addSubview:self.valueTextField];
     
@@ -126,7 +118,9 @@
 {
     _cellData = cellData;
     self.titleLabel.text = cellData[kProfileTitle];
-    self.valueTextField.placeholder = cellData[kProfilePlaceholder];
+    
+    NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:cellData[kProfilePlaceholder] attributes:@{NSFontAttributeName : kFont(14)}] ;
+    self.valueTextField.attributedPlaceholder = attributedString;
     self.valueTextField.text = cellData[kProfileValue];
     self.switchButton.on = [cellData[kProfileValue] boolValue];
 }
@@ -148,6 +142,10 @@
     UITextField * textField = notification.object;
     if (textField != self.valueTextField) {
         return;
+    }
+    NSInteger limitCount = [self.cellData[kProfileLimitCount] integerValue];
+    if (textField.text.length > limitCount) {
+        textField.text = [textField.text substringToIndex:limitCount];
     }
     if (self.textChangedBlock) {
         self.textChangedBlock(self.cellData[kProfileKey], textField.text);

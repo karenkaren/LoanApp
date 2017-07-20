@@ -11,6 +11,7 @@
 
 @interface HomeRootHeaderView : UICollectionReusableView
 
+@property (nonatomic, copy) void(^selectedBannerBlock)(BannerModel * banner);
 - (void)refreshHeaderViewWithBanners:(NSArray<BannerModel *> *)banners;
 
 @end

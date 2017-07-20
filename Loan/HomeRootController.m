@@ -11,6 +11,7 @@
 //#import "HomeModel.h"
 #import "HomeRootCell.h"
 #import "ProductDetailController.h"
+#import "BaseWebViewController.h"
 
 @interface HomeRootController ()<BMKLocationServiceDelegate>
 
@@ -84,6 +85,16 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     self.homeRootHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+    kWeakSelf
+    self.homeRootHeaderView.selectedBannerBlock = ^(BannerModel *banner) {
+        kStrongSelf
+        if (![NSString isEmpty:banner.linkUrl]) {
+            BaseWebViewController * webViewController = [[BaseWebViewController alloc] initWithURL:banner.linkUrl];
+            webViewController.hidesBottomBarWhenPushed = YES;
+            [strongSelf.navigationController pushViewController:webViewController animated:YES];
+        }
+        
+    };
     
     return self.homeRootHeaderView;
 }

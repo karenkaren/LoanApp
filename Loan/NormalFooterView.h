@@ -12,6 +12,9 @@
 
 @property (nonatomic, copy) void(^buttonClickBlock)(UIButton * button);
 @property (nonatomic, strong) UIButton * footerButton;
+@property (nonatomic, assign) BOOL hideTopLine;
+
 - (instancetype)initWithTitle:(NSString *)title;
+
 
 @end

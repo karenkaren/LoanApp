@@ -44,7 +44,7 @@
 - (void)addAllSubviews
 {
     for (int i = 0; i < _titlesString.count; i++) {
-        UIButton * button = [UIButton createButtonWithTitle:_titlesString[i] color:[UIColor grayColor] font:kFont(18) block:^(UIButton *button) {
+        UIButton * button = [UIButton createButtonWithTitle:_titlesString[i] color:[UIColor grayColor] font:kFont(13) block:^(UIButton *button) {
             [self changeSelectStatus:button];
         }];
         button.titleLabel.font = kFont(16);

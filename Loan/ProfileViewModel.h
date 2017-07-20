@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 #define kProfileTitle       @"title"
 #define kProfilePlaceholder @"placeholder"
 #define kProfileValue       @"value"

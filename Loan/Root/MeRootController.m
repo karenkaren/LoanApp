@@ -88,6 +88,7 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NormalCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.font = kFont(14);
     NSDictionary * cellDic = self.originalDatas[indexPath.row];
     cell.textLabel.text = cellDic[@"title"];
     cell.imageView.image = [UIImage imageNamed:cellDic[@"image"]];

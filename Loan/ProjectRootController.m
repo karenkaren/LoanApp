@@ -32,7 +32,7 @@
     // 1.首页
     HomeRootController * home = [[HomeRootController alloc] init];
     BaseNavigationController * homeNav = [[BaseNavigationController alloc] initWithRootViewController:home];
-    UITabBarItem * item1 = [[UITabBarItem alloc] initWithTitle:@"首页"
+    UITabBarItem * item1 = [[UITabBarItem alloc] initWithTitle:@"神马贷款"
                                                         image:[[UIImage imageNamed:@"tab_home_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                                                 selectedImage:[[UIImage imageNamed:@"tab_home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     home.tabBarItem = item1;

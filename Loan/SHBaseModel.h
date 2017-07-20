@@ -10,4 +10,8 @@
 
 @interface SHBaseModel : BaseModel
 
++ (void)userAuthWithParams:(NSDictionary *)params block:(APIResultBlock)block;
++ (void)queryUserAuthStatusWithBlock:(APIResultDataBlock)block;
++ (void)applySubmitWithBlock:(APIResultBlock)block;
+
 @end

@@ -50,6 +50,12 @@
                 [self.profileData setValue:esString(dic[kProfileValue]) forKey:dic[kProfileKey]];
             }
         }
+        if (esString(self.profileData[kProfileKeyOfName])) {
+            [[NSUserDefaults standardUserDefaults] setValue:esString(self.profileData[kProfileKeyOfName]) forKey:kUserName];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoChangedNotification" object:nil];
+        }
+        
         [self changeButtonStatus];
         [self.tableView reloadData];
     }];
@@ -178,6 +184,7 @@
     [ProfileModel updateProfileInfoWithParams:self.profileData block:^(id response, NSError *error) {
         NSLog(@"个人资料修改成功");
         [[NSUserDefaults standardUserDefaults] setValue:self.profileData[kProfileKeyOfName] forKey:kUserName];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoChangedNotification" object:nil];
         [self.navigationController popViewControllerAnimated:YES];
     }];

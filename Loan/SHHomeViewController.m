@@ -8,6 +8,10 @@
 
 #import "SHHomeViewController.h"
 #import "SHHomeView.h"
+#import "SHProfileInfoController.h"
+#import "SHBaseModel.h"
+#import "SHBasicInfoController.h"
+#import "SHProgressController.h"
 
 @interface SHHomeViewController ()
 
@@ -39,7 +43,46 @@
     
     homeView.applyClickBlock = ^(UIButton *button) {
         DLog(@"start apply");
+        [ControllersManager actionWhenLogin:^{
+            [self checkUserStatus];
+        }];
     };
+}
+
+- (void)checkUserStatus
+{
+    [self showWaitingIcon];
+    [SHBaseModel queryUserAuthStatusWithBlock:^(id response, id data, NSError *error) {
+        [self dismissWaitingIcon];
+        if (!error) {
+            BOOL isRealName = [data[@"isRealName"] boolValue];
+            BOOL isBasicInfo = [data[@"isBasicInfo"] boolValue];
+            BOOL isApplySubmit = [data[@"isApplySubmit"] boolValue];
+
+            if (!isRealName) {
+                SHProfileInfoController * profileInfoController = [[SHProfileInfoController alloc] init];
+                profileInfoController.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:profileInfoController animated:YES];
+                return;
+            }
+            
+            if (!isBasicInfo) {
+                DLog(@"未填写基本信息");
+                SHBasicInfoController * basicInfoController = [[SHBasicInfoController alloc] init];
+                basicInfoController.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:basicInfoController animated:YES];
+                return;
+            }
+            
+            if (isApplySubmit) {
+                DLog(@"已经提交申请");
+                SHProgressController * progressController = [[SHProgressController alloc] init];
+                progressController.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:progressController animated:YES];
+            }
+        }
+    }];
+    
 }
 
 @end

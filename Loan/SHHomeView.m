@@ -35,7 +35,7 @@
     maxApplyLimitTitleLabel.textAlignment = NSTextAlignmentCenter;
     [headerView addSubview:maxApplyLimitTitleLabel];
     
-    UIImageView * progressImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_about"]];
+    UIImageView * progressImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"daohangtiao"]];
     [headerView addSubview:progressImageView];
     
     UILabel * creditLimitTitleLabel = [UILabel createLabelWithText:@"信用额度（元）" font:kFont(13) color:kWhiteColor];
@@ -59,7 +59,7 @@
     [headerView addSubview:vertialLineView];
     
     kWeakSelf
-    UIButton * applyButton = [UIButton createButtonWithTitle:@"开始申请" color:kWhiteColor font:kFont(18) block:^(UIButton *button) {
+    UIButton * applyButton = [UIButton createButtonWithTitle:@"开始申请" color:kBlackColor font:kFont(18) block:^(UIButton *button) {
         kStrongSelf
         if (strongSelf.applyClickBlock) {
             strongSelf.applyClickBlock(button);
@@ -70,7 +70,7 @@
     applyButton.backgroundColor = kMainColor;
     [self addSubview:applyButton];
     
-    UILabel * explainLabel = [UILabel createLabelWithText:@"神马贷款不向在校大学生提供借款服务" font:kFont(14) color:kDisabledColor];
+    UILabel * explainLabel = [UILabel createLabelWithText:@"神马贷款不向在校大学生提供借款服务" font:kFont(14) color:kColor666666];
     explainLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:explainLabel];
     

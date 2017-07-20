@@ -12,6 +12,7 @@
 
 {
     NSString * _title;
+    UIView * _lineView;
 }
 
 @end
@@ -33,9 +34,9 @@
     UIView * backgroundView = [[UIView alloc] init];
     [self addSubview:backgroundView];
     
-    UIView * lineView = [[UIView alloc] init];
-    lineView.backgroundColor = kLineColor;
-    [self addSubview:lineView];
+    _lineView = [[UIView alloc] init];
+    _lineView.backgroundColor = kLineColor;
+    [self addSubview:_lineView];
     
     kWeakSelf
     UIButton * button = [UIButton createButtonWithTitle:_title color:kBlackColor font:kFont(18) block:^(UIButton *button) {
@@ -56,7 +57,7 @@
         make.edges.equalTo(self);
     }];
     
-    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.width.equalTo(backgroundView);
         make.height.equalTo(@(kLineThick));
     }];
@@ -67,6 +68,12 @@
         make.width.equalTo(backgroundView).offset(-40);
         make.height.equalTo(backgroundView).offset(-20);
     }];
+}
+
+- (void)setHideTopLine:(BOOL)hideTopLine
+{
+    _hideTopLine = hideTopLine;
+    _lineView.hidden = hideTopLine;
 }
 
 @end

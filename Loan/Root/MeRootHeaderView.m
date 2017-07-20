@@ -47,19 +47,9 @@
     self.userNameLabel = [[UILabel alloc] init];
     self.userNameLabel.textColor = kTextColor;
     self.userNameLabel.font = kFont(18);
-    self.userNameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kUserName];
+    self.userNameLabel.text = [[NSUserDefaults standardUserDefaults] valueForKey:kUserName];
     [self addSubview:self.userNameLabel];
 
-//    kWeakSelf
-//    self.userInfoButton = [UIButton createButtonWithIconName:@"icon_arrow" block:^(UIButton *button) {
-//        kStrongSelf
-//        if (strongSelf.userInfoClickBlock) {
-//            strongSelf.userInfoClickBlock(button);
-//        }
-//    }];
-//    [self.userInfoButton setEnlargeEdge:50];
-//    [self addSubview:self.userInfoButton];
-    
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(30);
         make.top.equalTo(self).offset(40);

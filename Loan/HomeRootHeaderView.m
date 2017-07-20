@@ -8,7 +8,7 @@
 
 #import "HomeRootHeaderView.h"
 
-@interface HomeRootHeaderView ()
+@interface HomeRootHeaderView ()<BannerViewDelegate>
 
 @property (nonatomic, strong) BannerView * bannerView;
 
@@ -34,6 +34,7 @@
 - (void)buildUI
 {
     self.bannerView = [[BannerView alloc] init];
+    self.bannerView.delegate = self;
     [self addSubview:self.bannerView];
     
     UILabel * label = [[UILabel alloc] init];
@@ -74,6 +75,13 @@
 {
     if (banners) {
         self.bannerView.bannersList = banners;
+    }
+}
+
+- (void)bannerView:(BannerView *)bannerView banner:(BannerModel *)banner
+{
+    if (self.selectedBannerBlock) {
+        self.selectedBannerBlock(banner);
     }
 }
 

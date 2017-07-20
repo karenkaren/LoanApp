@@ -20,4 +20,34 @@
     return label;
 }
 
+- (void)changeLineSpace:(CGFloat)space
+{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.text];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:space];
+    [paragraphStyle setAlignment:NSTextAlignmentCenter];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, self.text.length)];
+    self.attributedText = attributedString;
+    [self sizeToFit];
+}
+
+- (void)changeWordSpace:(CGFloat)space
+{
+    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSKernAttributeName:@(space)}];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, self.text.length)];
+    self.attributedText = attributedString;
+    [self sizeToFit];
+}
+
+- (void)changeLineSpace:(CGFloat)lineSpace wordSpace:(CGFloat)wordSpace
+{
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{NSKernAttributeName:@(wordSpace)}];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:lineSpace];
+    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, self.text.length)];
+    self.attributedText = attributedString;
+    [self sizeToFit];
+}
+
 @end
