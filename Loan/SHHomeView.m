@@ -48,7 +48,7 @@
     _sliderView = [[UISlider alloc] init];
     _sliderView.minimumTrackTintColor = kWhiteColor;
     _sliderView.maximumTrackTintColor = kDisabledColor;
-    [_sliderView setThumbImage:[UIImage imageNamed:@"checked_single"] forState:UIControlStateNormal];
+    [_sliderView setThumbImage:[UIImage imageNamed:@"sliderThumb"] forState:UIControlStateNormal];
     _sliderView.minimumValue = 1000;
     _sliderView.maximumValue = 10000;
     [_sliderView setValue:10000];

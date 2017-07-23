@@ -18,6 +18,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    NSString * imageName = @"";
+    if (kScreenHeight == 960 * 0.5) {
+        imageName = @"640-960";
+    } else if (kScreenHeight == 1136 * 0.5) {
+        imageName = @"640-1136";
+    } else if (kScreenHeight == 1334 * 0.5) {
+        imageName = @"750-1134";
+    } else {
+        imageName = @"1242-2208";
+    }
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    [self.view addSubview:imageView];
+    
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
     [self getIosStatus];
 }
 
