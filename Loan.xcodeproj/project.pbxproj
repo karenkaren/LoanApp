@@ -1353,7 +1353,7 @@
 				TargetAttributes = {
 					235E7CDD1EFE16F90084D2D4 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = NVN8DP5FL2;
+						DevelopmentTeam = 5347794US7;
 						ProvisioningStyle = Automatic;
 					};
 					235E7CF61EFE16FA0084D2D4 = {
@@ -1715,13 +1715,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NVN8DP5FL2;
+				DEVELOPMENT_TEAM = 5347794US7;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Loan/Loan-Prefix.pch";
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1734,13 +1734,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ShangHai P&C Information Technology Co., Ltd";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NVN8DP5FL2;
+				DEVELOPMENT_TEAM = 5347794US7;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Loan/Loan-Prefix.pch";
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};

@@ -8,6 +8,15 @@
 
 #import "SHHomeView.h"
 
+@interface SHHomeView ()
+{
+    UILabel * _explainLabel;
+    UISlider * _sliderView;
+    UILabel * _maxApplyLimitLable;
+}
+
+@end
+
 @implementation SHHomeView
 
 - (instancetype)init
@@ -30,13 +39,22 @@
     UILabel * maxApplyLimitLable = [UILabel createLabelWithText:@"10000.00" font:kFont(60) color:kWhiteColor];
     maxApplyLimitLable.textAlignment = NSTextAlignmentCenter;
     [headerView addSubview:maxApplyLimitLable];
+    _maxApplyLimitLable = maxApplyLimitLable;
     
     UILabel * maxApplyLimitTitleLabel = [UILabel createLabelWithText:@"最高借款额度（元）" font:kFont(14) color:kWhiteColor];
     maxApplyLimitTitleLabel.textAlignment = NSTextAlignmentCenter;
     [headerView addSubview:maxApplyLimitTitleLabel];
     
-    UIImageView * progressImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"daohangtiao"]];
-    [headerView addSubview:progressImageView];
+    _sliderView = [[UISlider alloc] init];
+    _sliderView.minimumTrackTintColor = kWhiteColor;
+    _sliderView.maximumTrackTintColor = kDisabledColor;
+    [_sliderView setThumbImage:[UIImage imageNamed:@"checked_single"] forState:UIControlStateNormal];
+    _sliderView.minimumValue = 1000;
+    _sliderView.maximumValue = 10000;
+    [_sliderView setValue:10000];
+    [_sliderView addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [headerView addSubview:_sliderView];
+
     
     UILabel * creditLimitTitleLabel = [UILabel createLabelWithText:@"信用额度（元）" font:kFont(13) color:kWhiteColor];
     creditLimitTitleLabel.textAlignment = NSTextAlignmentCenter;
@@ -73,6 +91,7 @@
     UILabel * explainLabel = [UILabel createLabelWithText:@"神马贷款不向在校大学生提供借款服务" font:kFont(14) color:kColor666666];
     explainLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:explainLabel];
+    _explainLabel = explainLabel;
     
     [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.width.equalTo(self);
@@ -95,7 +114,7 @@
         make.height.equalTo(@14);
     }];
     
-    [progressImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_sliderView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(headerView).offset(kCommonMargin);
         make.width.equalTo(headerView).offset(-2 * kCommonMargin);
         make.top.equalTo(maxApplyLimitTitleLabel.mas_bottom).offset(kAdaptiveBaseIphone6(35));
@@ -104,7 +123,7 @@
     
     [creditLimitTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(headerView).multipliedBy(0.5);
-        make.top.equalTo(progressImageView.mas_bottom).offset(58);
+        make.top.equalTo(_sliderView.mas_bottom).offset(58);
         make.left.equalTo(self);
         make.height.equalTo(@13);
     }];
@@ -118,7 +137,7 @@
     
     [loanDeadlineTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(headerView).multipliedBy(0.5);
-        make.top.equalTo(progressImageView.mas_bottom).offset(58);
+        make.top.equalTo(_sliderView.mas_bottom).offset(58);
         make.left.equalTo(creditLimitTitleLabel.mas_right);
         make.height.equalTo(@13);
     }];
@@ -149,6 +168,18 @@
         make.top.equalTo(applyButton.mas_bottom).offset(kAdaptiveBaseIphone6(48));
         make.height.equalTo(@14);
     }];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.contentSize = CGSizeMake(kScreenWidth, _explainLabel.bottom + 20);
+}
+
+- (void)sliderValueChanged:(UISlider *)slider
+{
+    NSInteger sliderValue = slider.value;
+    _maxApplyLimitLable.text = [[NSString alloc] initWithFormat:@"%.2f", sliderValue * 1.0];
 }
 
 @end

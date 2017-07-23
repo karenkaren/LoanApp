@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SHHomeView : UIView
+@interface SHHomeView : UIScrollView
 
 @property (nonatomic, copy) void(^applyClickBlock)(UIButton * button);
 

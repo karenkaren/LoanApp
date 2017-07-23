@@ -15,6 +15,9 @@
 
 @interface SHHomeViewController ()
 
+{
+    SHHomeView * _homeView;
+}
 @end
 
 @implementation SHHomeViewController
@@ -22,13 +25,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = NO;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -36,6 +39,7 @@
     // Do any additional setup after loading the view.
     SHHomeView * homeView = [[SHHomeView alloc] init];
     [self.view addSubview:homeView];
+    _homeView = homeView;
     
     [homeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);

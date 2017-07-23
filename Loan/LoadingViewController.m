@@ -23,7 +23,7 @@
 
 - (void)getIosStatus
 {
-    [[NetAPIManager sharedNetAPIManager] requestWithPath:@"https://www.flashcredit.cn/api/v1/ios/check" params:nil methodType:Get block:^(id response, NSError *error) {
+    [[NetAPIManager sharedNetAPIManager] requestWithPath:@"https://www.flashcredit.cn/api/v1/ios/check" params:nil methodType:Get autoShowError:NO block:^(id response, NSError *error) {
         if (!error) {
             BaseDto * dto = [BaseDto mj_objectWithKeyValues:response];
             NSString * iosStatus = dto.data[@"iosStatus"];

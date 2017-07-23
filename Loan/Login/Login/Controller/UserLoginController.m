@@ -58,16 +58,16 @@
     
 #if (defined(ADHOC) || defined(DEBUG))
     
-    UIButton * severButton = [[UIButton alloc] init];
-    [severButton setTitle:@"设置服务器" forState:UIControlStateNormal];
-    [severButton setDisenableBackgroundColor:kHexColor(0xcccccc) enableBackgroundColor:[UIColor blueColor]];
-    [severButton addTarget:self action:@selector(setServer) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:severButton];
-    
-    [severButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(kScreenWidth, kGeneralSize));
-        make.left.bottom.equalTo(userLoginView);
-    }];
+//    UIButton * severButton = [[UIButton alloc] init];
+//    [severButton setTitle:@"设置服务器" forState:UIControlStateNormal];
+//    [severButton setDisenableBackgroundColor:kHexColor(0xcccccc) enableBackgroundColor:[UIColor blueColor]];
+//    [severButton addTarget:self action:@selector(setServer) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:severButton];
+//    
+//    [severButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.mas_equalTo(CGSizeMake(kScreenWidth, kGeneralSize));
+//        make.left.bottom.equalTo(userLoginView);
+//    }];
     
 #endif
 
