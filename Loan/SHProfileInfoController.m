@@ -39,31 +39,38 @@
         [strongSelf updateProfileInfo];
     };
     self.tableView.tableFooterView = _footerView;
-
+    self.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kStatusBarHeight - kNavigationBarHeight);
     self.enableRefresh = NO;
     
+    self.profileData = [NSMutableDictionary dictionary];
     NSString * mobileNo = [[NSUserDefaults standardUserDefaults] valueForKey:kMobileNo];
+    [self.profileData setValue:[NSString isEmpty:mobileNo] ? @"" : mobileNo forKey:@"phoneNo"];
+    [self loadCellData];
+}
+
+- (void)loadCellData
+{
     self.cellData = @[@{kProfileTitle : @"真实姓名",
-                        kProfileValue : @"",
+                        kProfileValue : esString(self.profileData[@"userName"]),
                         kProfilePlaceholder : @"请输入您的姓名",
                         kProfileLimitCount : @100,
                         kProfileType : @(ProfileTypeInput),
-                        kProfileKey : @"userName"},
+                        kProfileKey : @"userName",
+                        kProfileKeyboardType : @(UIKeyboardTypeNamePhonePad)},
                       @{kProfileTitle : @"身份证号",
-                        kProfileValue : @"",
+                        kProfileValue : esString(self.profileData[@"identityCode"]),
                         kProfilePlaceholder : @"请输入身份证号码",
                         kProfileLimitCount : @18,
                         kProfileType : @(ProfileTypeInput),
-                        kProfileKey : @"identityCode"},
+                        kProfileKey : @"identityCode",
+                        kProfileKeyboardType : @(UIKeyboardTypeNumbersAndPunctuation)},
                       @{kProfileTitle : @"手机号码",
-                        kProfileValue : [NSString isEmpty:mobileNo] ? @"" : mobileNo,
+                        kProfileValue : esString(self.profileData[@"phoneNo"]),
                         kProfilePlaceholder : @"请选择手机号码",
                         kProfileLimitCount : @11,
                         kProfileType : @(ProfileTypeInput),
-                        kProfileKey : @"phoneNo"}];
-    
-    self.profileData = [NSMutableDictionary dictionary];
-    [self.profileData setValue:[NSString isEmpty:mobileNo] ? @"" : mobileNo forKey:@"phoneNo"];
+                        kProfileKey : @"phoneNo",
+                        kProfileKeyboardType : @(UIKeyboardTypeNumberPad)}];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -89,6 +96,7 @@
             [self.profileData removeObjectForKey:key];
             [self changeButtonStatus];
         }
+        [self loadCellData];
     };
     return cell;
 }
@@ -130,11 +138,25 @@
 
 - (void)updateProfileInfo
 {
+    [self.view endEditing:YES];
+    if (![NSString isValidIDCardNumber:self.profileData[@"identityCode"]]) {
+        [NSObject showMessage:@"身份证号输入错误，请重新输入"];
+        return;
+    }
+    
+    if (![NSString isPhoneNumber:self.profileData[@"phoneNo"]]) {
+        [NSObject showMessage:@"手机号输入错误，请重新输入"];
+        return;
+    }
+    
+    [self showWaitingIcon];
     [SHBaseModel userAuthWithParams:self.profileData block:^(id response, NSError *error) {
         DLog(@"个人资料修改成功");
+        [self dismissWaitingIcon];
         [[NSUserDefaults standardUserDefaults] setValue:self.profileData[@"userName"] forKey:kUserName];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoChangedNotification" object:nil];
-        //////////
+        SHBasicInfoController * basicInfoController = [[SHBasicInfoController alloc] init];
+        [self.navigationController pushViewController:basicInfoController animated:YES];
     }];
 }
 

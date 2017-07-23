@@ -51,7 +51,7 @@
 - (void)buildUI
 {
     _contentTextView = [[PlaceHolderTextView alloc] initWithFrame:CGRectMake(kCommonMargin, kCommonMargin, kScreenWidth - 2 * kCommonMargin, kAdaptiveBaseIphone6(88))];
-    _contentTextView.placeholder = @"如您的问题要马上反馈，请联系公众号 “加油花”";
+    _contentTextView.placeholder = @"如您的问题要马上反馈，请联系公众号 “神马贷款”";
     _contentTextView.delegate = self;
     _contentTextView.layer.borderWidth = kLineThick;
     _contentTextView.layer.borderColor = kLineColor.CGColor;
@@ -62,6 +62,9 @@
     CustomButton * commitButton = [CustomButton createMiddleBGButtonWithTitle:@"提交" actionBolck:^(UIButton *button) {
         [self commitAdvice];
     }];
+    [commitButton setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:kMainColor];
+    [commitButton setTitleColor:kWhiteColor forState:UIControlStateDisabled];
+    [commitButton setTitleColor:kBlackColor forState:UIControlStateNormal];
     commitButton.centerX = self.view.centerX;
     commitButton.top = _contentTextView.bottom + kAdaptiveBaseIphone6(32);
     commitButton.enabled = NO;
@@ -92,6 +95,9 @@
         kTipAlert(@"建议内容不能为空");
         return;
     }
+    
+    [NSObject showMessage:@"提交成功"];
+    [self.navigationController popViewControllerAnimated:YES];
     
 //    NSDictionary *dict = @{@"feedBack" : string};
 //    kWeakSelf

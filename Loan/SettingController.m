@@ -10,6 +10,7 @@
 #import "BaseWebViewController.h"
 #import "FeedbackController.h"
 #import "ShareSnsUtils.h"
+#import "NormalFooterView.h"
 
 @interface SettingController ()
 
@@ -51,29 +52,20 @@
                                @"sel" : @"shareToFriends"},
                              @{@"title" : @"商务合作",
                                @"image" : @"icon_cooperation",
-                               @"sel" : @""}]];
+                               @"sel" : @"cooperate"}]];
 }
 
 - (UIView *)getTableFooterView
 {
-    UIView * footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 70)];
-    
-    UIButton * logoutButton = [UIButton createButtonWithTitle:@"退出登录" color:kBlackColor font:kFont(18) block:^(UIButton *button) {
+    NormalFooterView * footerView = [[NormalFooterView alloc] initWithTitle:@"退出登录"];
+    footerView.height = 80;
+    footerView.width = self.tableView.width;
+    footerView.hideTopLine = YES;
+    footerView.buttonClickBlock = ^(UIButton *button) {
         [[CurrentUser mine] reset];
         [[ControllersManager sharedControllersManager] setupProjectRootViewController];
-    }];
-    logoutButton.layer.cornerRadius = 5;
-    logoutButton.layer.masksToBounds = YES;
-    logoutButton.backgroundColor = kMainColor;
-    [footerView addSubview:logoutButton];
-    
-    [logoutButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(footerView).offset(-30);
-        make.bottom.equalTo(footerView);
-        make.height.equalTo(@(kGeneralSize));
-        make.left.equalTo(footerView).offset(15);
-    }];
-    
+    };
+
     return footerView;
 }
 
@@ -161,6 +153,11 @@
 {
     FeedbackController * feedbackController = [[FeedbackController alloc] init];
     [self.navigationController pushViewController:feedbackController animated:YES];
+}
+
+- (void)cooperate
+{
+    [NSObject showMessage:@"敬请期待"];
 }
 
 @end

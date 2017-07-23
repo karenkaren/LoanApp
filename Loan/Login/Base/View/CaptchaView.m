@@ -36,8 +36,8 @@ static NSInteger timeCount = kTimeCount;
         self.isMessageCode = messageCode;
         self.limitedCount = limitedCount;
         self.placeholder = placeholder;
-        _captchaButtonWidth = messageCode ? 130 : 50;
-        _fontSize = 16;
+        _captchaButtonWidth = messageCode ? 110 : 50;
+        _fontSize = 14;
         [self buildUI];
     }
     return self;
@@ -51,8 +51,8 @@ static NSInteger timeCount = kTimeCount;
         self.isMessageCode = messageCode;
         self.limitedCount = limitedCount;
         self.placeholder = placeholder;
-        _captchaButtonWidth = messageCode ? 130 : 50;
-        _fontSize = 16;
+        _captchaButtonWidth = messageCode ? 110 : 50;
+        _fontSize = 14;
         [self buildUI];
     }
     return self;
@@ -66,8 +66,8 @@ static NSInteger timeCount = kTimeCount;
         self.isMessageCode = messageCode;
         self.limitedCount = limitedCount;
         self.placeholder = placeholder;
-        _captchaButtonWidth = messageCode ? 130 : 50;
-        _fontSize = 16;
+        _captchaButtonWidth = messageCode ? 110 : 50;
+        _fontSize = 14;
         [self buildUI];
     }
     return self;

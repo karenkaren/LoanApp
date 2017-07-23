@@ -53,6 +53,7 @@ static CurrentUser *_currentUser = nil;
     if (_currentUser) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kSessionKey];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kMobileNo];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserName];
         [[NSUserDefaults standardUserDefaults] synchronize];
         /* Clear cookies */
         [GlobalManager deleteAllHTTPCookies];

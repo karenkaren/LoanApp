@@ -14,6 +14,7 @@
 #define kProfileType        @"type"
 #define kProfileKey         @"key"
 #define kProfileLimitCount  @"limitCount"
+#define kProfileKeyboardType @"keyboardType"
 
 // type
 typedef enum : NSUInteger {

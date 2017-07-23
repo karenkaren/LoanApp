@@ -64,9 +64,9 @@
     
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(backgroundView).offset(20);
-        make.bottom.equalTo(backgroundView);
+        make.top.equalTo(backgroundView).offset(20);
         make.width.equalTo(backgroundView).offset(-40);
-        make.height.equalTo(backgroundView).offset(-20);
+        make.height.equalTo(@40);
     }];
 }
 

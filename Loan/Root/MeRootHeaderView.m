@@ -59,11 +59,13 @@
     [self.phoneNoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.avatarImageView.mas_right).offset(24);
         make.bottom.equalTo(self.avatarImageView.mas_centerY);
+        make.right.equalTo(self).offset(-kCommonMargin);
     }];
     
     [self.userNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.phoneNoLabel);
         make.top.equalTo(self.avatarImageView.mas_centerY);
+        make.right.equalTo(self).offset(-kCommonMargin);
     }];
     
 //    [self.userInfoButton mas_makeConstraints:^(MASConstraintMaker *make) {

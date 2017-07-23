@@ -37,7 +37,10 @@
         kStrongSelf
         [strongSelf updateProfileInfo];
     };
+    self.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kStatusBarHeight - kNavigationBarHeight);
     self.tableView.tableFooterView = _footerView;
+    self.enableRefresh = NO;
+    
     self.cellData = [ProfileViewModel getCellDataWithData:nil];
     self.profileData = [NSMutableDictionary dictionary];
     [self.profileData setValue:@NO forKey:kProfileKeyOfCredit];
@@ -110,6 +113,7 @@
             NSLog(@"开关：%d", on);
             [self.profileData setValue:@(on) forKey:kProfileKeyOfCredit];
             [self changeButtonStatus];
+            self.cellData = [ProfileViewModel getCellDataWithData:self.profileData];
         };
     }
     
@@ -121,6 +125,7 @@
             [self.profileData removeObjectForKey:key];
             [self changeButtonStatus];
         }
+        self.cellData = [ProfileViewModel getCellDataWithData:self.profileData];
     };
     return cell;
 }
@@ -167,6 +172,7 @@
                                            textField.text = selectedValue;
                                            [self.profileData setValue:selectedValue forKey:self.cellData[indexPath.row][kProfileKey]];
                                            [self changeButtonStatus];
+                                           self.cellData = [ProfileViewModel getCellDataWithData:self.profileData];
                                        }
                                      cancelBlock:^(ActionSheetStringPicker *picker) {
                                          NSLog(@"Block Picker Canceled");
@@ -181,8 +187,16 @@
 
 - (void)updateProfileInfo
 {
+    [self.view endEditing:YES];
+    if (![NSString isValidIDCardNumber:self.profileData[kProfileKeyOfIDCard]]) {
+        [NSObject showMessage:@"身份证号输入错误，请重新输入"];
+        return;
+    }
+    
+    [self showWaitingIcon];
     [ProfileModel updateProfileInfoWithParams:self.profileData block:^(id response, NSError *error) {
-        NSLog(@"个人资料修改成功");
+        DLog(@"个人资料修改成功");
+        [self dismissWaitingIcon];
         [[NSUserDefaults standardUserDefaults] setValue:self.profileData[kProfileKeyOfName] forKey:kUserName];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoChangedNotification" object:nil];

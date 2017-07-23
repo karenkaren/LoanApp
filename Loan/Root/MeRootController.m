@@ -144,4 +144,9 @@
     [self.navigationController pushViewController:profileController animated:YES];
 }
 
+- (void)goMessage
+{
+    [NSObject showMessage:@"暂无消息"];
+}
+
 @end

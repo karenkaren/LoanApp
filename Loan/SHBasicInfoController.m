@@ -39,47 +39,57 @@
     headerImageView.center = headerView.center;
     [headerView addSubview:headerImageView];
     
+    self.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kStatusBarHeight - kNavigationBarHeight);
     self.tableView.tableHeaderView = headerView;
     [self setFooterView];
     self.enableRefresh = NO;
 
+    self.basicInfoData = [NSMutableDictionary dictionary];
+    [self loadCellData];
+}
+
+- (void)loadCellData
+{
     self.cellData = @[@[@{kProfileTitle : @"收入来源",
-                        kProfileValue : @"",
-                        kProfilePlaceholder : @"请选择您的收入来源",
-                        kProfileLimitCount : @30,
-                        kProfileType : @(ProfileTypeSelect),
-                        kProfileKey : kProfileKeyOfIncome},
-                      @{kProfileTitle : @"居住地址",
-                        kProfileValue : @"",
-                        kProfilePlaceholder : @"请输入居住地址",
-                        kProfileLimitCount : @100,
-                        kProfileType : @(ProfileTypeInput),
-                        kProfileKey : @"address"},
-                      @{kProfileTitle : @"邮箱地址",
-                        kProfileValue : @"",
-                        kProfilePlaceholder : @"请输入邮箱地址",
-                        kProfileLimitCount : @30,
-                        kProfileType : @(ProfileTypeInput),
-                        kProfileKey : @"email"}],
+                          kProfileValue : esString(self.basicInfoData[kProfileKeyOfIncome]),
+                          kProfilePlaceholder : @"请选择您的收入来源",
+                          kProfileLimitCount : @30,
+                          kProfileType : @(ProfileTypeSelect),
+                          kProfileKey : kProfileKeyOfIncome,
+                          kProfileKeyboardType : @(UIKeyboardTypeDefault)},
+                        @{kProfileTitle : @"居住地址",
+                          kProfileValue : esString(self.basicInfoData[@"address"]),
+                          kProfilePlaceholder : @"请输入居住地址",
+                          kProfileLimitCount : @100,
+                          kProfileType : @(ProfileTypeInput),
+                          kProfileKey : @"address",
+                          kProfileKeyboardType : @(UIKeyboardTypeDefault)},
+                        @{kProfileTitle : @"邮箱地址",
+                          kProfileValue : esString(self.basicInfoData[@"email"]),
+                          kProfilePlaceholder : @"请输入邮箱地址",
+                          kProfileLimitCount : @30,
+                          kProfileType : @(ProfileTypeInput),
+                          kProfileKey : @"email",
+                          kProfileKeyboardType : @(UIKeyboardTypeEmailAddress)}],
                       @[@{kProfileTitle : @"紧急联系人",
-                          kProfileValue : @"",
+                          kProfileValue : esString(self.basicInfoData[@"contact"]),
                           kProfilePlaceholder : @"请填写紧急联系人",
                           kProfileLimitCount : @30,
                           kProfileType : @(ProfileTypeInput),
-                          kProfileKey : @"contact"},
+                          kProfileKey : @"contact",
+                          kProfileKeyboardType : @(UIKeyboardTypeDefault)},
                         @{kProfileTitle : @"手机号",
-                          kProfileValue : @"",
+                          kProfileValue : esString(self.basicInfoData[@"phoneNo"]),
                           kProfilePlaceholder : @"请填写手机号",
                           kProfileLimitCount : @11,
                           kProfileType : @(ProfileTypeInput),
-                          kProfileKey : @"phone"}]];
-    
-    self.basicInfoData = [NSMutableDictionary dictionary];
+                          kProfileKey : @"phoneNo",
+                          kProfileKeyboardType : @(UIKeyboardTypeNumberPad)}]];
 }
 
 - (void)setFooterView
 {
-    UIView * tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 130)];
+    UIView * tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 170)];
     
     UIView * topFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 70)];
     [tableFooterView addSubview:topFooterView];
@@ -101,7 +111,7 @@
     [topFooterView addSubview:agreeView2];
     
     _footerView = [[NormalFooterView alloc] initWithTitle:@"提交"];
-    _footerView.height = 60;
+    _footerView.height = 80;
     _footerView.width = self.tableView.width;
     _footerView.top = topFooterView.bottom;
     _footerView.hideTopLine = YES;
@@ -153,6 +163,7 @@
         cell = [[ProfileCell alloc] initWithProfileType:cellType reuseIdentifier:reuseIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+
     cell.cellData = cellData;
     if (cellType == ProfileTypeSelect) {
         cell.selectBlock = ^(UITextField * textField){
@@ -165,6 +176,7 @@
             NSLog(@"开关：%d", on);
             [self.basicInfoData setValue:@(on) forKey:kProfileKeyOfCredit];
             [self changeButtonStatus];
+            [self loadCellData];
         };
     }
     
@@ -176,6 +188,7 @@
             [self.basicInfoData removeObjectForKey:key];
             [self changeButtonStatus];
         }
+        [self loadCellData];
     };
     return cell;
 }
@@ -195,6 +208,7 @@
         return [TableViewDevider getViewWithHeight:10 margin:0 showTopLine:YES showBottomLine:YES];
     } else {
         UIView * sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kGeneralSize)];
+        sectionHeaderView.backgroundColor = kBackgroundColor;
         UILabel * titleLabel = [UILabel createLabelWithText:@"请填写真实有效信息" font:kFont(14) color:kBlackColor];
         titleLabel.width = kScreenWidth - 2 * kCommonMargin;
         titleLabel.left = kCommonMargin;
@@ -238,6 +252,7 @@
                                        doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
                                            textField.text = selectedValue;
                                            [self.basicInfoData setValue:selectedValue forKey:self.cellData[indexPath.section][indexPath.row][kProfileKey]];
+                                           [self loadCellData];
                                            [self changeButtonStatus];
                                        }
                                      cancelBlock:^(ActionSheetStringPicker *picker) {
@@ -257,6 +272,17 @@
 
 - (void)applySubmit
 {
+    [self.view endEditing:YES];
+    if (![NSString isValidEmail:self.basicInfoData[@"email"]]) {
+        [NSObject showMessage:@"邮箱输入错误，请重新输入"];
+        return;
+    }
+    
+    if (![NSString isPhoneNumber:self.basicInfoData[@"phoneNo"]]) {
+        [NSObject showMessage:@"手机号输入错误，请重新输入"];
+        return;
+    }
+    
     [self showWaitingIcon];
     [SHBaseModel applySubmitWithBlock:^(id response, NSError *error) {
         [self dismissWaitingIcon];

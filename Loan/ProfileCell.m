@@ -59,6 +59,7 @@
     
     self.valueTextField = [[UITextField alloc] init];
     self.valueTextField.font = kFont(14);
+    self.valueTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.valueTextField.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldValueChanged:) name:UITextFieldTextDidChangeNotification object:nil];
     [self.contentView addSubview:self.valueTextField];
@@ -117,11 +118,14 @@
 - (void)setCellData:(NSDictionary *)cellData
 {
     _cellData = cellData;
-    self.titleLabel.text = cellData[kProfileTitle];
     
+    self.titleLabel.text = cellData[kProfileTitle];
     NSAttributedString * attributedString = [[NSAttributedString alloc] initWithString:cellData[kProfilePlaceholder] attributes:@{NSFontAttributeName : kFont(14)}] ;
     self.valueTextField.attributedPlaceholder = attributedString;
     self.valueTextField.text = cellData[kProfileValue];
+    if (cellData[kProfileKeyboardType]) {
+        self.valueTextField.keyboardType = [cellData[kProfileKeyboardType] integerValue];
+    }
     self.switchButton.on = [cellData[kProfileValue] boolValue];
 }
 

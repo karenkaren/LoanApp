@@ -59,12 +59,16 @@
     self.identityTextField.limitedCount = 18;
     [self addSubview:self.identityTextField];
     
-    UIButton * submitButton = [UIButton createButtonWithTitle:@"确定" color:kWhiteColor font:kFont(16) block:^(UIButton *button) {
+    UIButton * submitButton = [UIButton createButtonWithTitle:@"确定" color:kBlackColor font:kFont(18) block:^(UIButton *button) {
         if (self.retrieveClickBlock) {
             self.retrieveClickBlock(button);
         }
     }];
     [submitButton setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:kMainColor];
+    [submitButton setTitleColor:kBlackColor forState:UIControlStateNormal];
+    [submitButton setTitleColor:kWhiteColor forState:UIControlStateDisabled];
+    submitButton.layer.cornerRadius = 5;
+    submitButton.layer.masksToBounds = YES;
     [self addSubview:submitButton];
     self.submitButton = submitButton;
     

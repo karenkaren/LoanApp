@@ -123,43 +123,43 @@
     
     [creditLimitTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(headerView).multipliedBy(0.5);
-        make.top.equalTo(_sliderView.mas_bottom).offset(58);
+        make.top.equalTo(_sliderView.mas_bottom).offset(kAdaptiveBaseIphone6(58));
         make.left.equalTo(self);
         make.height.equalTo(@13);
     }];
     
     [creditLimitLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(headerView).multipliedBy(0.5);
-        make.top.equalTo(creditLimitTitleLabel.mas_bottom).offset(10);
+        make.top.equalTo(creditLimitTitleLabel.mas_bottom).offset(kAdaptiveBaseIphone6(10));
         make.left.equalTo(self);
         make.height.equalTo(@15);
     }];
     
     [loanDeadlineTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(headerView).multipliedBy(0.5);
-        make.top.equalTo(_sliderView.mas_bottom).offset(58);
+        make.top.equalTo(_sliderView.mas_bottom).offset(kAdaptiveBaseIphone6(58));
         make.left.equalTo(creditLimitTitleLabel.mas_right);
         make.height.equalTo(@13);
     }];
     
     [loanDeadlineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(headerView).multipliedBy(0.5);
-        make.top.equalTo(loanDeadlineTitleLabel.mas_bottom).offset(10);
+        make.top.equalTo(loanDeadlineTitleLabel.mas_bottom).offset(kAdaptiveBaseIphone6(10));
         make.left.equalTo(creditLimitLabel.mas_right);
         make.height.equalTo(@15);
     }];
     
     [vertialLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(kLineThick));
-        make.bottom.equalTo(headerView).offset(-27);
-        make.top.equalTo(creditLimitTitleLabel).offset(-9);
+        make.bottom.equalTo(headerView).offset(kAdaptiveBaseIphone6(-27));
+        make.top.equalTo(creditLimitTitleLabel).offset(kAdaptiveBaseIphone6(-9));
         make.left.equalTo(loanDeadlineTitleLabel);
     }];
     
     [applyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(kCommonMargin);
         make.height.equalTo(@(kGeneralSize));
-        make.width.equalTo(self).offset(-2 * kCommonMargin);
+        make.width.equalTo(self).offset(kAdaptiveBaseIphone6(-2 * kCommonMargin));
         make.top.equalTo(headerView.mas_bottom).offset(kAdaptiveBaseIphone6(90));
     }];
     
