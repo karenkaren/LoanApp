@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23097DE21F261AE200A3D17E /* SHMeRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23097DE11F261AE200A3D17E /* SHMeRootController.m */; };
+		23097DE61F26337C00A3D17E /* SHBasicProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23097DE51F26337C00A3D17E /* SHBasicProfileController.m */; };
 		233F532F1F0FEE1C0031EA2E /* FeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 233F532E1F0FEE1C0031EA2E /* FeedbackController.m */; };
 		233F53331F0FEEAE0031EA2E /* PlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 233F53321F0FEEAE0031EA2E /* PlaceHolderTextView.m */; };
 		2347F4961EFF645C0044CFFE /* ProductDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2347F4951EFF645C0044CFFE /* ProductDetailController.m */; };
@@ -139,6 +141,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23097DE01F261AE200A3D17E /* SHMeRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHMeRootController.h; sourceTree = "<group>"; };
+		23097DE11F261AE200A3D17E /* SHMeRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHMeRootController.m; sourceTree = "<group>"; };
+		23097DE41F26337C00A3D17E /* SHBasicProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBasicProfileController.h; sourceTree = "<group>"; };
+		23097DE51F26337C00A3D17E /* SHBasicProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHBasicProfileController.m; sourceTree = "<group>"; };
 		233F532D1F0FEE1C0031EA2E /* FeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController.h; sourceTree = "<group>"; };
 		233F532E1F0FEE1C0031EA2E /* FeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackController.m; sourceTree = "<group>"; };
 		233F53311F0FEEAE0031EA2E /* PlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceHolderTextView.h; sourceTree = "<group>"; };
@@ -398,6 +404,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23097DDF1F261AA700A3D17E /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				23097DE01F261AE200A3D17E /* SHMeRootController.h */,
+				23097DE11F261AE200A3D17E /* SHMeRootController.m */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
+		23097DE31F26333400A3D17E /* BasicProfile */ = {
+			isa = PBXGroup;
+			children = (
+				23097DE41F26337C00A3D17E /* SHBasicProfileController.h */,
+				23097DE51F26337C00A3D17E /* SHBasicProfileController.m */,
+			);
+			name = BasicProfile;
+			sourceTree = "<group>";
+		};
 		233F53301F0FEE9D0031EA2E /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +555,8 @@
 		238715881F1E53DE00445005 /* ShenHe */ = {
 			isa = PBXGroup;
 			children = (
+				23097DE31F26333400A3D17E /* BasicProfile */,
+				23097DDF1F261AA700A3D17E /* Me */,
 				234A22A91F1F951B00501C76 /* ShenHeJinDu */,
 				234A22A11F1F93BA00501C76 /* BasicInfo */,
 				234A229D1F1F830D00501C76 /* Profile */,
@@ -1353,7 +1379,7 @@
 				TargetAttributes = {
 					235E7CDD1EFE16F90084D2D4 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 5347794US7;
+						DevelopmentTeam = NVN8DP5FL2;
 						ProvisioningStyle = Automatic;
 					};
 					235E7CF61EFE16FA0084D2D4 = {
@@ -1553,6 +1579,7 @@
 				23B7DF931EFE39C2000F89F8 /* MeRootController.m in Sources */,
 				23B7E0441EFE3BCB000F89F8 /* BaseNavigationController.m in Sources */,
 				23B7E00E1EFE3B20000F89F8 /* CustomTextField.m in Sources */,
+				23097DE61F26337C00A3D17E /* SHBasicProfileController.m in Sources */,
 				23B7DFC61EFE3AC1000F89F8 /* UIImage+Extension.m in Sources */,
 				238715971F1E59C500445005 /* SHBaseModel.m in Sources */,
 				23B7E00D1EFE3B20000F89F8 /* CustomFont.m in Sources */,
@@ -1580,6 +1607,7 @@
 				23B7E07F1EFE3CEB000F89F8 /* UserRegisterController.m in Sources */,
 				23B7DFC41EFE3AC1000F89F8 /* UIColor+HexColor.m in Sources */,
 				23E512DA1EFEB2E500272005 /* LoanRootCell.m in Sources */,
+				23097DE21F261AE200A3D17E /* SHMeRootController.m in Sources */,
 				23B7E08C1EFE3DF4000F89F8 /* LoanRootController.m in Sources */,
 				235E7CE61EFE16F90084D2D4 /* AppDelegate.m in Sources */,
 				235E7CE31EFE16F90084D2D4 /* main.m in Sources */,
@@ -1716,13 +1744,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5347794US7;
+				DEVELOPMENT_TEAM = NVN8DP5FL2;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Loan/Loan-Prefix.pch";
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -1736,13 +1764,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ShangHai P&C Information Technology Co., Ltd";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5347794US7;
+				DEVELOPMENT_TEAM = NVN8DP5FL2;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Loan/Loan-Prefix.pch";
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};

@@ -1,20 +1,21 @@
 //
-//  MeRootController.m
-//  LingTouNiaoLoan
+//  SHMeRootController.m
+//  Loan
 //
-//  Created by LiuFeifei on 16/12/29.
-//  Copyright © 2016年 LiuJie. All rights reserved.
+//  Created by 王安帮 on 2017/7/24.
+//  Copyright © 2017年 FangRongTech. All rights reserved.
 //
 
-#import "MeRootController.h"
+#import "SHMeRootController.h"
 #import "MeRootHeaderView.h"
 #import "SettingController.h"
-#import "RecordController.h"
-#import "ProfileController.h"
-#import "ProfileModel.h"
+#import "SHProgressController.h"
+#import "SHBasicProfileController.h"
+//#import "ProfileModel.h"
 #import "TableViewDevider.h"
+#import "SHBaseModel.h"
 
-@interface MeRootController ()
+@interface SHMeRootController ()
 
 @property (nonatomic, strong) MeRootHeaderView * tableHeaderView;
 @property (nonatomic, strong) NSArray * originalDatas;
@@ -22,7 +23,7 @@
 
 @end
 
-@implementation MeRootController
+@implementation SHMeRootController
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -45,7 +46,7 @@
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 16, 0, 0);
     self.enableRefresh = NO;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"NormalCell"];
-
+    
     self.tableHeaderView = [[MeRootHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 141)];
     self.tableView.tableHeaderView = self.tableHeaderView;
     
@@ -59,9 +60,6 @@
     self.originalDatas = @[@{@"title" : @"我的申请",
                              @"image" : @"icon_apply",
                              @"sel" : @"goApplyRercord"},
-                           @{@"title" : @"浏览记录",
-                             @"image" : @"icon_visit",
-                             @"sel" : @"goVisitRercord"},
                            @{@"title" : @"我的消息",
                              @"image" : @"icon_message",
                              @"sel" : @"goMessage"},
@@ -69,7 +67,7 @@
                              @"image" : @"icon_setting",
                              @"sel" : @"goSetting"}];
     
-    [ProfileModel getProfileInfoWithBlock:^(id response, id data, NSError *error) {
+    [SHBaseModel getUserInfoWithBlock:^(id response, id data, NSError *error) {
         if (!error) {
             self.userInfo = data;
             [[NSUserDefaults standardUserDefaults] setValue:esString(data[kUserName]) forKey:kUserName];
@@ -131,21 +129,34 @@
 
 - (void)goApplyRercord
 {
-    RecordController * recordController = [[RecordController alloc] initWithRecordType:RecordTypeOfApply];
-    recordController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:recordController animated:YES];
-}
-
-- (void)goVisitRercord
-{
-    RecordController * recordController = [[RecordController alloc] initWithRecordType:RecordTypeOfVisit];
-    recordController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:recordController animated:YES];
+    [self showWaitingIcon];
+    [SHBaseModel queryUserAuthStatusWithBlock:^(id response, id data, NSError *error) {
+        [self dismissWaitingIcon];
+        if (!error) {
+            BOOL isApplySubmit = [data[@"isApplySubmit"] boolValue];
+            if (isApplySubmit) {
+                [self showWaitingIcon];
+                [SHBaseModel getApplyListWithBlock:^(id response, id data, NSError *error) {
+                    [self dismissWaitingIcon];
+                    if (!error) {
+                        SHProgressController * progressController = [[SHProgressController alloc] init];
+                        progressController.hidesBottomBarWhenPushed = YES;
+                        [self.navigationController pushViewController:progressController animated:YES];
+                    }
+                }];
+                return;
+            } else {
+                [NSObject showMessage:@"暂无申请记录"];
+            }
+        } else {
+            [NSObject showMessage:@"查询申请记录失败"];
+        }
+    }];
 }
 
 - (void)showUserInfo
 {
-    ProfileController * profileController = [[ProfileController alloc] init];
+    SHBasicProfileController * profileController = [[SHBasicProfileController alloc] init];
     profileController.userInfo = self.userInfo;
     profileController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:profileController animated:YES];

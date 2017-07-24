@@ -13,13 +13,13 @@
 #if !defined BUILD_FOR_DEVELOP && !defined BUILD_FOR_TEST && !defined BUILD_FOR_RELEASE
 
 //使用开发服务器
-#define BUILD_FOR_DEVELOP
+//#define BUILD_FOR_DEVELOP
 
 //使用测试服务器
 //#define BUILD_FOR_TEST
 
 //使用生产服务器
-//#define BUILD_FOR_RELEASE
+#define BUILD_FOR_RELEASE
 
 #endif
 
@@ -39,7 +39,7 @@
 
 #ifdef BUILD_FOR_RELEASE
 
-#define API_BASE_URL_Internal    @"https://www.lingtouniao.com/v3"//生产环境
+#define API_BASE_URL_Internal    @"https://www.flashcredit.cn/api/v1"//生产环境
 #define WEB_BASE_URL_Internal    @"https://www.51huawuyou.com/h5/v1"
 
 #endif

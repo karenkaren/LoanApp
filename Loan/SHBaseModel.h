@@ -13,5 +13,8 @@
 + (void)userAuthWithParams:(NSDictionary *)params block:(APIResultBlock)block;
 + (void)queryUserAuthStatusWithBlock:(APIResultDataBlock)block;
 + (void)applySubmitWithBlock:(APIResultBlock)block;
++ (void)updateUserInfoWithParams:(NSDictionary *)params block:(APIResultBlock)block;
++ (void)getUserInfoWithBlock:(APIResultDataBlock)block;
++ (void)getApplyListWithBlock:(APIResultDataBlock)block;
 
 @end

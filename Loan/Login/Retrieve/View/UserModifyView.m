@@ -32,7 +32,6 @@
 - (void)buildUI
 {
     self.passwordTextField = [[CustomTextField alloc] initWithPlaceholder:@"请输入6-18位新密码" insets:UIEdgeInsetsMake(0, 20, 0, 20)];
-//    self.passwordTextField = [[CustomTextField alloc] initWithPlaceholder:@"  请输入6-18位新密码" in];
     self.passwordTextField.drawBottomLine = YES;
     self.passwordTextField.drawTopLine = YES;
     self.passwordTextField.limitedCount = 11;
@@ -41,7 +40,6 @@
     [self addSubview:self.passwordTextField];
     
     self.passwordAgainTextField = [[CustomTextField alloc] initWithPlaceholder:@"请再次输入新密码" insets:UIEdgeInsetsMake(0, 20, 0, 20)];
-//    self.passwordAgainTextField = [[CustomTextField alloc] initWithPlaceholder:@"  请再次输入新密码"];
     self.passwordAgainTextField.drawBottomLine = YES;
     self.passwordAgainTextField.limitedCount = 11;
     self.passwordAgainTextField.backgroundColor = kWhiteColor;
@@ -53,7 +51,12 @@
             self.modifyClickBlock(button);
         }
     }];
+    submitButton.enabled = NO;
     [submitButton setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:kMainColor];
+    [submitButton setTitleColor:kBlackColor forState:UIControlStateNormal];
+    [submitButton setTitleColor:kWhiteColor forState:UIControlStateDisabled];
+    submitButton.layer.cornerRadius = 5;
+    submitButton.layer.masksToBounds = YES;
     [self addSubview:submitButton];
     self.submitButton = submitButton;
     

@@ -141,7 +141,7 @@
     [self showWaitingIcon];
     [RetrieveModel getBackPasswordOfSendMobileCode:params block:^(id response, BOOL showIdentify, NSError *error) {
         [self dismissWaitingIcon];
-        self.userRetrieveView.showIdentityDialog = showIdentify;
+//        self.userRetrieveView.showIdentityDialog = showIdentify;
     }];
 }
 

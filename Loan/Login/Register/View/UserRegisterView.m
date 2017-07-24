@@ -64,7 +64,7 @@
     }];
     registerButton.enabled = NO;
     [registerButton setDisenableBackgroundColor:kDisabledColor enableBackgroundColor:kMainColor];
-    registerButton.layer.cornerRadius = 2;
+    registerButton.layer.cornerRadius = 5;
     registerButton.layer.masksToBounds = YES;
     [registerButton setTitleColor:kBlackColor forState:UIControlStateNormal];
     [registerButton setTitleColor:kWhiteColor forState:UIControlStateDisabled];

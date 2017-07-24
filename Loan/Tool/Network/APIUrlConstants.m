@@ -41,25 +41,14 @@ NSString * const kLoanApplyStep = @"/cloan/step/list";     // 申请流程
 NSString * const kGetUserProfile = @"/user/profile/get"; // 获取个人信息
 NSString * const kUpdateUserProfile = @"/user/profile/update";  // 修改个人信息
 
-/////////////////////////////////
-NSString * const kHomepageRecommend = @"/homepage/recommend";   // 首页
-NSString * const kShopListsDefault = @"/shop/lists"; // 默认洗车店列表
-NSString * const kShopListsWithDistance = @"/shop/lists/distance"; // 根据距离获取店铺列表
-NSString * const kShopProductList = @"/shop/product/list";    // 洗车店内服务
-NSString * const kShopReserveAdd = @"/reserve/add"; // 提交订单
-NSString * const kUserAddCar = @"/car/add";     // 添加用户车辆
-NSString * const kUserCarList = @"/car/list";   // 用户车辆列表
-
-
-//// 绑卡
-//NSString * const pay_bankList = @"/v1/bank-cards";
-//NSString * const usr_checkIdCard = @"/v1/accounts/id-cards";
-////NSString * const usr_checkIdCard = @"http://10.20.1.226:8082/v1/accounts/id-cards";
-//NSString * const usr_checkBindCard = @"/v1/accounts/bank-cards";
-//NSString * const usr_notificateBindCardResult = @"/v1/accounts/bank-cards";
-//
-//// 上传图片
-//NSString * const loanApply_upload = @"/v1/loanApply/upload";
+#pragma mark -- 审核专用
+NSString * const kSHIosCheck = @"/ios/check";   // 查询iOS状态，审核或政策
+NSString * const kSHUserAuth = @"/user/userAuth";   // 用户实名
+NSString * const kSHGetUserInfoStatus = @"/user/account/userInfo";    // 获取用户信息
+NSString * const kSHUserApply = @"/user/apply"; // 用户申请
+NSString * const kSHUpdateUserInfo = @"/user/tempprofile/update";   // 修改用户信息
+NSString * const kSHGetUserInfo = @"/user/tempprofile/get"; // 获取用户信息
+NSString * const kSHGetApplyList = @"/user/apply/list";    // 获取申请记录
 
 #pragma mark - h5
 //// 帮助

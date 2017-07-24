@@ -41,27 +41,36 @@
     self.tableView.tableFooterView = _footerView;
     self.enableRefresh = NO;
     
-    self.cellData = [ProfileViewModel getCellDataWithData:nil];
+    self.cellData = [ProfileViewModel getCellDataWithData:self.userInfo];
     self.profileData = [NSMutableDictionary dictionary];
     [self.profileData setValue:@NO forKey:kProfileKeyOfCredit];
     
+    if (self.userInfo.count) {
+        [self initProfileData];
+        return;
+    }
+    
     [ProfileModel getProfileInfoWithBlock:^(id response, id data, NSError *error) {
         self.cellData = [ProfileViewModel getCellDataWithData:data];
-        [self.profileData removeAllObjects];
-        for (NSDictionary * dic in self.cellData) {
-            if (![NSString isEmpty:esString(dic[kProfileValue])]) {
-                [self.profileData setValue:esString(dic[kProfileValue]) forKey:dic[kProfileKey]];
-            }
-        }
-        if (esString(self.profileData[kProfileKeyOfName])) {
-            [[NSUserDefaults standardUserDefaults] setValue:esString(self.profileData[kProfileKeyOfName]) forKey:kUserName];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoChangedNotification" object:nil];
-        }
-        
-        [self changeButtonStatus];
+        [self initProfileData];
         [self.tableView reloadData];
     }];
+}
+
+- (void)initProfileData
+{
+    [self.profileData removeAllObjects];
+    for (NSDictionary * dic in self.cellData) {
+        if (![NSString isEmpty:esString(dic[kProfileValue])]) {
+            [self.profileData setValue:esString(dic[kProfileValue]) forKey:dic[kProfileKey]];
+        }
+    }
+    if (esString(self.profileData[kProfileKeyOfName])) {
+        [[NSUserDefaults standardUserDefaults] setValue:esString(self.profileData[kProfileKeyOfName]) forKey:kUserName];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoChangedNotification" object:nil];
+    }
+    [self changeButtonStatus];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

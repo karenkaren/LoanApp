@@ -1,12 +1,12 @@
 //
-//  SHBasicInfoController.m
+//  SHBasicProfileController.m
 //  Loan
 //
-//  Created by 王安帮 on 2017/7/19.
+//  Created by 王安帮 on 2017/7/24.
 //  Copyright © 2017年 FangRongTech. All rights reserved.
 //
 
-#import "SHBasicInfoController.h"
+#import "SHBasicProfileController.h"
 #import "SHProgressController.h"
 #import "ProfileViewModel.h"
 #import "ProfileCell.h"
@@ -16,7 +16,7 @@
 #import "LTNAgreeView.h"
 #import "SHBaseModel.h"
 
-@interface SHBasicInfoController ()<LTNAgreeViewDelegate>
+@interface SHBasicProfileController ()<LTNAgreeViewDelegate>
 
 @property (nonatomic, strong) NSMutableDictionary * basicInfoData;
 @property (nonatomic, strong) NSArray * cellData;
@@ -24,54 +24,49 @@
 
 @end
 
-@implementation SHBasicInfoController
-
-- (void)back
-{
-    NSString * userName = [[NSUserDefaults standardUserDefaults] valueForKey:kUserName];
-    if (![NSString isEmpty:userName]) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    } else {
-        [super back];
-    }
-}
+@implementation SHBasicProfileController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"基本信息";
-    
-    UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kAdaptiveBaseIphone6(50 + 36))];
-    headerView.backgroundColor = kWhiteColor;
-    
-    UIImageView * headerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"step1"]];
-    headerImageView.width = headerView.width - kAdaptiveBaseIphone6(41);
-    headerImageView.height = kAdaptiveBaseIphone6(50);
-    headerImageView.center = headerView.center;
-    [headerView addSubview:headerImageView];
-    
-    self.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kStatusBarHeight - kNavigationBarHeight);
-    self.tableView.tableHeaderView = headerView;
-    [self setFooterView];
-    self.enableRefresh = NO;
+    self.title = @"个人资料";
 
-    self.basicInfoData = [NSMutableDictionary dictionary];
-    [self loadCellDataWithData:self.basicInfoData];
+    self.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kStatusBarHeight - kNavigationBarHeight);
+    [self setFooterView];
+    self.enableFooterRefresh = NO;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasUserAuth"]) {
-        [SHBaseModel getUserInfoWithBlock:^(id response, id data, NSError *error) {
-            [self loadCellDataWithData:data];
-            [self.basicInfoData removeAllObjects];
-            for (NSArray * arr in self.cellData) {
-                for (NSDictionary * dic in arr) {
-                    if (![NSString isEmpty:esString(dic[kProfileValue])]) {
-                        [self.basicInfoData setValue:esString(dic[kProfileValue]) forKey:dic[kProfileKey]];
-                    }
-                }
-            }
-            [self changeButtonStatus];
-            [self.tableView reloadData];
-        }];
+    self.basicInfoData = [NSMutableDictionary dictionary];
+    [self loadCellDataWithData:self.userInfo];
+    
+    if (self.userInfo.count) {
+        [self initBasicInfoData];
+        return;
     }
+    [self refreshAction];
+}
+
+- (void)refreshAction
+{
+    [SHBaseModel getUserInfoWithBlock:^(id response, id data, NSError *error) {
+        [self stopRefresh];
+        if (!error) {
+            [self loadCellDataWithData:data];
+            [self initBasicInfoData];
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+- (void)initBasicInfoData
+{
+    [self.basicInfoData removeAllObjects];
+    for (NSArray * arr in self.cellData) {
+        for (NSDictionary * dic in arr) {
+            if (![NSString isEmpty:esString(dic[kProfileValue])]) {
+                [self.basicInfoData setValue:esString(dic[kProfileValue]) forKey:dic[kProfileKey]];
+            }
+        }
+    }
+    [self changeButtonStatus];
 }
 
 - (void)loadCellDataWithData:(NSDictionary *)data
@@ -115,40 +110,16 @@
 
 - (void)setFooterView
 {
-    UIView * tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 170)];
-    
-    UIView * topFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 70)];
-    [tableFooterView addSubview:topFooterView];
-    
-    UIView * topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kLineThick)];
-    topLineView.backgroundColor = kLineColor;
-    [topFooterView addSubview:topLineView];
-    
-    LTNAgreeView * agreeView1 = [[LTNAgreeView alloc] initWithTitle:@"我已阅读并同意" protocol:@"《第三方网贷平台服务协议》" fontSize:14 target:self];
-    agreeView1.tag = 100;
-    agreeView1.left = kAdaptiveBaseIphone6(kCommonMargin);
-    agreeView1.top = kAdaptiveBaseIphone6(17);
-    [topFooterView addSubview:agreeView1];
-    
-    LTNAgreeView * agreeView2 = [[LTNAgreeView alloc] initWithTitle:@"我已阅读并同意" protocol:@"《咨询服务协议》" fontSize:14 target:self];
-    agreeView2.tag = 101;
-    agreeView2.left = kAdaptiveBaseIphone6(kCommonMargin);
-    agreeView2.top = agreeView1.bottom + kAdaptiveBaseIphone6(5);
-    [topFooterView addSubview:agreeView2];
-    
-    _footerView = [[NormalFooterView alloc] initWithTitle:@"提交"];
+    _footerView = [[NormalFooterView alloc] initWithTitle:@"确认"];
     _footerView.height = 80;
     _footerView.width = self.tableView.width;
-    _footerView.top = topFooterView.bottom;
-    _footerView.hideTopLine = YES;
     _footerView.footerButton.enabled = NO;
     kWeakSelf
     _footerView.buttonClickBlock = ^(UIButton *button) {
         kStrongSelf
         [strongSelf applySubmit];
     };
-    [tableFooterView addSubview:_footerView];
-    self.tableView.tableFooterView = tableFooterView;
+    self.tableView.tableFooterView = _footerView;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -189,7 +160,7 @@
         cell = [[ProfileCell alloc] initWithProfileType:cellType reuseIdentifier:reuseIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-
+    
     cell.cellData = cellData;
     if (cellType == ProfileTypeSelect) {
         cell.selectBlock = ^(UITextField * textField){
@@ -240,10 +211,10 @@
         titleLabel.left = kCommonMargin;
         titleLabel.center = sectionHeaderView.center;
         [sectionHeaderView addSubview:titleLabel];
-        
-        UIView * topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kLineThick)];
-        topLineView.backgroundColor = kLineColor;
-        [sectionHeaderView addSubview:topLineView];
+//        
+//        UIView * topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kLineThick)];
+//        topLineView.backgroundColor = kLineColor;
+//        [sectionHeaderView addSubview:topLineView];
         
         UIView * bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, kGeneralSize - kLineThick, kScreenWidth, kLineThick)];
         bottomLineView.backgroundColor = kLineColor;
@@ -312,29 +283,23 @@
     [self showWaitingIcon];
     [SHBaseModel updateUserInfoWithParams:self.basicInfoData block:^(id response, NSError *error) {
         [self dismissWaitingIcon];
-        if (!error) {
-            [self showWaitingIcon];
-            [SHBaseModel applySubmitWithBlock:^(id response, NSError *error) {
-                [self dismissWaitingIcon];
-                if (!error) {
-                    DLog(@"申请提交成功");
-                    [self showWaitingIcon];
-                    [SHBaseModel getApplyListWithBlock:^(id response, id data, NSError *error) {
-                        [self dismissWaitingIcon];
-                        if (!error) {
-                            SHProgressController * progressController = [[SHProgressController alloc] init];
-                            [self.navigationController pushViewController:progressController animated:YES];
-                        }
-                    }];
-                }
-            }];
-        }
+        [NSObject showMessage:@"资料提交成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     }];
-}
-
--(void)agreeView:(LTNAgreeView *)agreeView willAgreeProtocol:(BOOL)agree
-{
-    
+//    [SHBaseModel applySubmitWithBlock:^(id response, NSError *error) {
+//        [self dismissWaitingIcon];
+//        if (!error) {
+//            DLog(@"申请提交成功");
+//            NSDate * date = [NSDate date];
+//            NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+//            formatter.dateFormat = @"yyyy MMdd";
+//            NSString * dateString = [formatter stringFromDate:date];
+//            [[NSUserDefaults standardUserDefaults] setValue:dateString forKey:@"applyDate"];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
+//            SHProgressController * progressController = [[SHProgressController alloc] init];
+//            [self.navigationController pushViewController:progressController animated:YES];
+//        }
+//    }];
 }
 
 @end

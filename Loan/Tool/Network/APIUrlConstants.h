@@ -37,24 +37,14 @@ extern NSString * const kLoanApplyStep;     // 申请流程
 extern NSString * const kGetUserProfile; // 获取个人信息
 extern NSString * const kUpdateUserProfile;  // 修改个人信息
 
-//////////////////////////////
-extern NSString * const kHomepageRecommend; // 首页
-extern NSString * const kShopListsDefault; // 洗车店列表
-extern NSString * const kShopListsWithDistance; // 根据距离获取店铺列表
-extern NSString * const kShopProductList;    // 洗车店内服务
-extern NSString * const kShopReserveAdd; // 提交订单
-extern NSString * const kUserAddCar;     // 添加用户车辆
-extern NSString * const kUserCarList;   // 用户车辆列表
-
-
-// 绑卡
-//extern NSString * const pay_bankList;   // 银行列表
-//extern NSString * const usr_checkIdCard;    // 是否已经在领投鸟实名
-//extern NSString * const usr_checkBindCard;  // 输入基本信息后验证银行卡是否可以绑定
-//extern NSString * const usr_notificateBindCardResult;   // 绑卡成功或失败后通知服务器
-
-// 上传图片
-//extern NSString * const loanApply_upload;
+#pragma mark -- 审核专用
+extern NSString * const kSHIosCheck;   // 查询iOS状态，审核或政策
+extern NSString * const kSHUserAuth;   // 用户实名
+extern NSString * const kSHGetUserInfoStatus;    // 获取用户信息
+extern NSString * const kSHUserApply; // 用户申请
+extern NSString * const kSHUpdateUserInfo;   // 修改用户信息
+extern NSString * const kSHGetUserInfo; // 获取用户信息
+extern NSString * const kSHGetApplyList;    // 获取申请记录
 
 #pragma mark - h5
 //// 帮助

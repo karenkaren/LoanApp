@@ -48,7 +48,7 @@
             [self changeSelectStatus:button];
         }];
         button.titleLabel.font = kFont(16);
-        button.layer.cornerRadius = 2;
+        button.layer.cornerRadius = 5;
         button.layer.masksToBounds = YES;
         button.layer.borderColor = kLineColor.CGColor;
         button.layer.borderWidth = kLineThick;

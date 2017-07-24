@@ -9,7 +9,7 @@
 #import "SHRootViewController.h"
 
 #import "SHHomeViewController.h"
-#import "MeRootController.h"
+#import "SHMeRootController.h"
 
 @interface SHRootViewController ()<UITabBarControllerDelegate>
 
@@ -29,13 +29,13 @@
     // 1.首页
     SHHomeViewController * home = [[SHHomeViewController alloc] init];
     BaseNavigationController * homeNav = [[BaseNavigationController alloc] initWithRootViewController:home];
-    UITabBarItem * item1 = [[UITabBarItem alloc] initWithTitle:@"首页"
+    UITabBarItem * item1 = [[UITabBarItem alloc] initWithTitle:@"神马贷款"
                                                          image:[[UIImage imageNamed:@"tab_home_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                                                  selectedImage:[[UIImage imageNamed:@"tab_home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     home.tabBarItem = item1;
     
     // 2.我的
-    MeRootController * me = [[MeRootController alloc] init];
+    SHMeRootController * me = [[SHMeRootController alloc] init];
     BaseNavigationController * meNav = [[BaseNavigationController alloc] initWithRootViewController:me];
     UITabBarItem * item2 = [[UITabBarItem alloc] initWithTitle:@"我的"
                                                          image:[[UIImage imageNamed:@"tab_account_normal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
@@ -52,7 +52,7 @@
         return YES;
     else{
         BaseNavigationController * navController = (BaseNavigationController *)viewController;
-        if([navController.topViewController isKindOfClass:[MeRootController class]]){
+        if([navController.topViewController isKindOfClass:[SHMeRootController class]]){
             [[ControllersManager sharedControllersManager] loginController:^{
                 [self setSelectedIndex:1];
             }];

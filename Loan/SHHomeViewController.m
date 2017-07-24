@@ -25,17 +25,18 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view.
     SHHomeView * homeView = [[SHHomeView alloc] init];
     [self.view addSubview:homeView];
@@ -70,23 +71,29 @@
                 return;
             }
             
-            if (!isBasicInfo) {
-                DLog(@"未填写基本信息");
-                SHBasicInfoController * basicInfoController = [[SHBasicInfoController alloc] init];
-                basicInfoController.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:basicInfoController animated:YES];
+            if (isApplySubmit) {
+                DLog(@"已经提交申请");
+                [self showWaitingIcon];
+                [SHBaseModel getApplyListWithBlock:^(id response, id data, NSError *error) {
+                    [self dismissWaitingIcon];
+                    if (!error) {
+                        SHProgressController * progressController = [[SHProgressController alloc] init];
+                        [self.navigationController pushViewController:progressController animated:YES];
+                    }
+                }];
                 return;
             }
             
-            if (isApplySubmit) {
-                DLog(@"已经提交申请");
-                SHProgressController * progressController = [[SHProgressController alloc] init];
-                progressController.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:progressController animated:YES];
+            if (isBasicInfo) {
+                DLog(@"未填写基本信息");
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasUserAuth"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }
+            SHBasicInfoController * basicInfoController = [[SHBasicInfoController alloc] init];
+            basicInfoController.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:basicInfoController animated:YES];
         }
     }];
-    
 }
 
 @end

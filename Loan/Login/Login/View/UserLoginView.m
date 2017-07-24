@@ -58,7 +58,7 @@
             self.loginClickBlock(button);
         }
     }];
-    loginButton.layer.cornerRadius = 2;
+    loginButton.layer.cornerRadius = 5;
     loginButton.layer.masksToBounds = YES;
     [loginButton setTitleColor:kBlackColor forState:UIControlStateNormal];
     [loginButton setTitleColor:kWhiteColor forState:UIControlStateDisabled];
