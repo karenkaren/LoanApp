@@ -45,7 +45,7 @@
     self.profileData = [NSMutableDictionary dictionary];
     [self.profileData setValue:@NO forKey:kProfileKeyOfCredit];
     
-    if (self.userInfo.count) {
+    if (self.userInfo.count > 3) {
         [self initProfileData];
         return;
     }
@@ -206,10 +206,15 @@
     [ProfileModel updateProfileInfoWithParams:self.profileData block:^(id response, NSError *error) {
         DLog(@"个人资料修改成功");
         [self dismissWaitingIcon];
-        [[NSUserDefaults standardUserDefaults] setValue:self.profileData[kProfileKeyOfName] forKey:kUserName];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoChangedNotification" object:nil];
-        [self.navigationController popViewControllerAnimated:YES];
+        if (!error) {
+            [NSObject showMessage:@"个人资料提交成功"];
+            [[NSUserDefaults standardUserDefaults] setValue:self.profileData[kProfileKeyOfName] forKey:kUserName];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"userInfoChangedNotification" object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+        
     }];
 }
 

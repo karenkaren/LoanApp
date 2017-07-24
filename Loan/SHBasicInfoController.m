@@ -59,6 +59,9 @@
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hasUserAuth"]) {
         [SHBaseModel getUserInfoWithBlock:^(id response, id data, NSError *error) {
+            if (error) {
+                return;
+            }
             [self loadCellDataWithData:data];
             [self.basicInfoData removeAllObjects];
             for (NSArray * arr in self.cellData) {

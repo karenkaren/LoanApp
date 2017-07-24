@@ -37,7 +37,7 @@
     self.basicInfoData = [NSMutableDictionary dictionary];
     [self loadCellDataWithData:self.userInfo];
     
-    if (self.userInfo.count) {
+    if (self.userInfo.count > 2) {
         [self initBasicInfoData];
         return;
     }
@@ -286,20 +286,6 @@
         [NSObject showMessage:@"资料提交成功"];
         [self.navigationController popViewControllerAnimated:YES];
     }];
-//    [SHBaseModel applySubmitWithBlock:^(id response, NSError *error) {
-//        [self dismissWaitingIcon];
-//        if (!error) {
-//            DLog(@"申请提交成功");
-//            NSDate * date = [NSDate date];
-//            NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-//            formatter.dateFormat = @"yyyy MMdd";
-//            NSString * dateString = [formatter stringFromDate:date];
-//            [[NSUserDefaults standardUserDefaults] setValue:dateString forKey:@"applyDate"];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-//            SHProgressController * progressController = [[SHProgressController alloc] init];
-//            [self.navigationController pushViewController:progressController animated:YES];
-//        }
-//    }];
 }
 
 @end

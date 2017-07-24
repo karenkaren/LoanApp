@@ -64,6 +64,12 @@
             BOOL isBasicInfo = [data[@"isBasicInfo"] boolValue];
             BOOL isApplySubmit = [data[@"isApplySubmit"] boolValue];
 
+            if (isBasicInfo) {
+                DLog(@"未填写基本信息");
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasUserAuth"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            
             if (!isRealName) {
                 SHProfileInfoController * profileInfoController = [[SHProfileInfoController alloc] init];
                 profileInfoController.hidesBottomBarWhenPushed = YES;
@@ -82,12 +88,6 @@
                     }
                 }];
                 return;
-            }
-            
-            if (isBasicInfo) {
-                DLog(@"未填写基本信息");
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasUserAuth"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
             }
             SHBasicInfoController * basicInfoController = [[SHBasicInfoController alloc] init];
             basicInfoController.hidesBottomBarWhenPushed = YES;
