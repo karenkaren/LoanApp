@@ -171,18 +171,39 @@
     
     CGFloat margin = kScreenWidth / 15;
     for (int i = 0; i < applyStepArray.count * 2 - 1; i++) {
+        
+        
+        NSDictionary * dic = applyStepArray[i / 2];
+        NSString * imageName = esString(dic[@"enStepName"]);
+        if ([NSString isEmpty:imageName]) {
+            imageName = @"rlsb";
+        }
+//        if ([dic[@"enStepName"] isEqualToString:@"sfrz"]) {
+//            
+//        } else if ([dic[@"enStepName"] isEqualToString:@"zmsq"]) {
+//            
+//        } else if ([dic[@"enStepName"] isEqualToString:@"rlsb"]) {
+//            
+//        } else if ([dic[@"enStepName"] isEqualToString:@"yhkrz"]) {
+//            
+//        } else if ([dic[@"enStepName"] isEqualToString:@"lxrxx"]) {
+//            
+//        } else if ([dic[@"enStepName"] isEqualToString:@"jbxx"]) {
+//            
+//        } else if ([dic[@"enStepName"] isEqualToString:@"yyssq"]) {
+//            
+//        }
         UIImageView * imageView = [[UIImageView alloc] init];
-        NSString * imageName = i % 2 ? @"icon_yellow_arraw.png" : @"icon_smiling.png";
+        imageName = i % 2 ? @"yellow_arraw" : imageName;
         imageView.image = [UIImage imageNamed:imageName];
         [self.applyProcessView addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.applyProcessView).offset(margin + margin * i * 2);
-            make.top.equalTo(self.applyProcessView).offset(8);
+            make.top.equalTo(self.applyProcessView).offset(10);
             make.size.mas_equalTo(CGSizeMake(margin, margin));
         }];
         
         if (i % 2 == 0) {
-            NSDictionary * dic = applyStepArray[i / 2];
             UILabel * titleLabel = [[UILabel alloc] init];
             titleLabel.text = esString(dic[@"stepName"]);
             titleLabel.font = kFont(12);

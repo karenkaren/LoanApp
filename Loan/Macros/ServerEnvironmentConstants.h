@@ -40,7 +40,7 @@
 #ifdef BUILD_FOR_RELEASE
 
 #define API_BASE_URL_Internal    @"https://www.flashcredit.cn/api/v1"//生产环境
-#define WEB_BASE_URL_Internal    @"https://www.51huawuyou.com/h5/v1"
+#define WEB_BASE_URL_Internal    @"https://www.flashcredit.cn/api/v1"
 
 #endif
 

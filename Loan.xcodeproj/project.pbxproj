@@ -111,8 +111,6 @@
 		23B7E0A31EFE6BB4000F89F8 /* BaseCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7E0A21EFE6BB4000F89F8 /* BaseCollectionController.m */; };
 		23B7E0E51EFE9878000F89F8 /* HomeRootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7E0E41EFE9878000F89F8 /* HomeRootCell.m */; };
 		23B7E0EC1EFE9B94000F89F8 /* ProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 23B7E0EB1EFE9B94000F89F8 /* ProductModel.m */; };
-		23C6A8A61F069075000E1B83 /* icon_yellow_arraw.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C6A8A51F069075000E1B83 /* icon_yellow_arraw.png */; };
-		23C6A8A81F069098000E1B83 /* icon_smiling.png in Resources */ = {isa = PBXBuildFile; fileRef = 23C6A8A71F069098000E1B83 /* icon_smiling.png */; };
 		23D43B051EFFD87F006371CE /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D43B041EFFD87F006371CE /* RecordCell.m */; };
 		23D43B091EFFE54C006371CE /* RecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D43B081EFFE54C006371CE /* RecordController.m */; };
 		23E209D51F07DDC100874BF9 /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E209D41F07DDC100874BF9 /* ProfileController.m */; };
@@ -357,8 +355,6 @@
 		23B7E0E41EFE9878000F89F8 /* HomeRootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRootCell.m; sourceTree = "<group>"; };
 		23B7E0EA1EFE9B94000F89F8 /* ProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductModel.h; sourceTree = "<group>"; };
 		23B7E0EB1EFE9B94000F89F8 /* ProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductModel.m; sourceTree = "<group>"; };
-		23C6A8A51F069075000E1B83 /* icon_yellow_arraw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_yellow_arraw.png; sourceTree = "<group>"; };
-		23C6A8A71F069098000E1B83 /* icon_smiling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_smiling.png; sourceTree = "<group>"; };
 		23D43B031EFFD87F006371CE /* RecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
 		23D43B041EFFD87F006371CE /* RecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
 		23D43B071EFFE54C006371CE /* RecordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordController.h; sourceTree = "<group>"; };
@@ -502,8 +498,6 @@
 		235E7CE01EFE16F90084D2D4 /* Loan */ = {
 			isa = PBXGroup;
 			children = (
-				23C6A8A51F069075000E1B83 /* icon_yellow_arraw.png */,
-				23C6A8A71F069098000E1B83 /* icon_smiling.png */,
 				23B7E0881EFE3D08000F89F8 /* Module */,
 				23B7E0121EFE3B37000F89F8 /* Common */,
 				23B7DF9D1EFE3AAF000F89F8 /* Extension */,
@@ -1419,8 +1413,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23C6A8A81F069098000E1B83 /* icon_smiling.png in Resources */,
-				23C6A8A61F069075000E1B83 /* icon_yellow_arraw.png in Resources */,
 				235E7CEE1EFE16FA0084D2D4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

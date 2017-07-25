@@ -49,16 +49,17 @@ NSString * const kSHUserApply = @"/user/apply"; // 用户申请
 NSString * const kSHUpdateUserInfo = @"/user/tempprofile/update";   // 修改用户信息
 NSString * const kSHGetUserInfo = @"/user/tempprofile/get"; // 获取用户信息
 NSString * const kSHGetApplyList = @"/user/apply/list";    // 获取申请记录
+NSString * const kSHLoanServiceH5Url = @"/h5/loan_service.html";   // 《第三方网贷平台服务协议》h5链接
 
 #pragma mark - h5
 //// 帮助
-//NSString * const helpH5Url = @"/#/common-problem-app";
+NSString * const helpH5Url = @"/h5/help-center.html";
 //// 用户注册协议
 //NSString * const registerProtocolH5Url = @"/#/user-service-agreement";
 //// 隐私条款
 //NSString * const registerPrivacyH5Url = @"/#/privacy-agreement";
-//// 关于花无忧
-//NSString * const aboutH5Url = @"http://percy.legendh5.com/h5/abouthwy.html";
+// 关于
+NSString * const aboutH5Url = @"/h5/about.html";
 
 @implementation APIUrlConstants
 

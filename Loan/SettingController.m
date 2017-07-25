@@ -43,10 +43,10 @@
                              @{@"title" : @"帮助中心",
                                @"image" : @"icon_help",
                                @"sel" : @"goHelpCenter"},
-                             @{@"title" : @"客服热线",
-                               @"image" : @"icon_hotline",
-                               @"sel" : @"callService:",
-                               @"detail" : @"18000000000"},
+//                             @{@"title" : @"客服热线",
+//                               @"image" : @"icon_hotline",
+//                               @"sel" : @"callService:",
+//                               @"detail" : @"18000000000"},
                              @{@"title" : @"分享给好友",
                                @"image" : @"icon_share",
                                @"sel" : @"shareToFriends"},
@@ -139,13 +139,13 @@
 
 - (void)goAboutUs
 {
-    BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:@"https://www.baidu.com"];
+    BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:aboutH5Url];
     [self.navigationController pushViewController:webController animated:YES];
 }
 
 - (void)goHelpCenter
 {
-    BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:@"https://www.51huawuyou.com/"];
+    BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:helpH5Url];
     [self.navigationController pushViewController:webController animated:YES];
 }
 

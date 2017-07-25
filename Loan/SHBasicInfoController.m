@@ -15,6 +15,7 @@
 #import "NormalFooterView.h"
 #import "LTNAgreeView.h"
 #import "SHBaseModel.h"
+#import "BaseWebViewController.h"
 
 @interface SHBasicInfoController ()<LTNAgreeViewDelegate>
 
@@ -118,26 +119,19 @@
 
 - (void)setFooterView
 {
-    UIView * tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 170)];
+    UIView * tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 115)];
     
-    UIView * topFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 70)];
+    UIView * topFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 35)];
     [tableFooterView addSubview:topFooterView];
     
     UIView * topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kLineThick)];
     topLineView.backgroundColor = kLineColor;
     [topFooterView addSubview:topLineView];
     
-    LTNAgreeView * agreeView1 = [[LTNAgreeView alloc] initWithTitle:@"我已阅读并同意" protocol:@"《第三方网贷平台服务协议》" fontSize:14 target:self];
-    agreeView1.tag = 100;
-    agreeView1.left = kAdaptiveBaseIphone6(kCommonMargin);
-    agreeView1.top = kAdaptiveBaseIphone6(17);
-    [topFooterView addSubview:agreeView1];
-    
-    LTNAgreeView * agreeView2 = [[LTNAgreeView alloc] initWithTitle:@"我已阅读并同意" protocol:@"《咨询服务协议》" fontSize:14 target:self];
-    agreeView2.tag = 101;
-    agreeView2.left = kAdaptiveBaseIphone6(kCommonMargin);
-    agreeView2.top = agreeView1.bottom + kAdaptiveBaseIphone6(5);
-    [topFooterView addSubview:agreeView2];
+    LTNAgreeView * agreeView = [[LTNAgreeView alloc] initWithTitle:@"我已阅读并同意" protocol:@"《第三方网贷平台服务协议》" fontSize:14 target:self];
+    agreeView.left = kAdaptiveBaseIphone6(kCommonMargin);
+    agreeView.top = kAdaptiveBaseIphone6(17);
+    [topFooterView addSubview:agreeView];
     
     _footerView = [[NormalFooterView alloc] initWithTitle:@"提交"];
     _footerView.height = 80;
@@ -335,9 +329,10 @@
     }];
 }
 
--(void)agreeView:(LTNAgreeView *)agreeView willAgreeProtocol:(BOOL)agree
+- (void)agreeViewWillShowProtocol:(LTNAgreeView *)agreeView
 {
-    
+    BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:kSHLoanServiceH5Url];
+    [self.navigationController pushViewController:webController animated:YES];
 }
 
 @end

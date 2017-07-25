@@ -45,15 +45,16 @@ extern NSString * const kSHUserApply; // 用户申请
 extern NSString * const kSHUpdateUserInfo;   // 修改用户信息
 extern NSString * const kSHGetUserInfo; // 获取用户信息
 extern NSString * const kSHGetApplyList;    // 获取申请记录
+extern NSString * const kSHLoanServiceH5Url;   // 《第三方网贷平台服务协议》h5链接
 
 #pragma mark - h5
-//// 帮助
-//extern NSString * const helpH5Url;
+// 帮助
+extern NSString * const helpH5Url;
 //// 用户注册协议
 //extern NSString * const registerProtocolH5Url;
 //// 隐私条款
 //extern NSString * const registerPrivacyH5Url;
-//// 关于花无忧
-//extern NSString * const aboutH5Url;
+// 关于
+extern NSString * const aboutH5Url;
 
 @end
