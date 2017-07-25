@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"首页";
+    self.navigationItem.title = @"神马贷款";
     
 //    self.coordinate = CLLocationCoordinate2DMake(39.915, 116.404);
     
