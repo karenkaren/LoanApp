@@ -27,6 +27,14 @@
 		235E7CFC1EFE16FA0084D2D4 /* LoanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7CFB1EFE16FA0084D2D4 /* LoanTests.m */; };
 		235E7D071EFE16FA0084D2D4 /* LoanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 235E7D061EFE16FA0084D2D4 /* LoanUITests.m */; };
 		2373435A1F0A897200CAF9F5 /* ProfileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 237343591F0A897200CAF9F5 /* ProfileModel.m */; };
+		238693D11F2F5A06007D62DE /* libTalkingData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 238693CF1F2F5A06007D62DE /* libTalkingData.a */; };
+		238693D31F2F5A41007D62DE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238693D21F2F5A41007D62DE /* AdSupport.framework */; };
+		238693D51F2F5A4D007D62DE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238693D41F2F5A4D007D62DE /* CoreTelephony.framework */; };
+		238693D71F2F5A59007D62DE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238693D61F2F5A59007D62DE /* CoreMotion.framework */; };
+		238693D91F2F5A62007D62DE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238693D81F2F5A62007D62DE /* Security.framework */; };
+		238693DB1F2F5A69007D62DE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238693DA1F2F5A69007D62DE /* SystemConfiguration.framework */; };
+		238693DD1F2F5A77007D62DE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 238693DC1F2F5A77007D62DE /* libz.tbd */; };
+		238693DF1F2F5A81007D62DE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 238693DE1F2F5A81007D62DE /* libc++.tbd */; };
 		238715871F1E400700445005 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 238715861F1E400700445005 /* LoadingViewController.m */; };
 		2387158C1F1E547500445005 /* SHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2387158B1F1E547500445005 /* SHHomeViewController.m */; };
 		2387158F1F1E54B200445005 /* SHRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2387158E1F1E54B200445005 /* SHRootViewController.m */; };
@@ -181,6 +189,15 @@
 		235E7D081EFE16FA0084D2D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		237343581F0A897200CAF9F5 /* ProfileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileModel.h; sourceTree = "<group>"; };
 		237343591F0A897200CAF9F5 /* ProfileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileModel.m; sourceTree = "<group>"; };
+		238693CF1F2F5A06007D62DE /* libTalkingData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingData.a; sourceTree = "<group>"; };
+		238693D01F2F5A06007D62DE /* TalkingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingData.h; sourceTree = "<group>"; };
+		238693D21F2F5A41007D62DE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		238693D41F2F5A4D007D62DE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		238693D61F2F5A59007D62DE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		238693D81F2F5A62007D62DE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		238693DA1F2F5A69007D62DE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		238693DC1F2F5A77007D62DE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		238693DE1F2F5A81007D62DE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		238715851F1E400700445005 /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		238715861F1E400700445005 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		2387158A1F1E547500445005 /* SHHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHHomeViewController.h; sourceTree = "<group>"; };
@@ -379,6 +396,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				238693DF1F2F5A81007D62DE /* libc++.tbd in Frameworks */,
+				238693DD1F2F5A77007D62DE /* libz.tbd in Frameworks */,
+				238693DB1F2F5A69007D62DE /* SystemConfiguration.framework in Frameworks */,
+				238693D91F2F5A62007D62DE /* Security.framework in Frameworks */,
+				238693D71F2F5A59007D62DE /* CoreMotion.framework in Frameworks */,
+				238693D51F2F5A4D007D62DE /* CoreTelephony.framework in Frameworks */,
+				238693D31F2F5A41007D62DE /* AdSupport.framework in Frameworks */,
+				238693D11F2F5A06007D62DE /* libTalkingData.a in Frameworks */,
 				9492CB6F319D778A0AE2C83A /* libPods-Loan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,6 +569,23 @@
 				237343591F0A897200CAF9F5 /* ProfileModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		238693C81F2F599C007D62DE /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				238693C91F2F59B2007D62DE /* TalkingData */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		238693C91F2F59B2007D62DE /* TalkingData */ = {
+			isa = PBXGroup;
+			children = (
+				238693CF1F2F5A06007D62DE /* libTalkingData.a */,
+				238693D01F2F5A06007D62DE /* TalkingData.h */,
+			);
+			name = TalkingData;
 			sourceTree = "<group>";
 		};
 		238715881F1E53DE00445005 /* ShenHe */ = {
@@ -740,6 +782,7 @@
 		23B7DF9D1EFE3AAF000F89F8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				238693C81F2F599C007D62DE /* Vendor */,
 				23B7DFEB1EFE3B20000F89F8 /* Tool */,
 				23B7DFE41EFE3B08000F89F8 /* Others */,
 				23B7DFD71EFE3AE9000F89F8 /* Managers */,
@@ -1289,6 +1332,13 @@
 		C1103F83DCE1C268D7213A02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				238693DE1F2F5A81007D62DE /* libc++.tbd */,
+				238693DC1F2F5A77007D62DE /* libz.tbd */,
+				238693DA1F2F5A69007D62DE /* SystemConfiguration.framework */,
+				238693D81F2F5A62007D62DE /* Security.framework */,
+				238693D61F2F5A59007D62DE /* CoreMotion.framework */,
+				238693D41F2F5A4D007D62DE /* CoreTelephony.framework */,
+				238693D21F2F5A41007D62DE /* AdSupport.framework */,
 				2821C562E8FAE8C7086A0552 /* libPods-Loan.a */,
 			);
 			name = Frameworks;
@@ -1456,7 +1506,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Loan/Pods-Loan-resources.sh",
-				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
@@ -1735,6 +1784,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Xiamen Guangrong Future Network Lending Information Intermediary Service Co., Ltd. (C27823K43Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NVN8DP5FL2;
 				ENABLE_BITCODE = NO;
@@ -1742,8 +1792,13 @@
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Loan",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -1754,7 +1809,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ShangHai P&C Information Technology Co., Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Xiamen Guangrong Future Network Lending Information Intermediary Service Co., Ltd. (C27823K43Q)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = NVN8DP5FL2;
 				ENABLE_BITCODE = NO;
@@ -1762,8 +1817,13 @@
 				INFOPLIST_FILE = Loan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Loan",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.huawuyou.loan.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;

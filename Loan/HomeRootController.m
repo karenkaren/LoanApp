@@ -13,7 +13,7 @@
 #import "ProductDetailController.h"
 #import "BaseWebViewController.h"
 
-@interface HomeRootController ()<BMKLocationServiceDelegate>
+@interface HomeRootController ()
 
 @property (nonatomic, strong) HomeRootHeaderView * homeRootHeaderView;
 @property (nonatomic, strong) NSMutableArray<ProductModel *> * productList;
@@ -63,10 +63,14 @@
         }
     }
     
+    if (![self isRefreshing]) {
+        [self showWaitingIcon];
+    }
     NSDictionary * params = @{@"currentPage" : @(self.currentPage), @"pageSize" : @(self.pageSize)};
     kWeakSelf
     [ProductModel getLoanListWithParams:params block:^(id response, NSArray *productList, NSInteger totalCount, NSError *error) {
         kStrongSelf
+        [strongSelf dismissWaitingIcon];
         [strongSelf stopRefresh];
         if (productList && totalCount) {
             strongSelf.totalCount = totalCount;
@@ -152,9 +156,14 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProductDetailController * productDetailController = [[ProductDetailController alloc] initWithProduct:self.productList[indexPath.row]];
-    productDetailController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:productDetailController animated:YES];
+    ProductModel * product = self.productList[indexPath.row];
+    BaseWebViewController * webController = [[BaseWebViewController alloc] initWithURL:product.h5link];
+    webController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:webController animated:YES];
+    
+//    ProductDetailController * productDetailController = [[ProductDetailController alloc] initWithProduct:self.productList[indexPath.row]];
+//    productDetailController.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:productDetailController animated:YES];
 }
 
 @end

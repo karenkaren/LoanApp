@@ -10,7 +10,7 @@
 #define Loan_Prefix_pch
 
 #import <UIKit/UIKit.h>
-#import <BaiduMapAPI_Location/BMKLocationService.h>
+//#import <BaiduMapAPI_Location/BMKLocationService.h>
 
 #import "GlobalAppearance.h"
 #import "GlobalSize.h"

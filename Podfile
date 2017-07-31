@@ -10,7 +10,7 @@ pod 'FMDB', '~> 2.6'
 pod 'YTKKeyValueStore'
 pod 'MBProgressHUD', '~> 1.0.0'
 pod 'ActionSheetPicker-3.0'
-pod 'BaiduMapKit'
+#pod 'BaiduMapKit'
 # U-Share SDK UI模块（分享面板，建议添加）
 pod 'UMengUShare/UI'
 # 集成微信(精简版0.2M)

@@ -11,6 +11,7 @@
 #import "SocialConstants.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "UMSocialWechatHandler.h"
+#import "TalkingData.h"
 //#import "UMSocialQQHandler.h"
 //#import "UMSocialSinaSSOHandler.h"
 
@@ -25,7 +26,21 @@
     [self initializeGlobleApprence];
     // 分享
     [self shareSetting];
+    // talking data
+    [self initTalkingData];
     // 推送
+}
+
++ (void)initTalkingData
+{
+    // App ID: 在 App Analytics 创建应用后，进入数据报表页中，在“系统设置”-“编辑应用”页面里查看App ID。
+    // 渠道 ID: 是渠道标识符，可通过不同渠道单独追踪数据。
+    [TalkingData sessionStarted:@"50A9CE069A8947FF9548CBBEDB44A3AD" withChannelId:@"App store"];
+    
+    // YES: 开启自动捕获
+    // NO: 关闭自动捕获
+    [TalkingData setExceptionReportEnabled:YES];
+
 }
 
 // 友盟分享设置

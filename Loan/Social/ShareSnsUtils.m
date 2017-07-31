@@ -94,9 +94,9 @@
     
     //创建网页内容对象
 //    NSString* thumbURL = @"logo";
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"分享" descr:@"测试测试" thumImage:[UIImage imageNamed:@"logo"]];
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"分享" descr:@"快速拿8000元" thumImage:[UIImage imageNamed:@"logo"]];
     //设置网页地址
-    shareObject.webpageUrl = defaultUrlForShare;
+    shareObject.webpageUrl = [GlobalManager appDownloadUrl];
     
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;

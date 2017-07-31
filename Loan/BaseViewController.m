@@ -8,10 +8,18 @@
 
 #import "BaseViewController.h"
 #import "BaseNavigationController.h"
+#import "TalkingData.h"
 
 @implementation BaseViewController
 
 #pragma mark - life cycle
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSString * pageName = [NSString isEmpty:self.title] ? NSStringFromClass(self.class) : self.title;
+    [TalkingData trackPageBegin:pageName];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -35,6 +43,8 @@
 {
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
+    NSString * pageName = [NSString isEmpty:self.title] ? NSStringFromClass(self.class) : self.title;
+    [TalkingData trackPageEnd:pageName];
 }
 
 - (void)dealloc
