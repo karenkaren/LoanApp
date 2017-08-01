@@ -200,12 +200,12 @@
 
 + (NSString *)appDownloadUrl
 {
-    return @"https://itunes.apple.com/cn/app/hua-wu-you/id1219176656";
+    return @"https://itunes.apple.com/cn/app/shen-ma-dai-kuan/id1265875890";
 }
 
 + (NSString *)appleID
 {
-    return @"1219176656";
+    return @"1265875890";
 }
 
 #define kCheckFreshLaunchAppVersion @"CheckFreshLaunchAppVersion"

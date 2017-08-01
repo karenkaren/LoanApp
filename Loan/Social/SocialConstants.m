@@ -29,6 +29,6 @@ NSString * const WECHAT_APP_SECRET = @"eb3722bb259e84d5a20b0237cdd259d2";
 //NSString * const  QQ_APP_KEY = @"";
 
 // 分享链接
-NSString * const  defaultUrlForShare = @"https://itunes.apple.com/cn/app/hua-wu-you/id1219176656";
+NSString * const  defaultUrlForShare = @"https://itunes.apple.com/cn/app/shen-ma-dai-kuan/id1265875890";
 
 @end
